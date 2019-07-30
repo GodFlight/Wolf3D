@@ -74,9 +74,9 @@ void	map_read(t_wolf *wlf)
 	}
 	wlf->map[y] = NULL;
 	y = 0;
-//	while (buf[y] != NULL)
-//	{
-//		free(buf[y]);
-//		y++;
-//	}
+	while (buf[y] != NULL)
+	{
+		free(buf[y]);
+		y++;
+	}
 }

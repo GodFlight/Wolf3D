@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 #include <stdio.h>
 
 char	*ft_itoa_base(int n, int base)
@@ -41,14 +41,3 @@ char	*ft_itoa_base(int n, int base)
 	free(bs);
 	return (res);
 }
-
-//int 	main(void)
-//{
-//	char *res;
-//
-//	res = ft_itoa_base(1000000, 16);
-//	printf("%s\n", res);
-//	free(res);
-//	return (0);
-//}
-

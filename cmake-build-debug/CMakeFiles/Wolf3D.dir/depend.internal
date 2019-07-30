@@ -37,6 +37,10 @@ CMakeFiles/Wolf3D.dir/libft/ft_itoa.c.o
  /Users/rkeli/Desktop/Wolf3D/libft/ft_itoa.c
  /Users/rkeli/Desktop/Wolf3D/libft/get_next_line.h
  /Users/rkeli/Desktop/Wolf3D/libft/libft.h
+CMakeFiles/Wolf3D.dir/libft/ft_itoa_base.c.o
+ /Users/rkeli/Desktop/Wolf3D/libft/ft_itoa_base.c
+ /Users/rkeli/Desktop/Wolf3D/libft/get_next_line.h
+ /Users/rkeli/Desktop/Wolf3D/libft/libft.h
 CMakeFiles/Wolf3D.dir/libft/ft_lstadd.c.o
  /Users/rkeli/Desktop/Wolf3D/libft/ft_lstadd.c
  /Users/rkeli/Desktop/Wolf3D/libft/get_next_line.h
@@ -260,6 +264,7 @@ CMakeFiles/Wolf3D.dir/libft/get_next_line.c.o
  /Users/rkeli/Desktop/Wolf3D/libft/get_next_line.h
  /Users/rkeli/Desktop/Wolf3D/libft/libft.h
 CMakeFiles/Wolf3D.dir/srcs/main.c.o
+ ../include/define.h
  ../include/wolf3d.h
  ../libft/get_next_line.h
  ../libft/libft.h
@@ -311,6 +316,7 @@ CMakeFiles/Wolf3D.dir/srcs/main.c.o
  /Users/rkeli/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h
  /Users/rkeli/Desktop/Wolf3D/srcs/main.c
 CMakeFiles/Wolf3D.dir/srcs/map_read.c.o
+ ../include/define.h
  ../include/wolf3d.h
  ../libft/get_next_line.h
  ../libft/libft.h
@@ -363,6 +369,7 @@ CMakeFiles/Wolf3D.dir/srcs/map_read.c.o
  /Users/rkeli/Desktop/Wolf3D/srcs/map_read.c
 CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o
  ../include/debug_log.h
+ ../include/define.h
  ../include/wolf3d.h
  ../libft/get_next_line.h
  ../libft/libft.h
@@ -415,6 +422,7 @@ CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o
  /Users/rkeli/Desktop/Wolf3D/srcs/player_movement.c
 CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o
  ../include/debug_log.h
+ ../include/define.h
  ../include/wolf3d.h
  ../libft/get_next_line.h
  ../libft/libft.h
@@ -466,6 +474,7 @@ CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o
  /Users/rkeli/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h
  /Users/rkeli/Desktop/Wolf3D/srcs/player_raycast.c
 CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o
+ ../include/define.h
  ../include/wolf3d.h
  ../libft/get_next_line.h
  ../libft/libft.h
@@ -516,7 +525,10 @@ CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o
  /Users/rkeli/.brew/Cellar/sdl2/2.0.9_1/include/SDL2/close_code.h
  /Users/rkeli/.brew/Cellar/sdl2_image/2.0.5/include/SDL2/SDL_image.h
  /Users/rkeli/Desktop/Wolf3D/srcs/pseudo_three_d_render.c
+CMakeFiles/Wolf3D.dir/srcs/texture_load.c.o
+ /Users/rkeli/Desktop/Wolf3D/srcs/texture_load.c
 CMakeFiles/Wolf3D.dir/test.c.o
+ ../include/define.h
  ../include/wolf3d.h
  ../libft/get_next_line.h
  ../libft/libft.h

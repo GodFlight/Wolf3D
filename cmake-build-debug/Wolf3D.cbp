@@ -91,6 +91,9 @@
 		<Unit filename="/Users/rkeli/Desktop/Wolf3D/include/debug_log.h">
 			<Option target="Wolf3D"/>
 		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/Wolf3D/include/define.h">
+			<Option target="Wolf3D"/>
+		</Unit>
 		<Unit filename="/Users/rkeli/Desktop/Wolf3D/include/wolf3d.h">
 			<Option target="Wolf3D"/>
 		</Unit>
@@ -119,6 +122,9 @@
 			<Option target="Wolf3D"/>
 		</Unit>
 		<Unit filename="/Users/rkeli/Desktop/Wolf3D/libft/ft_itoa.c">
+			<Option target="Wolf3D"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/Wolf3D/libft/ft_itoa_base.c">
 			<Option target="Wolf3D"/>
 		</Unit>
 		<Unit filename="/Users/rkeli/Desktop/Wolf3D/libft/ft_lstadd.c">
@@ -308,6 +314,9 @@
 			<Option target="Wolf3D"/>
 		</Unit>
 		<Unit filename="/Users/rkeli/Desktop/Wolf3D/srcs/pseudo_three_d_render.c">
+			<Option target="Wolf3D"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/Wolf3D/srcs/texture_load.c">
 			<Option target="Wolf3D"/>
 		</Unit>
 		<Unit filename="/Users/rkeli/Desktop/Wolf3D/test.c">

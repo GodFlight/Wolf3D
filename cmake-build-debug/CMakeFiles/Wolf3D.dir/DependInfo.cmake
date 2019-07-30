@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/rkeli/Desktop/Wolf3D/libft/ft_isdigit.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/libft/ft_isdigit.c.o"
   "/Users/rkeli/Desktop/Wolf3D/libft/ft_isprint.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/libft/ft_isprint.c.o"
   "/Users/rkeli/Desktop/Wolf3D/libft/ft_itoa.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/libft/ft_itoa.c.o"
+  "/Users/rkeli/Desktop/Wolf3D/libft/ft_itoa_base.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/libft/ft_itoa_base.c.o"
   "/Users/rkeli/Desktop/Wolf3D/libft/ft_lstadd.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/libft/ft_lstadd.c.o"
   "/Users/rkeli/Desktop/Wolf3D/libft/ft_lstdel.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/libft/ft_lstdel.c.o"
   "/Users/rkeli/Desktop/Wolf3D/libft/ft_lstdelone.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/libft/ft_lstdelone.c.o"
@@ -74,6 +75,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/rkeli/Desktop/Wolf3D/srcs/player_movement.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o"
   "/Users/rkeli/Desktop/Wolf3D/srcs/player_raycast.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o"
   "/Users/rkeli/Desktop/Wolf3D/srcs/pseudo_three_d_render.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o"
+  "/Users/rkeli/Desktop/Wolf3D/srcs/texture_load.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/srcs/texture_load.c.o"
   "/Users/rkeli/Desktop/Wolf3D/test.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/test.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")

@@ -366,6 +366,33 @@ libft/ft_itoa.c.s:
 	$(MAKE) -f CMakeFiles/Wolf3D.dir/build.make CMakeFiles/Wolf3D.dir/libft/ft_itoa.c.s
 .PHONY : libft/ft_itoa.c.s
 
+libft/ft_itoa_base.o: libft/ft_itoa_base.c.o
+
+.PHONY : libft/ft_itoa_base.o
+
+# target to build an object file
+libft/ft_itoa_base.c.o:
+	$(MAKE) -f CMakeFiles/Wolf3D.dir/build.make CMakeFiles/Wolf3D.dir/libft/ft_itoa_base.c.o
+.PHONY : libft/ft_itoa_base.c.o
+
+libft/ft_itoa_base.i: libft/ft_itoa_base.c.i
+
+.PHONY : libft/ft_itoa_base.i
+
+# target to preprocess a source file
+libft/ft_itoa_base.c.i:
+	$(MAKE) -f CMakeFiles/Wolf3D.dir/build.make CMakeFiles/Wolf3D.dir/libft/ft_itoa_base.c.i
+.PHONY : libft/ft_itoa_base.c.i
+
+libft/ft_itoa_base.s: libft/ft_itoa_base.c.s
+
+.PHONY : libft/ft_itoa_base.s
+
+# target to generate assembly for a file
+libft/ft_itoa_base.c.s:
+	$(MAKE) -f CMakeFiles/Wolf3D.dir/build.make CMakeFiles/Wolf3D.dir/libft/ft_itoa_base.c.s
+.PHONY : libft/ft_itoa_base.c.s
+
 libft/ft_lstadd.o: libft/ft_lstadd.c.o
 
 .PHONY : libft/ft_lstadd.o
@@ -2013,6 +2040,33 @@ srcs/pseudo_three_d_render.c.s:
 	$(MAKE) -f CMakeFiles/Wolf3D.dir/build.make CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.s
 .PHONY : srcs/pseudo_three_d_render.c.s
 
+srcs/texture_load.o: srcs/texture_load.c.o
+
+.PHONY : srcs/texture_load.o
+
+# target to build an object file
+srcs/texture_load.c.o:
+	$(MAKE) -f CMakeFiles/Wolf3D.dir/build.make CMakeFiles/Wolf3D.dir/srcs/texture_load.c.o
+.PHONY : srcs/texture_load.c.o
+
+srcs/texture_load.i: srcs/texture_load.c.i
+
+.PHONY : srcs/texture_load.i
+
+# target to preprocess a source file
+srcs/texture_load.c.i:
+	$(MAKE) -f CMakeFiles/Wolf3D.dir/build.make CMakeFiles/Wolf3D.dir/srcs/texture_load.c.i
+.PHONY : srcs/texture_load.c.i
+
+srcs/texture_load.s: srcs/texture_load.c.s
+
+.PHONY : srcs/texture_load.s
+
+# target to generate assembly for a file
+srcs/texture_load.c.s:
+	$(MAKE) -f CMakeFiles/Wolf3D.dir/build.make CMakeFiles/Wolf3D.dir/srcs/texture_load.c.s
+.PHONY : srcs/texture_load.c.s
+
 test.o: test.c.o
 
 .PHONY : test.o
@@ -2076,6 +2130,9 @@ help:
 	@echo "... libft/ft_itoa.o"
 	@echo "... libft/ft_itoa.i"
 	@echo "... libft/ft_itoa.s"
+	@echo "... libft/ft_itoa_base.o"
+	@echo "... libft/ft_itoa_base.i"
+	@echo "... libft/ft_itoa_base.s"
 	@echo "... libft/ft_lstadd.o"
 	@echo "... libft/ft_lstadd.i"
 	@echo "... libft/ft_lstadd.s"
@@ -2259,6 +2316,9 @@ help:
 	@echo "... srcs/pseudo_three_d_render.o"
 	@echo "... srcs/pseudo_three_d_render.i"
 	@echo "... srcs/pseudo_three_d_render.s"
+	@echo "... srcs/texture_load.o"
+	@echo "... srcs/texture_load.i"
+	@echo "... srcs/texture_load.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"

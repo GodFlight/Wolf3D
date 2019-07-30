@@ -12,16 +12,16 @@
 
 NAME = libft.a
 
-SRCS = ft_strlcat.distance ft_strlen.distance ft_memcpy.distance ft_strcmp.distance ft_strncmp.distance ft_strnequ.distance ft_strequ.distance ft_atoi.distance ft_isalpha.distance ft_isdigit.distance ft_isalnum.distance ft_isascii.distance ft_isprint.distance ft_toupper.distance ft_memchr.distance ft_memmove.distance ft_memset.distance ft_memcpy.distance ft_bzero.distance ft_memccpy.distance ft_memalloc.distance ft_striteri.distance ft_striter.distance ft_memdel.distance ft_strdel.distance ft_strclr.distance ft_putendl.distance ft_putendl_fd.distance ft_putchar.distance ft_putchar_fd.distance ft_putnbr.distance ft_putstr.distance ft_putstr_fd.distance ft_putnbr_fd.distance ft_strnew.distance ft_itoa.distance ft_strdup.distance ft_strcpy.distance ft_strncpy.distance ft_strcat.distance ft_strncat.distance ft_strchr.distance ft_strrchr.distance ft_strjoin.distance ft_strtrim.distance ft_strsub.distance ft_strmap.distance ft_strmapi.distance ft_strsplit.distance ft_strstr.distance ft_strnstr.distance ft_lstnew.distance  ft_lstadd.distance ft_lstiter.distance ft_lstdelone.distance ft_lstdel.distance ft_lstmap.distance ft_lstnormdelone.distance ft_lstnormdel.distance ft_tolower.distance ft_memcmp.distance ft_updt.distance ft_swap.distance ft_sort_bubl.distance get_next_line.distance
+SRCS = ft_strlcat.c ft_strlen.c ft_memcpy.c ft_strcmp.c ft_strncmp.c ft_strnequ.c ft_strequ.c ft_atoi.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_memchr.c ft_memmove.c ft_memset.c ft_memcpy.c ft_bzero.c ft_memccpy.c ft_memalloc.c ft_striteri.c ft_striter.c ft_memdel.c ft_strdel.c ft_strclr.c ft_putendl.c ft_putendl_fd.c ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putstr.c ft_putstr_fd.c ft_putnbr_fd.c ft_strnew.c ft_itoa.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c ft_strchr.c ft_strrchr.c ft_strjoin.c ft_strtrim.c ft_strsub.c ft_strmap.c ft_strmapi.c ft_strsplit.c ft_strstr.c ft_strnstr.c ft_lstnew.c  ft_lstadd.c ft_lstiter.c ft_lstdelone.c ft_lstdel.c ft_lstmap.c ft_lstnormdelone.c ft_lstnormdel.c ft_tolower.c ft_memcmp.c ft_updt.c ft_swap.c ft_sort_bubl.c get_next_line.c ft_itoa_base.c
 
-OBJ = $(patsubst %.distance,%.o,$(SRCS))
+OBJ = $(patsubst %.c,%.o,$(SRCS))
 
 INCLUDES = libft.h get_next_line.h
 
 all: $(NAME)
 
 $(NAME): 
-	@gcc -Wall -Werror -Wextra -distance $(SRCS)
+	@gcc -Wall -Werror -Wextra -c $(SRCS)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 

@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Wolf3D.dir/libft/ft_isdigit.c.o"
   "CMakeFiles/Wolf3D.dir/libft/ft_isprint.c.o"
   "CMakeFiles/Wolf3D.dir/libft/ft_itoa.c.o"
+  "CMakeFiles/Wolf3D.dir/libft/ft_itoa_base.c.o"
   "CMakeFiles/Wolf3D.dir/libft/ft_lstadd.c.o"
   "CMakeFiles/Wolf3D.dir/libft/ft_lstdel.c.o"
   "CMakeFiles/Wolf3D.dir/libft/ft_lstdelone.c.o"
@@ -70,6 +71,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o"
   "CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o"
   "CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o"
+  "CMakeFiles/Wolf3D.dir/srcs/texture_load.c.o"
   "Wolf3D.pdb"
   "Wolf3D"
 )

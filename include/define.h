@@ -20,7 +20,8 @@
 # define RED 0xFF000000
 # define PLAYER_SPEED 10.0f
 # define MAP_SCALE 30
-//# define FOV M_PI / 3
+# define FOV M_PI / 3
+# define COLUM 64
 # define TRUE 1
 # define FALSE 0
 

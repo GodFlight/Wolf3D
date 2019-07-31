@@ -9,7 +9,8 @@ t_wolf	*wolf_init(void)
 	wolf->ray.colum = 0.f;
 	wolf->player.y = 1.4f;
 	wolf->player.x =  1.4f;
-	wolf->player.view_dir = 0.500f;
+	wolf->player.view_dir = 0.5f;
+	wolf->ray.eps = 0.01f;
 	return (wolf);
 }
 

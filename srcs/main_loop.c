@@ -27,9 +27,9 @@ void	main_loop(t_sdl *sdl, t_wolf *wlf)
 	running = 1;
 	while (running)
 	{
-		drow_map(sdl, wlf);
 		player_raycast(wlf, sdl);
 		print_image(sdl);
+		drow_map(sdl, wlf);
 		SDL_UpdateTexture(sdl->texture, NULL, (void *)sdl->data, WIN_WIDTH * sizeof(int));
 		SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
 		SDL_RenderPresent(sdl->renderer);

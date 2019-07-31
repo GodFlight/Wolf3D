@@ -5,7 +5,7 @@ set(CMAKE_C_STANDARD 11)
 set(GCC_COMPILE_FLAGS "-O3")
 
 link_directories(/Users/$ENV{USER}/.brew/Cellar/sdl2/2.0.9_1/lib)
-link_directories(/Users/$ENV{USER}/.brew/Cellar/sdl2_image/2.0.4/lib)
+link_directories(/Users/$ENV{USER}/.brew/Cellar/sdl2_image/2.0.5/lib)
 #link_directories(/Users/rkeli/Desktop/Wolf3D/stb)
 include_directories(include)
 include_directories(libft)
@@ -83,7 +83,7 @@ add_executable(Wolf3D
 
 
 target_include_directories(Wolf3D PRIVATE /Users/$ENV{USER}/.brew/Cellar/sdl2/2.0.9_1/include/SDL2)
-target_include_directories(Wolf3D PRIVATE /Users/$ENV{USER}/.brew/Cellar/sdl2_image/2.0.4/include/SDL2)
+target_include_directories(Wolf3D PRIVATE /Users/$ENV{USER}/.brew/Cellar/sdl2_image/2.0.5/include/SDL2)
 target_link_libraries(Wolf3D
         "SDL2"
         "SDL2_image"

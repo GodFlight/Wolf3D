@@ -28,8 +28,9 @@ typedef struct	s_player_ray
 	float 		hity;
 	float 		x;
 	float 		y;
-	float 		colum;
 	float		i;
+	float		eps;
+	float 		colum;
 	float 		angle;
 	float 		distance;
 }				t_player_ray;

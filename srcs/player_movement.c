@@ -20,13 +20,13 @@ void	player_movenet(t_wolf *wlf, t_sdl *sdl)
 			ft_bzero(sdl->data, sizeof(int) * (WIN_WIDTH * WIN_HEIGHT));
 			SDL_Log("%sVertical movement: %s%f\n", KMAG, KCYN,wlf->player.y);
 		}
-		else if (SDL_KEYDOWN == sdl->event.type && SDL_SCANCODE_E == sdl->event.key.keysym.scancode)
+		else if (SDL_KEYDOWN == sdl->event.type && SDL_SCANCODE_D == sdl->event.key.keysym.scancode)
 		{
 			wlf->player.view_dir += 0.05f;
 			ft_bzero(sdl->data, sizeof(int) * (WIN_WIDTH * WIN_HEIGHT));
 			SDL_Log("%sTurn right: %s%f\n", KNRM, KCYN,wlf->player.view_dir);
 		}
-		else if (SDL_KEYDOWN == sdl->event.type && SDL_SCANCODE_Q == sdl->event.key.keysym.scancode)
+		else if (SDL_KEYDOWN == sdl->event.type && SDL_SCANCODE_A == sdl->event.key.keysym.scancode)
 		{
 			wlf->player.view_dir -= 0.05f;
 			ft_bzero(sdl->data, sizeof(int) * (WIN_WIDTH * WIN_HEIGHT));

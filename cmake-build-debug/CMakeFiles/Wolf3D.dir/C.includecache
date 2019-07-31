@@ -8,6 +8,38 @@
 
 ../include/define.h
 
+../include/stb_image.h
+stb_image.h
+../include/stb_image.h
+stdio.h
+-
+stdlib.h
+-
+stdarg.h
+-
+stddef.h
+-
+stdlib.h
+-
+string.h
+-
+limits.h
+-
+math.h
+-
+stdio.h
+-
+assert.h
+-
+stdint.h
+-
+emmintrin.h
+-
+intrin.h
+-
+arm_neon.h
+-
+
 ../include/wolf3d.h
 libft.h
 ../include/libft.h
@@ -15,6 +47,8 @@ define.h
 ../include/define.h
 SDL.h
 -
+stb_image.h
+../include/stb_image.h
 SDL_image.h
 -
 math.h

@@ -2,54 +2,19 @@
 #include "wolf3d.h"
 #include "debug_log.h"
 
-void 	drow_celling(t_wolf *wlf, t_sdl *sdl, int i)
-{
-	float x;
-	float y;
-
-	float offset = (WIN_HEIGHT / 2 - wlf->ray.colum / 2);
-	y = WIN_HEIGHT;
-//	x = wlf->ray.x;
-	offset = offset > 0 ? offset : 1;
-	while (offset > 0)
-	{
-		sdl_put_pixel(sdl, (int)(WIN_WIDTH / 4 + i + 25), (int)offset, DGRAY);
-		offset--;
-	}
-}
-
-void 	drow_floor(t_wolf *wlf, t_sdl *sdl, int i)
-{
-	float x;
-	float y;
-
-	float offset = (WIN_HEIGHT / 2 + wlf->ray.colum / 2);
-	y = WIN_HEIGHT;
-	offset = offset > 0 ? offset : 1;
-	while (y > offset)
-	{
-		sdl_put_pixel(sdl, (int)(WIN_WIDTH / 4 + i + 25), (int)y, GRAY);
-		y--;
-	}
-
-}
-
 void	processing_big_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 {
 	int tmp_y;
 	int y;
 
 	float relation = 64 / h_colum;
-	int *texture = (int*)sdl->texture_pack[0]->pixels;
 	tmp_y = (int)((h_colum - WIN_HEIGHT) / 2);
 	y = -1;
 	while (++y < WIN_HEIGHT)
 	{
 		if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 1)
 		{
-			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y,
-						  texture[(int) (((int) (tmp_y * relation)) * 16 +
-										 wlf->ray.hitx * 64)]);
+			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y, *((int *)sdl->img.data + ((int)(wlf->ray.hitx * 64 + (int)(tmp_y * relation) * sdl->img.width))));
 			tmp_y++;
 		}
 		else if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 2)
@@ -64,30 +29,28 @@ void	drow_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 
 	offset = (WIN_HEIGHT / 2 - h_colum / 2);
 	offset = offset > 0 ? offset : 1;
-	int *texture = (int*)sdl->texture_pack[0]->pixels;
+	unsigned char *texture = sdl->img.data;
 	int tmp_y = 0;
 	float relation = 64 / h_colum;
 	y = 0;
-	while (y < (int)offset)
+	while (y < (int)offset) // celling drowing
 	{
 		sdl_put_pixel(sdl, (int)(WIN_WIDTH / 4 + i + 25), (int)y, DGRAY);
 		y++;
 	}
 	offset = WIN_HEIGHT / 2 + h_colum / 2;
-	while (y < offset)
+	while (y < offset) // colum drowing
 	{
 		if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 1)
 		{
-			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y,
-						  texture[(int) (((int) (tmp_y * relation)) * 16 +
-										 wlf->ray.hitx * 16)]);
+			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y, *((int *)sdl->img.data + ((int)(wlf->ray.hitx * 64 + (int)(tmp_y * relation) * sdl->img.width))));
 			tmp_y++;
 		}
 		else if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 2)
 			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y, RED);
 		y++;
 	}
-	while (y < WIN_HEIGHT)
+	while (y < WIN_HEIGHT) //floor drowing
 	{
 		sdl_put_pixel(sdl, (int)(WIN_WIDTH / 4 + i + 25), y, GRAY);
 		y++;

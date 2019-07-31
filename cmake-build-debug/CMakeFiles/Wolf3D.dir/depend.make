@@ -264,6 +264,7 @@ CMakeFiles/Wolf3D.dir/libft/get_next_line.c.o: ../libft/get_next_line.h
 CMakeFiles/Wolf3D.dir/libft/get_next_line.c.o: ../libft/libft.h
 
 CMakeFiles/Wolf3D.dir/srcs/main.c.o: ../include/define.h
+CMakeFiles/Wolf3D.dir/srcs/main.c.o: ../include/stb_image.h
 CMakeFiles/Wolf3D.dir/srcs/main.c.o: ../include/wolf3d.h
 CMakeFiles/Wolf3D.dir/srcs/main.c.o: ../libft/get_next_line.h
 CMakeFiles/Wolf3D.dir/srcs/main.c.o: ../libft/libft.h
@@ -316,6 +317,7 @@ CMakeFiles/Wolf3D.dir/srcs/main.c.o: /Users/sbecker/.brew/Cellar/sdl2_image/2.0.
 CMakeFiles/Wolf3D.dir/srcs/main.c.o: ../srcs/main.c
 
 CMakeFiles/Wolf3D.dir/srcs/map_read.c.o: ../include/define.h
+CMakeFiles/Wolf3D.dir/srcs/map_read.c.o: ../include/stb_image.h
 CMakeFiles/Wolf3D.dir/srcs/map_read.c.o: ../include/wolf3d.h
 CMakeFiles/Wolf3D.dir/srcs/map_read.c.o: ../libft/get_next_line.h
 CMakeFiles/Wolf3D.dir/srcs/map_read.c.o: ../libft/libft.h
@@ -369,6 +371,7 @@ CMakeFiles/Wolf3D.dir/srcs/map_read.c.o: ../srcs/map_read.c
 
 CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o: ../include/debug_log.h
 CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o: ../include/define.h
+CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o: ../include/stb_image.h
 CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o: ../include/wolf3d.h
 CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o: ../libft/get_next_line.h
 CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o: ../libft/libft.h
@@ -422,6 +425,7 @@ CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o: ../srcs/player_movement.c
 
 CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o: ../include/debug_log.h
 CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o: ../include/define.h
+CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o: ../include/stb_image.h
 CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o: ../include/wolf3d.h
 CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o: ../libft/get_next_line.h
 CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o: ../libft/libft.h
@@ -474,6 +478,7 @@ CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o: /Users/sbecker/.brew/Cellar/sdl2_
 CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o: ../srcs/player_raycast.c
 
 CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o: ../include/define.h
+CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o: ../include/stb_image.h
 CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o: ../include/wolf3d.h
 CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o: ../libft/get_next_line.h
 CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o: ../libft/libft.h

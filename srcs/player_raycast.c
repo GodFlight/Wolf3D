@@ -2,73 +2,98 @@
 #include "wolf3d.h"
 #include "debug_log.h"
 
+int		drow_celling(t_sdl *sdl, float h_colum, int i)
+{
+	int y;
+	float offset;
+
+	offset = (WIN_HEIGHT / 2 - h_colum / 2);
+	offset = offset > 0 ? offset : 1;
+	y = 0;
+	while (y < (int)offset)
+	{
+		sdl_put_pixel(sdl, i, y, DGRAY);
+		y++;
+	}
+	return (y);
+}
+
+void	drow_floor(t_sdl *sdl, int i, int y)
+{
+	while (y < WIN_HEIGHT)
+	{
+		sdl_put_pixel(sdl, i, y, GRAY);
+		y++;
+	}
+}
+
 void	processing_big_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 {
-	int tmp_y;
-	int y;
+	int		tmp_y;
+	int		y;
+	float relation;
 
-	float relation = 64 / h_colum;
+	relation = COLUM / h_colum;
+	wlf->ray.eps = 0.01f;
 	tmp_y = (int)((h_colum - WIN_HEIGHT) / 2);
 	y = -1;
+	if (wlf->ray.hitx < wlf->ray.eps || (wlf->ray.hitx > wlf->ray.hity
+								&& wlf->ray.hity > wlf->ray.eps))
+		wlf->ray.hitx = wlf->ray.hity;
 	while (++y < WIN_HEIGHT)
 	{
 		if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 1)
 		{
-			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y, *((int *)sdl->img.data + ((int)(wlf->ray.hitx * 64 + (int)(tmp_y * relation) * sdl->img.width))));
+			sdl_put_pixel(sdl, i, y, *((int *)sdl->img.data
+			+ ((int)(wlf->ray.hitx * COLUM + (int)(tmp_y * relation)
+			* sdl->img.width))));
 			tmp_y++;
 		}
 		else if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 2)
-			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y, RED);
+			sdl_put_pixel(sdl, i, y, RED);
 	}
 }
 
 void	drow_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 {
-	int		y;
-	float	offset;
+	int 	y;
+	float 	offset;
+	int 	tmp_y;
+	float 	relation;
 
-	offset = (WIN_HEIGHT / 2 - h_colum / 2);
-	offset = offset > 0 ? offset : 1;
-	unsigned char *texture = sdl->img.data;
-	int tmp_y = 0;
-	float relation = 64 / h_colum;
-	y = 0;
-	while (y < (int)offset) // celling drowing
-	{
-		sdl_put_pixel(sdl, (int)(WIN_WIDTH / 4 + i + 25), (int)y, DGRAY);
-		y++;
-	}
+	tmp_y = 0;
+	relation = COLUM / h_colum;
+	y = drow_celling(sdl, h_colum, i);
 	offset = WIN_HEIGHT / 2 + h_colum / 2;
-	while (y < offset) // colum drowing
+	if (wlf->ray.hitx < wlf->ray.eps || (wlf->ray.hitx > wlf->ray.hity
+										&& wlf->ray.hity > wlf->ray.eps))
+		wlf->ray.hitx = wlf->ray.hity;
+	while (y < offset)
 	{
-		if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 1)
+		if (wlf->map[(int) wlf->ray.y][(int) wlf->ray.x] == 1)
 		{
-			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y, *((int *)sdl->img.data + ((int)(wlf->ray.hitx * 64 + (int)(tmp_y * relation) * sdl->img.width))));
+			sdl_put_pixel(sdl, i, y,
+					 *((int *) sdl->img.data +	((int) (wlf->ray.hitx * COLUM
+					 + (int) (tmp_y * relation) * sdl->img.width))));
 			tmp_y++;
-		}
-		else if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 2)
-			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y, RED);
+		} else if (wlf->map[(int) wlf->ray.y][(int) wlf->ray.x] == 2)
+			sdl_put_pixel(sdl, i, y, RED);
 		y++;
 	}
-	while (y < WIN_HEIGHT) //floor drowing
-	{
-		sdl_put_pixel(sdl, (int)(WIN_WIDTH / 4 + i + 25), y, GRAY);
-		y++;
-	}
+	drow_floor(sdl, i, y);
 }
 
 void 	player_raycast(t_wolf *wlf, t_sdl *sdl)
 {
     float	cs;
     float 	sn;
-    float	fov;
     int		i;
 
     i = 0;
-    fov = M_PI / 3;
     while (i < WIN_WIDTH)
     {
-    	wlf->ray.angle = (wlf->player.view_dir - fov / 2) + (fov * i / WIN_WIDTH);
+    	wlf->ray.angle = (wlf->player.view_dir - FOV / 2)
+    			+ (FOV * i / WIN_WIDTH);
 		wlf->ray.distance = 0.f;
 		cs = cos(wlf->ray.angle);
 		sn = sin(wlf->ray.angle);
@@ -76,14 +101,15 @@ void 	player_raycast(t_wolf *wlf, t_sdl *sdl)
 		{
 			wlf->ray.x = wlf->player.x + wlf->ray.distance * cs;
 			wlf->ray.y = wlf->player.y + wlf->ray.distance * sn;
-			if (wlf->ray.y >= wlf->len_ymap || wlf->ray.x >= wlf->len_xmap || wlf->ray.y <= 0 || wlf->ray.x <= 0
-				|| (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] != 0))
+			if ((wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] != 0))
 				break;
-			sdl_put_pixel(sdl, (int)(wlf->ray.x * MAP_SCALE), (int)(wlf->ray.y * MAP_SCALE), BLUE);
+//			sdl_put_pixel(sdl, (int)(wlf->ray.x * MAP_SCALE), (int)(wlf->ray.y * MAP_SCALE), BLUE);
 			wlf->ray.distance += 0.01f;
 		}
-		wlf->ray.colum = WIN_HEIGHT / (wlf->ray.distance * cos(wlf->ray.angle - wlf->player.view_dir));
+		wlf->ray.colum = WIN_HEIGHT / (wlf->ray.distance
+				* cos(wlf->ray.angle - wlf->player.view_dir));
 		wlf->ray.hitx = (wlf->ray.x - (int)wlf->ray.x);
+		wlf->ray.hity = (wlf->ray.y - (int)wlf->ray.y);
 		if (wlf->ray.colum > WIN_HEIGHT)
 			processing_big_colum(wlf, sdl, wlf->ray.colum, i);
 		else

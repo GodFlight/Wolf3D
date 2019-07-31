@@ -86,5 +86,9 @@ void	drow_map(t_sdl *sdl, t_wolf *wlf);
 void	player_movenet(t_wolf *wlf, t_sdl *sdl);
 void 	player_raycast(t_wolf *wlf, t_sdl *sdl);
 void	drow_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i);
+t_wolf	*wolf_init(void);
+t_sdl	*sdl_init(void);
+void	main_loop(t_sdl *sdl, t_wolf *wlf);
+int		rgb_to_hex(int r, int g, int b);
 
 #endif

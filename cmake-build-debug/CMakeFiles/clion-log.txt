@@ -1,4 +1,0 @@
-/Users/sbecker/Desktop/apps/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/sbecker/CLionProjects/Wolf3D
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/sbecker/CLionProjects/Wolf3D/cmake-build-debug

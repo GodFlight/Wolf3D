@@ -2,6 +2,9 @@
 #include "wolf3d.h"
 #include "debug_log.h"
 
+//TODO A/D - going left/right
+//TODO arrow - change ray view
+
 void	player_movenet(t_wolf *wlf, t_sdl *sdl)
 {
 	if ((wlf->player.y > 0.01 && wlf->player.y < wlf->len_ymap) && (wlf->player.x > 0.01 && wlf->player.x < wlf->len_xmap))

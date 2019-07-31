@@ -265,6 +265,7 @@ CMakeFiles/Wolf3D.dir/libft/get_next_line.c.o
  /Users/rkeli/Desktop/Wolf3D/libft/libft.h
 CMakeFiles/Wolf3D.dir/srcs/main.c.o
  ../include/define.h
+ ../include/stb_image.h
  ../include/wolf3d.h
  ../libft/get_next_line.h
  ../libft/libft.h
@@ -317,6 +318,7 @@ CMakeFiles/Wolf3D.dir/srcs/main.c.o
  /Users/rkeli/Desktop/Wolf3D/srcs/main.c
 CMakeFiles/Wolf3D.dir/srcs/map_read.c.o
  ../include/define.h
+ ../include/stb_image.h
  ../include/wolf3d.h
  ../libft/get_next_line.h
  ../libft/libft.h
@@ -370,6 +372,7 @@ CMakeFiles/Wolf3D.dir/srcs/map_read.c.o
 CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o
  ../include/debug_log.h
  ../include/define.h
+ ../include/stb_image.h
  ../include/wolf3d.h
  ../libft/get_next_line.h
  ../libft/libft.h
@@ -423,6 +426,7 @@ CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o
 CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o
  ../include/debug_log.h
  ../include/define.h
+ ../include/stb_image.h
  ../include/wolf3d.h
  ../libft/get_next_line.h
  ../libft/libft.h
@@ -475,6 +479,7 @@ CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o
  /Users/rkeli/Desktop/Wolf3D/srcs/player_raycast.c
 CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o
  ../include/define.h
+ ../include/stb_image.h
  ../include/wolf3d.h
  ../libft/get_next_line.h
  ../libft/libft.h

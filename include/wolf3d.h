@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "define.h"
 # include <SDL.h>
+# include "stb_image.h"
 # include <SDL_image.h>
 # include <math.h>
 # include <fcntl.h>
@@ -43,12 +44,21 @@ typedef struct	s_wlf_player
 	short		running;
 }				t_wlf_player;
 
+typedef struct	s_img
+{
+	unsigned char	*data;
+	int 			width;
+	int 			height;
+	int 			bpp;
+}				t_img;
+
 typedef struct	s_sdl
 {
 	SDL_Window		*win;
 	SDL_Renderer	*renderer;
 	SDL_Surface		*screen;
 	SDL_Surface		**texture_pack;
+	t_img			img;
 	SDL_Event		event;
 	SDL_Texture		*texture;
 	SDL_Texture		*texture_p;

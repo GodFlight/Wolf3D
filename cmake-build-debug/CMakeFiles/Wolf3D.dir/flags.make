@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu11
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/rkeli/Desktop/Wolf3D/include -I/Users/rkeli/Desktop/Wolf3D/libft -I/Users/rkeli/.brew/Cellar/sdl2/2.0.9_1/include/SDL2 -I/Users/rkeli/.brew/Cellar/sdl2_image/2.0.5/include/SDL2 
+C_INCLUDES = -I/Users/sbecker/CLionProjects/Wolf3D/include -I/Users/sbecker/CLionProjects/Wolf3D/libft -I/Users/sbecker/.brew/Cellar/sdl2/2.0.9_1/include/SDL2 -I/Users/sbecker/.brew/Cellar/sdl2_image/2.0.4/include/SDL2 
 

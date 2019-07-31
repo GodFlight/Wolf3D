@@ -65,7 +65,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Wolf3D.dir/libft/ft_toupper.c.o"
   "CMakeFiles/Wolf3D.dir/libft/ft_updt.c.o"
   "CMakeFiles/Wolf3D.dir/libft/get_next_line.c.o"
-  "CMakeFiles/Wolf3D.dir/test.c.o"
   "CMakeFiles/Wolf3D.dir/srcs/main.c.o"
   "CMakeFiles/Wolf3D.dir/srcs/map_read.c.o"
   "CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o"

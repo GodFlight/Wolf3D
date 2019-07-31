@@ -915,22 +915,9 @@ CMakeFiles/Wolf3D.dir/libft/get_next_line.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Wolf3D.dir/libft/get_next_line.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rkeli/Desktop/Wolf3D/libft/get_next_line.c -o CMakeFiles/Wolf3D.dir/libft/get_next_line.c.s
 
-CMakeFiles/Wolf3D.dir/test.c.o: CMakeFiles/Wolf3D.dir/flags.make
-CMakeFiles/Wolf3D.dir/test.c.o: ../test.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/Wolf3D.dir/test.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Wolf3D.dir/test.c.o   -c /Users/rkeli/Desktop/Wolf3D/test.c
-
-CMakeFiles/Wolf3D.dir/test.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Wolf3D.dir/test.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rkeli/Desktop/Wolf3D/test.c > CMakeFiles/Wolf3D.dir/test.c.i
-
-CMakeFiles/Wolf3D.dir/test.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Wolf3D.dir/test.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rkeli/Desktop/Wolf3D/test.c -o CMakeFiles/Wolf3D.dir/test.c.s
-
 CMakeFiles/Wolf3D.dir/srcs/main.c.o: CMakeFiles/Wolf3D.dir/flags.make
 CMakeFiles/Wolf3D.dir/srcs/main.c.o: ../srcs/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/Wolf3D.dir/srcs/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/Wolf3D.dir/srcs/main.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Wolf3D.dir/srcs/main.c.o   -c /Users/rkeli/Desktop/Wolf3D/srcs/main.c
 
 CMakeFiles/Wolf3D.dir/srcs/main.c.i: cmake_force
@@ -943,7 +930,7 @@ CMakeFiles/Wolf3D.dir/srcs/main.c.s: cmake_force
 
 CMakeFiles/Wolf3D.dir/srcs/map_read.c.o: CMakeFiles/Wolf3D.dir/flags.make
 CMakeFiles/Wolf3D.dir/srcs/map_read.c.o: ../srcs/map_read.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/Wolf3D.dir/srcs/map_read.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/Wolf3D.dir/srcs/map_read.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Wolf3D.dir/srcs/map_read.c.o   -c /Users/rkeli/Desktop/Wolf3D/srcs/map_read.c
 
 CMakeFiles/Wolf3D.dir/srcs/map_read.c.i: cmake_force
@@ -956,7 +943,7 @@ CMakeFiles/Wolf3D.dir/srcs/map_read.c.s: cmake_force
 
 CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o: CMakeFiles/Wolf3D.dir/flags.make
 CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o: ../srcs/player_movement.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o   -c /Users/rkeli/Desktop/Wolf3D/srcs/player_movement.c
 
 CMakeFiles/Wolf3D.dir/srcs/player_movement.c.i: cmake_force
@@ -969,7 +956,7 @@ CMakeFiles/Wolf3D.dir/srcs/player_movement.c.s: cmake_force
 
 CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o: CMakeFiles/Wolf3D.dir/flags.make
 CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o: ../srcs/player_raycast.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o   -c /Users/rkeli/Desktop/Wolf3D/srcs/player_raycast.c
 
 CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.i: cmake_force
@@ -982,7 +969,7 @@ CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.s: cmake_force
 
 CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o: CMakeFiles/Wolf3D.dir/flags.make
 CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o: ../srcs/pseudo_three_d_render.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o   -c /Users/rkeli/Desktop/Wolf3D/srcs/pseudo_three_d_render.c
 
 CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.i: cmake_force
@@ -995,7 +982,7 @@ CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.s: cmake_force
 
 CMakeFiles/Wolf3D.dir/srcs/texture_load.c.o: CMakeFiles/Wolf3D.dir/flags.make
 CMakeFiles/Wolf3D.dir/srcs/texture_load.c.o: ../srcs/texture_load.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/Wolf3D.dir/srcs/texture_load.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/Wolf3D.dir/srcs/texture_load.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Wolf3D.dir/srcs/texture_load.c.o   -c /Users/rkeli/Desktop/Wolf3D/srcs/texture_load.c
 
 CMakeFiles/Wolf3D.dir/srcs/texture_load.c.i: cmake_force
@@ -1074,7 +1061,6 @@ Wolf3D_OBJECTS = \
 "CMakeFiles/Wolf3D.dir/libft/ft_toupper.c.o" \
 "CMakeFiles/Wolf3D.dir/libft/ft_updt.c.o" \
 "CMakeFiles/Wolf3D.dir/libft/get_next_line.c.o" \
-"CMakeFiles/Wolf3D.dir/test.c.o" \
 "CMakeFiles/Wolf3D.dir/srcs/main.c.o" \
 "CMakeFiles/Wolf3D.dir/srcs/map_read.c.o" \
 "CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o" \
@@ -1151,7 +1137,6 @@ Wolf3D: CMakeFiles/Wolf3D.dir/libft/ft_tolower.c.o
 Wolf3D: CMakeFiles/Wolf3D.dir/libft/ft_toupper.c.o
 Wolf3D: CMakeFiles/Wolf3D.dir/libft/ft_updt.c.o
 Wolf3D: CMakeFiles/Wolf3D.dir/libft/get_next_line.c.o
-Wolf3D: CMakeFiles/Wolf3D.dir/test.c.o
 Wolf3D: CMakeFiles/Wolf3D.dir/srcs/main.c.o
 Wolf3D: CMakeFiles/Wolf3D.dir/srcs/map_read.c.o
 Wolf3D: CMakeFiles/Wolf3D.dir/srcs/player_movement.c.o
@@ -1160,7 +1145,7 @@ Wolf3D: CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o
 Wolf3D: CMakeFiles/Wolf3D.dir/srcs/texture_load.c.o
 Wolf3D: CMakeFiles/Wolf3D.dir/build.make
 Wolf3D: CMakeFiles/Wolf3D.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Linking C executable Wolf3D"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Linking C executable Wolf3D"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Wolf3D.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

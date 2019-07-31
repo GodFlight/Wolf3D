@@ -23,11 +23,9 @@ void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color)
 
 void	sdl_texture_load(t_sdl *sdl)
 {
-	SDL_Surface	*surface;
-
 	if (!(sdl->texture_pack = ft_memalloc(sizeof(SDL_Surface *) * 4)))
 		exit (4);
-	if (!(sdl->texture_pack[0] = SDL_LoadBMP("/Users/rkeli/Desktop/Wolf3D/textures/WALL2.bmp")))
+	if (!(sdl->texture_pack[0] = SDL_LoadBMP("/Users/rkeli/Desktop/Wolf3D/textures/WALL20.bmp")))
 		exit (5);
 	if (!(sdl->texture_pack[1] = SDL_LoadBMP("/Users/rkeli/Desktop/Wolf3D/textures/WALL5.bmp")))
 		exit (6);
@@ -35,25 +33,6 @@ void	sdl_texture_load(t_sdl *sdl)
 		exit (7);
 	if (!(sdl->texture_pack[3] = SDL_LoadBMP("/Users/rkeli/Desktop/Wolf3D/textures/WALL7.bmp")))
 		exit (8);
-
-//	if (!(sdl->texture_pack = ft_memalloc(sizeof(SDL_Texture *) * 4)))
-//		exit(4);
-//	if (!(surface = SDL_LoadBMP("/Users/rkeli/Desktop/Wolf3D/textures/WALL2.bmp")) ||
-//		!(sdl->texture_pack[0] = SDL_CreateTextureFromSurface(sdl->renderer, surface)))
-//		exit(5);
-//	SDL_FreeSurface(surface);
-//	if (!(surface = SDL_LoadBMP("/Users/rkeli/Desktop/Wolf3D/textures/WALL5.bmp")) ||
-//		!(sdl->texture_pack[1] = SDL_CreateTextureFromSurface(sdl->renderer, surface)))
-//		exit(6);
-//	SDL_FreeSurface(surface);
-//	if (!(surface = SDL_LoadBMP("/Users/rkeli/Desktop/Wolf3D/textures/WALL6.bmp")) ||
-//		!(sdl->texture_pack[2] = SDL_CreateTextureFromSurface(sdl->renderer, surface)))
-//		exit(7);
-//	SDL_FreeSurface(surface);
-//	if (!(surface = SDL_LoadBMP("/Users/rkeli/Desktop/Wolf3D/textures/WALL7.bmp")) ||
-//		!(sdl->texture_pack[3] = SDL_CreateTextureFromSurface(sdl->renderer, surface)))
-//		exit(8);
-//	SDL_FreeSurface(surface);
 }
 
 void	sdl_init(t_sdl *sdl)
@@ -72,33 +51,32 @@ void	sdl_init(t_sdl *sdl)
 	sdl_texture_load(sdl);
 }
 
-void test(t_sdl *sdl, t_wolf *wlf)
+void test(t_sdl *sdl, t_wolf *wlf, SDL_Surface *w_s)
 {
 //	void *pixels = 0;
 //	int pitch = 0;
 	int i = 0;
 	int j = 0;
+	int x = 0;
+	int y = 0;
 
 //	SDL_Log("huita: %d\n", SDL_LockTexture(sdl->texture_pack[0], NULL, &pixels, &pitch));
 //	SDL_Log("ERROR: %s", SDL_GetError());
-	int pitch = sdl->texture_pack[0]->pitch;
+//	int pitch = sdl->texture_pack[0]->pitch;
+//	sdl->texture_p = SDL_CreateTextureFromSurface(sdl->renderer, sdl->texture_pack[0]);
 //	int test = (int)sdl->texture_pack[0]->pixels[0]	;
-	SDL_LockSurface(sdl->texture_pack[0]);
-	while (i < sdl->texture_pack[0]->pitch)
+//	SDL_BlitSurface(w_s, NULL, sdl->texture_pack[0], (SDL_Rect){0, 0, 64, 64});
+/*	SDL_LockSurface(sdl->texture_pack[0]);
+	int* a = (int *)sdl->texture_pack[0]->pixels;
+	while (i < 64 * 64)
 	{
-		int *a = (int*)sdl->texture_pack[0]->pixels;
-//		while (j < 64)
-//		{
-			sdl_put_pixel(sdl, i + 20, 30, a[i]);
-			sdl_put_pixel(sdl, i + 20, 31, a[i + 30]);
-			sdl_put_pixel(sdl, i + 20, 32, a[i + 60]);
-//			j++;
-//		}
+		sdl_put_pixel(sdl, i % 64, i / 64, a[i]);
 		i++;
 	}
-	SDL_Log("%d\n", (int)sdl->texture_pack[0]->pixels);
+////		}
+//	SDL_Log("%d\n", (int)sdl->texture_pack[0]->pixels);
 	SDL_UnlockSurface(sdl->texture_pack[0]);
-//	SDL_UnlockTexture(sdl->texture_pack[0]);
+//	SDL_UnlockTexture(sdl->texture_pack[0]);*/
 }
 
 void	sdl_loop(t_sdl *sdl, t_wolf *wlf)
@@ -107,13 +85,18 @@ void	sdl_loop(t_sdl *sdl, t_wolf *wlf)
 	int 		y;
 	int 		x;
 
+	SDL_Surface *w_s = SDL_CreateRGBSurface(0, WIN_WIDTH, WIN_HEIGHT, 32, 0, 0, 0, 0);
 	running = 1;
 	while (running)
 	{
-		drow_map(sdl, wlf);
-		player_raycast(wlf, sdl);
+//		drow_map(sdl, wlf);
+//		player_raycast(wlf, sdl);
 //		test(sdl, wlf);
-		SDL_UpdateTexture(sdl->texture, NULL, sdl->data, WIN_WIDTH * sizeof(int));
+		SDL_Rect rect = (SDL_Rect){0, 0, 64, 64};
+		SDL_BlitSurface(sdl->texture_pack[0], NULL, w_s, &rect);
+//		SDL_UpdateTexture(sdl->texture, NULL, (void *)sdl->data, WIN_WIDTH * sizeof(int));
+//		SDL_RenderCopy(sdl->renderer, sdl->texture_p, NULL, NULL);
+		sdl->texture = SDL_CreateTextureFromSurface(sdl->renderer, w_s);
 		SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
 		SDL_RenderPresent(sdl->renderer);
 		while(SDL_PollEvent(&sdl->event))

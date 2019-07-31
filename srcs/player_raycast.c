@@ -34,31 +34,62 @@ void 	drow_floor(t_wolf *wlf, t_sdl *sdl, int i)
 
 }
 
-void	drow_colum(t_wolf *wlf, t_sdl *sdl, float colum, int i)
+void	processing_big_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
+{
+	int tmp_y;
+	int y;
+
+	float relation = 64 / h_colum;
+	int *texture = (int*)sdl->texture_pack[0]->pixels;
+	tmp_y = (int)((h_colum - WIN_HEIGHT) / 2);
+	y = -1;
+	while (++y < WIN_HEIGHT)
+	{
+		if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 1)
+		{
+			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y,
+						  texture[(int) (((int) (tmp_y * relation)) * 16 +
+										 wlf->ray.hitx * 64)]);
+			tmp_y++;
+		}
+		else if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 2)
+			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y, RED);
+	}
+}
+
+void	drow_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 {
 	int		y;
 	float	offset;
 
-	y = WIN_HEIGHT / 2;
-	offset = (WIN_HEIGHT / 2 - colum / 2);
+	offset = (WIN_HEIGHT / 2 - h_colum / 2);
 	offset = offset > 0 ? offset : 1;
-	while(y > offset)
+	int *texture = (int*)sdl->texture_pack[0]->pixels;
+	int tmp_y = 0;
+	float relation = 64 / h_colum;
+	y = 0;
+	while (y < (int)offset)
 	{
-		if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 1)
-			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y, BLUE);
-		else if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 2)
-			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y, RED);
-		y--;
+		sdl_put_pixel(sdl, (int)(WIN_WIDTH / 4 + i + 25), (int)y, DGRAY);
+		y++;
 	}
-	y = WIN_HEIGHT / 2;
-	offset = (WIN_HEIGHT / 2 + colum / 2);
-	offset = offset > 0 ? offset : 1;
-	while(y < offset)
+	offset = WIN_HEIGHT / 2 + h_colum / 2;
+	while (y < offset)
 	{
 		if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 1)
-			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y, BLUE);
+		{
+			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y,
+						  texture[(int) (((int) (tmp_y * relation)) * 16 +
+										 wlf->ray.hitx * 16)]);
+			tmp_y++;
+		}
 		else if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 2)
 			sdl_put_pixel(sdl, WIN_WIDTH / 4 + i + 25, y, RED);
+		y++;
+	}
+	while (y < WIN_HEIGHT)
+	{
+		sdl_put_pixel(sdl, (int)(WIN_WIDTH / 4 + i + 25), y, GRAY);
 		y++;
 	}
 }
@@ -89,9 +120,11 @@ void 	player_raycast(t_wolf *wlf, t_sdl *sdl)
 			wlf->ray.distance += 0.01f;
 		}
 		wlf->ray.colum = WIN_HEIGHT / (wlf->ray.distance * cos(wlf->ray.angle - wlf->player.view_dir));
-		drow_colum(wlf, sdl, wlf->ray.colum, i);
-		drow_floor(wlf, sdl, i);
-		drow_celling(wlf, sdl, i);
+		wlf->ray.hitx = (wlf->ray.x - (int)wlf->ray.x);
+		if (wlf->ray.colum > WIN_HEIGHT)
+			processing_big_colum(wlf, sdl, wlf->ray.colum, i);
+		else
+			drow_colum(wlf, sdl, wlf->ray.colum, i);
 //		SDL_Log("%sRAY ID: %3d | %sY: %3f | %sX: %3f\n", KGRN,  i, KYEL, wlf->ray.y, KBLU, wlf->ray.x);
 		i++;
 	}

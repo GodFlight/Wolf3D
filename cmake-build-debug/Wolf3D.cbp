@@ -319,9 +319,6 @@
 		<Unit filename="/Users/rkeli/Desktop/Wolf3D/srcs/texture_load.c">
 			<Option target="Wolf3D"/>
 		</Unit>
-		<Unit filename="/Users/rkeli/Desktop/Wolf3D/test.c">
-			<Option target="Wolf3D"/>
-		</Unit>
 		<Unit filename="/Users/rkeli/Desktop/Wolf3D/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

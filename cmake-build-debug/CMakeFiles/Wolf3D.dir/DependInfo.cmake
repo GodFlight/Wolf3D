@@ -76,7 +76,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/rkeli/Desktop/Wolf3D/srcs/player_raycast.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/srcs/player_raycast.c.o"
   "/Users/rkeli/Desktop/Wolf3D/srcs/pseudo_three_d_render.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/srcs/pseudo_three_d_render.c.o"
   "/Users/rkeli/Desktop/Wolf3D/srcs/texture_load.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/srcs/texture_load.c.o"
-  "/Users/rkeli/Desktop/Wolf3D/test.c" "/Users/rkeli/Desktop/Wolf3D/cmake-build-debug/CMakeFiles/Wolf3D.dir/test.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

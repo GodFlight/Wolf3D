@@ -51,7 +51,7 @@ typedef struct	s_sdl
 	SDL_Surface		**texture_pack;
 	SDL_Event		event;
 	SDL_Texture		*texture;
-//	SDL_Texture		**texture_pack;
+	SDL_Texture		*texture_p;
 	SDL_Rect		*rect;
 	int 			*data;
 	int 			x;
@@ -63,6 +63,7 @@ typedef struct	s_wolf
 	int				**map;
 	int				len_xmap;
 	int				len_ymap;
+	int 			t_id;
 	float 			x;
 	float 			y;
 	t_wlf_player	player;
@@ -74,6 +75,6 @@ void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
 void	drow_map(t_sdl *sdl, t_wolf *wlf);
 void	player_movenet(t_wolf *wlf, t_sdl *sdl);
 void 	player_raycast(t_wolf *wlf, t_sdl *sdl);
-void	drow_colum(t_wolf *wlf, t_sdl *sdl, float colum, int i);
+void	drow_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i);
 
 #endif

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 project(Wolf3D C)
 
 set(CMAKE_C_STANDARD 11)
+set(GCC_COMPILE_FLAGS "-O3")
 
 link_directories(/Users/rkeli/.brew/Cellar/sdl2/2.0.9_1/lib)
 link_directories(/Users/rkeli/.brew/Cellar/sdl2_image/2.0.5/lib)
@@ -78,7 +79,7 @@ add_executable(Wolf3D
         libft/ft_updt.c
         libft/get_next_line.c
         libft/get_next_line.h
-        libft/libft.h test.c srcs/main.c srcs/map_read.c srcs/player_movement.c srcs/player_raycast.c srcs/pseudo_three_d_render.c include/debug_log.h srcs/texture_load.c include/define.h)
+        libft/libft.h srcs/main.c srcs/map_read.c srcs/player_movement.c srcs/player_raycast.c srcs/pseudo_three_d_render.c include/debug_log.h srcs/texture_load.c include/define.h)
 
 
 target_include_directories(Wolf3D PRIVATE /Users/rkeli/.brew/Cellar/sdl2/2.0.9_1/include/SDL2)

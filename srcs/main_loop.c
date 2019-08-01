@@ -26,10 +26,12 @@ void	main_loop(t_sdl *sdl, t_wolf *wlf)
 
 	while (666)
 	{
+		SDL_LockMutex(sdl->mutex);
 		player_raycast(wlf, sdl);
 		print_image(sdl);
 		draw_interface(sdl, wlf);
 		SDL_UpdateTexture(sdl->texture, NULL, (void *)sdl->data, WIN_WIDTH * sizeof(int));
+		SDL_UnlockMutex(sdl->mutex);
 		SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
 		SDL_RenderPresent(sdl->renderer);
 		if (sdl->params & QUIT)

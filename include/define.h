@@ -20,7 +20,7 @@
 # define DGRAY 0xa9a9a900
 # define BLUE 0x0000FF00
 # define RED 0xFF000000
-# define PLAYER_SPEED 10
+# define PLAYER_SPEED 20
 # define MAP_SCALE 30
 # define FOV M_PI / 3
 # define COLUM 64

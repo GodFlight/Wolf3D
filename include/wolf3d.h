@@ -68,6 +68,7 @@ typedef struct	s_sdl
 	int 			x;
 	int 			y;
 	const Uint8		*state;
+	SDL_mutex		*mutex;
 	int				params;
 }				t_sdl;
 

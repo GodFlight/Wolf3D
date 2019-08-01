@@ -68,7 +68,7 @@ void	drow_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 	if (wlf->ray.hitx < wlf->ray.eps || (wlf->ray.hitx > wlf->ray.hity
 										&& wlf->ray.hity > wlf->ray.eps))
 		wlf->ray.hitx = wlf->ray.hity;
-	while (y < offset)
+	while (y < offset - 1)
 	{
 		if (wlf->map[(int) wlf->ray.y][(int) wlf->ray.x] == 1)
 		{

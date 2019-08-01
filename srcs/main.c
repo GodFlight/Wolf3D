@@ -10,6 +10,7 @@ int		main(void)
 	sdl = sdl_init();
 	wlf = wolf_init(sdl);
 	map_read(wlf);
+	sdl->mutex = SDL_CreateMutex();
 	thread = SDL_CreateThread(physics, "physics", (void *)wlf);
 	SDL_DetachThread(thread);
 	main_loop(sdl, wlf);

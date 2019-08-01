@@ -79,7 +79,7 @@ add_executable(Wolf3D
         libft/ft_updt.c
         libft/get_next_line.c
         libft/get_next_line.h
-        libft/libft.h srcs/main.c srcs/map_read.c srcs/player_movement.c srcs/player_raycast.c include/debug_log.h include/define.h srcs/init.c srcs/main_loop.c srcs/utilits.c)
+        libft/libft.h srcs/main.c srcs/map_read.c srcs/physics.c srcs/player_raycast.c include/debug_log.h include/define.h srcs/init.c srcs/main_loop.c srcs/utilits.c srcs/draw_interface.c)
 
 
 target_include_directories(Wolf3D PRIVATE /Users/$ENV{USER}/.brew/Cellar/sdl2/2.0.9_1/include/SDL2)

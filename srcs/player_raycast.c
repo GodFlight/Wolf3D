@@ -103,7 +103,7 @@ void 	player_raycast(t_wolf *wlf, t_sdl *sdl)
 			wlf->ray.y = wlf->player.y + wlf->ray.distance * sn;
 			if ((wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] != 0))
 				break;
-//			sdl_put_pixel(sdl, (int)(wlf->ray.x * MAP_SCALE), (int)(wlf->ray.y * MAP_SCALE), BLUE);
+			sdl_put_pixel(sdl, (int)(wlf->ray.x * MAP_SCALE), (int)(wlf->ray.y * MAP_SCALE), BLUE);
 			wlf->ray.distance += 0.01f;
 		}
 		wlf->ray.colum = WIN_HEIGHT / (wlf->ray.distance

@@ -67,6 +67,8 @@ typedef struct	s_sdl
 	int 			*data;
 	int 			x;
 	int 			y;
+	const Uint8		*state;
+	int				params;
 }				t_sdl;
 
 typedef struct	s_wolf
@@ -79,17 +81,25 @@ typedef struct	s_wolf
 	float 			y;
 	t_wlf_player	player;
 	t_player_ray	ray;
+	t_sdl			*sdl;
 }				t_wolf;
 
-void	map_read(t_wolf *wlf);
 void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
-void	drow_map(t_sdl *sdl, t_wolf *wlf);
-void	player_movenet(t_wolf *wlf, t_sdl *sdl);
 void 	player_raycast(t_wolf *wlf, t_sdl *sdl);
 void	drow_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i);
-t_wolf	*wolf_init(void);
-t_sdl	*sdl_init(void);
 void	main_loop(t_sdl *sdl, t_wolf *wlf);
+int		physics(void *wlf);
+
+//init
+t_wolf	*wolf_init(t_sdl *sdl);
+t_sdl	*sdl_init(void);
+void	map_read(t_wolf *wlf);
+
+//utilits
 int		rgb_to_hex(int r, int g, int b);
+
+//interface
+void	draw_interface(t_sdl *sdl, t_wolf *wlf);
+void	draw_map(t_sdl *sdl, t_wolf *wlf);
 
 #endif

@@ -1,6 +1,6 @@
 #include "wolf3d.h"
 
-t_wolf	*wolf_init(void)
+t_wolf	*wolf_init(t_sdl *sdl)
 {
 	t_wolf	*wolf;
 
@@ -11,6 +11,7 @@ t_wolf	*wolf_init(void)
 	wolf->player.x =  1.4f;
 	wolf->player.view_dir = 0.5f;
 	wolf->ray.eps = 0.01f;
+	wolf->sdl = sdl;
 	return (wolf);
 }
 
@@ -22,7 +23,7 @@ void	sdl_texture_load(t_sdl *sdl)
 
 t_sdl	*sdl_init(void)
 {
-	t_sdl	*sdl;
+	t_sdl		*sdl;
 
 	if (!(sdl = (t_sdl *)ft_memalloc(sizeof(t_sdl))))
 		exit(23);
@@ -37,6 +38,7 @@ t_sdl	*sdl_init(void)
 		exit (2);
 	if (!(sdl->texture = SDL_CreateTexture(sdl->renderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_STATIC, WIN_WIDTH, WIN_HEIGHT)))
 		exit(3);
+	sdl->state = SDL_GetKeyboardState(NULL);
 	sdl_texture_load(sdl);
 	return (sdl);
 }

@@ -24,22 +24,22 @@ void	main_loop(t_sdl *sdl, t_wolf *wlf)
 {
 	int			running;
 
-	running = 1;
-	while (running)
+	while (666)
 	{
 		player_raycast(wlf, sdl);
 		print_image(sdl);
-		drow_map(sdl, wlf);
+		draw_interface(sdl, wlf);
 		SDL_UpdateTexture(sdl->texture, NULL, (void *)sdl->data, WIN_WIDTH * sizeof(int));
 		SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
 		SDL_RenderPresent(sdl->renderer);
-		while(SDL_PollEvent(&sdl->event))
+		if (sdl->params & QUIT)
+			break;
+		if (SDL_PollEvent(&sdl->event))
 		{
-			player_movenet(wlf, sdl);
 			if ((SDL_QUIT == sdl->event.type) ||
 				(SDL_KEYDOWN == sdl->event.type &&
 				 SDL_SCANCODE_ESCAPE == sdl->event.key.keysym.scancode))
-				running = 0;
+				break;
 		}
 	}
 	SDL_RenderClear(sdl->renderer);

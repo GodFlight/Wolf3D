@@ -22,8 +22,6 @@ void	print_image(t_sdl *sdl)
 
 void	main_loop(t_sdl *sdl, t_wolf *wlf)
 {
-	int			running;
-
 	while (666)
 	{
 		SDL_LockMutex(sdl->mutex);
@@ -34,14 +32,15 @@ void	main_loop(t_sdl *sdl, t_wolf *wlf)
 		SDL_UnlockMutex(sdl->mutex);
 		SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
 		SDL_RenderPresent(sdl->renderer);
-		if (sdl->params & QUIT)
-			break;
 		if (SDL_PollEvent(&sdl->event))
 		{
-			if ((SDL_QUIT == sdl->event.type) ||
-				(SDL_KEYDOWN == sdl->event.type &&
-				 SDL_SCANCODE_ESCAPE == sdl->event.key.keysym.scancode))
+			if ((sdl->event.type == SDL_QUIT) ||
+				(sdl->event.type == SDL_KEYDOWN &&
+				 sdl->event.key.keysym.scancode == SDL_SCANCODE_ESCAPE))
+			{
+				sdl->params |= WOLF_QUIT;
 				break;
+			}
 		}
 	}
 	SDL_RenderClear(sdl->renderer);

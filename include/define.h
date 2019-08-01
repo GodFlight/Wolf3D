@@ -5,7 +5,7 @@
 #ifndef WOLF3D_DEFINE_H
 #define WOLF3D_DEFINE_H
 
-# define QUIT (1 << 0)
+# define WOLF_QUIT (1 << 0)
 
 //# define WIN_HEIGHT 1315
 # define WIN_HEIGHT 1080
@@ -21,6 +21,7 @@
 # define BLUE 0x0000FF00
 # define RED 0xFF000000
 # define PLAYER_SPEED 20
+# define ROTATION_SPEED 0.08f
 # define MAP_SCALE 30
 # define FOV M_PI / 3
 # define COLUM 64

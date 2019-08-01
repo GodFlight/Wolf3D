@@ -5,7 +5,67 @@
 //TODO A/D - going left/right
 //TODO arrow - change ray view
 
-static void	player_movenet(t_wolf *wlf, t_sdl *sdl)
+#ifndef DEBUG
+
+static void	move_player(t_wolf *wlf, t_sdl *sdl)
+{
+	float normal_speed;
+	float cash_sin;
+	float cash_cos;
+
+	normal_speed = 0.01 * PLAYER_SPEED;
+	cash_sin = sin(wlf->player.view_dir);
+	cash_cos = cos(wlf->player.view_dir);
+	if (sdl->state[SDL_SCANCODE_W])
+	{
+		SDL_LockMutex(sdl->mutex);
+		wlf->player.y += (normal_speed * cash_sin);
+		wlf->player.x += (normal_speed * cash_cos);
+		SDL_UnlockMutex(sdl->mutex);
+	}
+	if (sdl->state[SDL_SCANCODE_S])
+	{
+		SDL_LockMutex(sdl->mutex);
+		wlf->player.y -= (normal_speed * cash_sin);
+		wlf->player.x -= (normal_speed * cash_cos);;
+		SDL_UnlockMutex(sdl->mutex);
+	}
+	if (sdl->state[SDL_SCANCODE_A])
+	{
+		SDL_LockMutex(sdl->mutex);
+		wlf->player.x -= ((normal_speed) * cash_sin);
+		wlf->player.y -= ((normal_speed) * cash_cos);
+		SDL_UnlockMutex(sdl->mutex);
+	}
+	if (sdl->state[SDL_SCANCODE_D])
+	{
+		SDL_LockMutex(sdl->mutex);
+		wlf->player.x += ((normal_speed) * cash_sin);
+		wlf->player.y += ((normal_speed) * cash_cos);
+		SDL_UnlockMutex(sdl->mutex);
+	}
+	if (sdl->state[SDL_SCANCODE_ESCAPE])
+		wlf->sdl->params |= WOLF_QUIT;
+}
+
+static void	rotation_player(t_wolf *wlf, t_sdl *sdl)
+{
+	if (sdl->state[SDL_SCANCODE_RIGHT])
+	{
+		SDL_LockMutex(sdl->mutex);
+		wlf->player.view_dir += ROTATION_SPEED;
+		SDL_UnlockMutex(sdl->mutex);
+	}
+	if (sdl->state[SDL_SCANCODE_LEFT])
+	{
+		SDL_LockMutex(sdl->mutex);
+		wlf->player.view_dir -= ROTATION_SPEED;
+		SDL_UnlockMutex(sdl->mutex);
+	}
+}
+
+#else
+static void	move_player(t_wolf *wlf, t_sdl *sdl)
 {
 	float normal_speed;
 
@@ -15,52 +75,69 @@ static void	player_movenet(t_wolf *wlf, t_sdl *sdl)
 		SDL_LockMutex(sdl->mutex);
 		wlf->player.y += (normal_speed * sin(wlf->player.view_dir));
 		wlf->player.x += (normal_speed * cos(wlf->player.view_dir));
-		#ifdef DEBUG
 		SDL_Log("%sVertical movement: %s%f\n", KMAG, KCYN, wlf->player.y);
-		#endif
 		SDL_UnlockMutex(sdl->mutex);
 	}
-	else if (sdl->state[SDL_SCANCODE_S])
+	if (sdl->state[SDL_SCANCODE_S])
 	{
 		SDL_LockMutex(sdl->mutex);
 		wlf->player.y -= (normal_speed * sin(wlf->player.view_dir));
 		wlf->player.x -= (normal_speed * cos(wlf->player.view_dir));;
-		#ifdef DEBUG
 		SDL_Log("%sVertical movement: %s%f\n", KMAG, KCYN,wlf->player.y);
-		#endif
 		SDL_UnlockMutex(sdl->mutex);
 	}
+	if (sdl->state[SDL_SCANCODE_A])
+	{
+		SDL_LockMutex(sdl->mutex);
+		wlf->player.x -= ((normal_speed - 0.1) * sin(wlf->player.view_dir));
+		wlf->player.y -= ((normal_speed - 0.1) * cos(wlf->player.view_dir));
+		SDL_Log("%sVertical movement: %s%f\n", KMAG, KCYN,wlf->player.y);
+		SDL_UnlockMutex(sdl->mutex);
+	}
+	if (sdl->state[SDL_SCANCODE_D])
+	{
+		SDL_LockMutex(sdl->mutex);
+		wlf->player.x += ((normal_speed - 0.1) * sin(wlf->player.view_dir));
+		wlf->player.y += ((normal_speed - 0.1) * cos(wlf->player.view_dir));
+		SDL_Log("%sVertical movement: %s%f\n", KMAG, KCYN,wlf->player.y);
+		SDL_UnlockMutex(sdl->mutex);
+	}
+	if (sdl->state[SDL_SCANCODE_ESCAPE])
+		wlf->sdl->params |= QUIT;
+}
+
+static void	rotation_player(t_wolf *wlf, t_sdl *sdl)
+{
 	if (sdl->state[SDL_SCANCODE_RIGHT])
 	{
 		SDL_LockMutex(sdl->mutex);
 		wlf->player.view_dir += 0.05f;
-		#ifdef DEBUG
 		SDL_Log("%sTurn right: %s%f\n", KNRM, KCYN,wlf->player.view_dir);
-		#endif
 		SDL_UnlockMutex(sdl->mutex);
 	}
 	if (sdl->state[SDL_SCANCODE_LEFT])
 	{
 		SDL_LockMutex(sdl->mutex);
 		wlf->player.view_dir -= 0.05f;
-		#ifdef DEBUG
 		SDL_Log("%sTurn left: %s%f\n", KNRM, KCYN,wlf->player.view_dir);
-		#endif
 		SDL_UnlockMutex(sdl->mutex);
 	}
-	SDL_LockMutex(sdl->mutex);
-	ft_bzero(sdl->data, WIN_HEIGHT * WIN_WIDTH * sizeof(int));
-	SDL_UnlockMutex(sdl->mutex);
-	if (sdl->state[SDL_SCANCODE_ESCAPE])
-		wlf->sdl->params |= QUIT;
 }
+#endif
 
 int	physics(void *wolf)
 {
-	t_wolf *wlf = (t_wolf *)wolf;
+	t_wolf	*wlf;
+	t_sdl	*sdl;
 
-	while (666)
+	wlf = (t_wolf *)wolf;
+	sdl = wlf->sdl;
+	while (!(sdl->params & WOLF_QUIT))
 	{
-		player_movenet(wlf, wlf->sdl);
+		if (sdl->state[SDL_SCANCODE_W] || sdl->state[SDL_SCANCODE_S]
+		|| sdl->state[SDL_SCANCODE_A] || sdl->state[SDL_SCANCODE_D])
+			move_player(wlf, sdl);
+		rotation_player(wlf, sdl);
+		SDL_Delay(15);
 	}
 }

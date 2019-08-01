@@ -39,10 +39,7 @@ typedef struct	s_wlf_player
 {
 	float 		x;
 	float 		y;
-	float 		view_dirx;
-	float 		view_diry;
 	float 		view_dir;
-	short		running;
 }				t_wlf_player;
 
 typedef struct	s_img
@@ -57,12 +54,10 @@ typedef struct	s_sdl
 {
 	SDL_Window		*win;
 	SDL_Renderer	*renderer;
-	SDL_Surface		*screen;
 	SDL_Surface		**texture_pack;
 	t_img			img;
 	SDL_Event		event;
 	SDL_Texture		*texture;
-	SDL_Texture		*texture_p;
 	SDL_Rect		*rect;
 	int 			*data;
 	int 			x;
@@ -72,12 +67,19 @@ typedef struct	s_sdl
 	int				params;
 }				t_sdl;
 
+typedef struct	s_interface
+{
+	float	x;
+	float 	y;
+	float 	angle;
+	float 	distance;
+}				t_interface;
+
 typedef struct	s_wolf
 {
 	int				**map;
 	int				len_xmap;
 	int				len_ymap;
-	int 			t_id;
 	float 			x;
 	float 			y;
 	t_wlf_player	player;
@@ -87,7 +89,8 @@ typedef struct	s_wolf
 
 void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
 void 	player_raycast(t_wolf *wlf, t_sdl *sdl);
-void	drow_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i);
+void	draw_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i);
+void	draw_ray(t_sdl *sdl, t_wolf *wlf);
 void	main_loop(t_sdl *sdl, t_wolf *wlf);
 int		physics(void *wlf);
 

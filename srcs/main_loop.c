@@ -28,7 +28,7 @@ void	main_loop(t_sdl *sdl, t_wolf *wlf)
 	{
 		SDL_LockMutex(sdl->mutex);
 		player_raycast(wlf, sdl);
-		print_image(sdl);
+//		print_image(sdl);
 		draw_interface(sdl, wlf);
 		SDL_UpdateTexture(sdl->texture, NULL, (void *)sdl->data, WIN_WIDTH * sizeof(int));
 		SDL_UnlockMutex(sdl->mutex);

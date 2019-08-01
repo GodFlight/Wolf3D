@@ -2,7 +2,7 @@
 #include "wolf3d.h"
 #include "debug_log.h"
 
-int		drow_celling(t_sdl *sdl, float h_colum, int i)
+int		draw_celling(t_sdl *sdl, float h_colum, int i)
 {
 	int y;
 	float offset;
@@ -18,11 +18,11 @@ int		drow_celling(t_sdl *sdl, float h_colum, int i)
 	return (y);
 }
 
-void	drow_floor(t_sdl *sdl, int i, int y)
+void	draw_floor(t_sdl *sdl, int i, int y)
 {
 	while (y < WIN_HEIGHT)
 	{
-		sdl_put_pixel(sdl, i, y, GRAY);
+		sdl_put_pixel(sdl, i, y, DGRAY);
 		y++;
 	}
 }
@@ -54,7 +54,7 @@ void	processing_big_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 	}
 }
 
-void	drow_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
+void	draw_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 {
 	int 	y;
 	float 	offset;
@@ -63,7 +63,7 @@ void	drow_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 
 	tmp_y = 0;
 	relation = COLUM / h_colum;
-	y = drow_celling(sdl, h_colum, i);
+	y = draw_celling(sdl, h_colum, i);
 	offset = WIN_HEIGHT / 2 + h_colum / 2;
 	if (wlf->ray.hitx < wlf->ray.eps || (wlf->ray.hitx > wlf->ray.hity
 										&& wlf->ray.hity > wlf->ray.eps))
@@ -76,11 +76,12 @@ void	drow_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 					 *((int *) sdl->img.data +	((int) (wlf->ray.hitx * COLUM
 					 + (int) (tmp_y * relation) * sdl->img.width))));
 			tmp_y++;
-		} else if (wlf->map[(int) wlf->ray.y][(int) wlf->ray.x] == 2)
+		}
+		else if (wlf->map[(int) wlf->ray.y][(int) wlf->ray.x] == 2)
 			sdl_put_pixel(sdl, i, y, RED);
 		y++;
 	}
-	drow_floor(sdl, i, y);
+	draw_floor(sdl, i, y);
 }
 
 void 	player_raycast(t_wolf *wlf, t_sdl *sdl)
@@ -103,7 +104,7 @@ void 	player_raycast(t_wolf *wlf, t_sdl *sdl)
 			wlf->ray.y = wlf->player.y + wlf->ray.distance * sn;
 			if ((wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] != 0))
 				break;
-			sdl_put_pixel(sdl, (int)(wlf->ray.x * MAP_SCALE), (int)(wlf->ray.y * MAP_SCALE), BLUE);
+//			sdl_put_pixel(sdl, (int)(wlf->ray.x * MAP_SCALE), (int)(wlf->ray.y * MAP_SCALE), BLUE);
 			wlf->ray.distance += 0.01f;
 		}
 		wlf->ray.colum = WIN_HEIGHT / (wlf->ray.distance
@@ -113,7 +114,7 @@ void 	player_raycast(t_wolf *wlf, t_sdl *sdl)
 		if (wlf->ray.colum > WIN_HEIGHT)
 			processing_big_colum(wlf, sdl, wlf->ray.colum, i);
 		else
-			drow_colum(wlf, sdl, wlf->ray.colum, i);
+			draw_colum(wlf, sdl, wlf->ray.colum, i);
 //		SDL_Log("%sRAY ID: %3d | %sY: %3f | %sX: %3f\n", KGRN,  i, KYEL, wlf->ray.y, KBLU, wlf->ray.x);
 		i++;
 	}

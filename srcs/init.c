@@ -17,7 +17,7 @@ t_wolf	*wolf_init(t_sdl *sdl)
 
 void	sdl_texture_load(t_sdl *sdl)
 {
-	sdl->img.data = stbi_load("../textures/wall01.bmp",
+	sdl->img.data = stbi_load("../textures/5.png",
 			&sdl->img.width, &sdl->img.height, &sdl->img.bpp, 0);
 }
 

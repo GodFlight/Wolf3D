@@ -12,11 +12,12 @@ void	print_image(t_sdl *sdl)
 	int y;
 
 	y = -1;
-	while (++y < sdl->img.height)
+	while (++y < sdl->img.height && y < WIN_HEIGHT - 1)
 	{
 		x = -1;
-		while (++x < sdl->img.width)
-			sdl->data[x + y * WIN_WIDTH] = *((int*)sdl->img.data + (x + y * sdl->img.width));
+		while (++x < sdl->img.width && x < WIN_WIDTH - 1)
+//            sdl->data[x + y * WIN_WIDTH] = 0x00116699;
+			sdl->data[x + y * WIN_WIDTH] = sdl->img.texture[y][x];
 	}
 }
 
@@ -26,10 +27,13 @@ void	main_loop(t_sdl *sdl, t_wolf *wlf)
 	{
 		SDL_LockMutex(sdl->mutex);
 		player_raycast(wlf, sdl);
+        SDL_SetRenderTarget(sdl->renderer, sdl->texture);
+        SDL_RenderClear(sdl->renderer);
 //		print_image(sdl);
 		draw_interface(sdl, wlf);
 		SDL_UpdateTexture(sdl->texture, NULL, (void *)sdl->data, WIN_WIDTH * sizeof(int));
 		SDL_UnlockMutex(sdl->mutex);
+        SDL_SetRenderTarget(sdl->renderer, NULL);
 		SDL_RenderCopy(sdl->renderer, sdl->texture, NULL, NULL);
 		SDL_RenderPresent(sdl->renderer);
 		if (SDL_PollEvent(&sdl->event))

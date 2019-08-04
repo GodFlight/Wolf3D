@@ -3,9 +3,9 @@
 void	draw_ray(t_sdl *sdl, t_wolf *wlf)
 {
 	t_interface	intf;
-	float	cs;
-	float	sn;
-	int		i;
+	float		cs;
+	float		sn;
+	int			i;
 
 	i = 0;
 	while (i < WIN_WIDTH)
@@ -21,7 +21,8 @@ void	draw_ray(t_sdl *sdl, t_wolf *wlf)
 			intf.y = wlf->player.y + intf.distance * sn;
 			if ((wlf->map[(int)intf.y][(int)intf.x] != 0))
 				break;
-			sdl_put_pixel(sdl, (int)(intf.x * MAP_SCALE), (int)(intf.y * MAP_SCALE), BLUE);
+			sdl_put_pixel(sdl, (int)(intf.x * MAP_SCALE), (int)(intf.y
+			* MAP_SCALE), BLUE);
 			intf.distance += 0.03f;
 		}
 		i++;
@@ -40,7 +41,8 @@ void	draw_map(t_sdl *sdl, t_wolf *wlf)
 		while (x < wlf->len_xmap * MAP_SCALE)
 		{
 			if (wlf->player.y && wlf->player.x)
-				sdl_put_pixel(sdl, wlf->player.x * MAP_SCALE, wlf->player.y * MAP_SCALE, GREEN);
+				sdl_put_pixel(sdl, wlf->player.x * MAP_SCALE, wlf->player.y
+				* MAP_SCALE, GREEN);
 			if (wlf->map[y / MAP_SCALE][x / MAP_SCALE] == 0)
 				sdl_put_pixel(sdl, x, y, WHITE);
 			else if (wlf->map[y / MAP_SCALE][x / MAP_SCALE] > 0)

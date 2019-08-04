@@ -17,8 +17,25 @@ t_wolf	*wolf_init(t_sdl *sdl)
 
 void	sdl_texture_load(t_sdl *sdl)
 {
-	sdl->img.data = stbi_load("../textures/5.png",
-			&sdl->img.width, &sdl->img.height, &sdl->img.bpp, 0);
+    int y;
+    int x;
+
+	sdl->img.data = stbi_load("../textures/1375.png",
+			&sdl->img.width, &sdl->img.height, &sdl->img.bpp, 4);
+	if (!(sdl->img.texture = (int **)malloc(sizeof(int *)
+			* sdl->img.height)))
+	    exit (25);
+    y = -1;
+    while (++y < sdl->img.height)
+    {
+        x = -1;
+        if (!(sdl->img.texture[y] = (int *)malloc(sizeof(int)
+        		* sdl->img.width)))
+            exit (25);
+        while (++x < sdl->img.width)
+            sdl->img.texture[y][x] = *((int*)sdl->img.data + (x + y
+            		* sdl->img.width));
+    }
 }
 
 t_sdl	*sdl_init(void)

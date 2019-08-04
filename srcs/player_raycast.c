@@ -29,56 +29,50 @@ void	draw_floor(t_sdl *sdl, int i, int y)
 
 void	processing_big_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 {
+	int		index;
 	int		tmp_y;
 	int		y;
-	float relation;
+	float   relation;
 
 	relation = COLUM / h_colum;
 	wlf->ray.eps = 0.01f;
 	tmp_y = (int)((h_colum - WIN_HEIGHT) / 2);
 	y = -1;
+	index = wlf->map[(int)wlf->ray.y][(int)wlf->ray.x];
 	if (wlf->ray.hitx < wlf->ray.eps || (wlf->ray.hitx > wlf->ray.hity
 								&& wlf->ray.hity > wlf->ray.eps))
 		wlf->ray.hitx = wlf->ray.hity;
 	while (++y < WIN_HEIGHT)
 	{
-		if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 1)
-		{
-			sdl_put_pixel(sdl, i, y, *((int *)sdl->img.data
-			+ ((int)(wlf->ray.hitx * COLUM + (int)(tmp_y * relation)
-			* sdl->img.width))));
-			tmp_y++;
-		}
-		else if (wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] == 2)
-			sdl_put_pixel(sdl, i, y, RED);
+		sdl_put_pixel(sdl, i, y, sdl->img.texture[(index - 1 > 5
+		? 64 * ((index - 1) / 5) : 0) + (int) (tmp_y * relation)][64
+		* (index - 1) + (int) (wlf->ray.hitx * COLUM)]);
+		tmp_y++;
 	}
 }
 
 void	draw_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 {
+	int 	index;
+	int 	tmp_y;
 	int 	y;
 	float 	offset;
-	int 	tmp_y;
 	float 	relation;
 
 	tmp_y = 0;
 	relation = COLUM / h_colum;
 	y = draw_celling(sdl, h_colum, i);
 	offset = WIN_HEIGHT / 2 + h_colum / 2;
+	index = wlf->map[(int)wlf->ray.y][(int)wlf->ray.x];
 	if (wlf->ray.hitx < wlf->ray.eps || (wlf->ray.hitx > wlf->ray.hity
 										&& wlf->ray.hity > wlf->ray.eps))
 		wlf->ray.hitx = wlf->ray.hity;
 	while (y < offset - 1)
 	{
-		if (wlf->map[(int) wlf->ray.y][(int) wlf->ray.x] == 1)
-		{
-			sdl_put_pixel(sdl, i, y,
-					 *((int *) sdl->img.data +	((int) (wlf->ray.hitx * COLUM
-					 + (int) (tmp_y * relation) * sdl->img.width))));
-			tmp_y++;
-		}
-		else if (wlf->map[(int) wlf->ray.y][(int) wlf->ray.x] == 2)
-			sdl_put_pixel(sdl, i, y, RED);
+		sdl_put_pixel(sdl, i, y, sdl->img.texture[(index - 1 > 5
+		? 64 * ((index - 1) / 5) : 0) + (int) (tmp_y * relation)][64
+		* (index - 1) + (int) (wlf->ray.hitx * COLUM)]);
+		tmp_y++;
 		y++;
 	}
 	draw_floor(sdl, i, y);
@@ -104,7 +98,6 @@ void 	player_raycast(t_wolf *wlf, t_sdl *sdl)
 			wlf->ray.y = wlf->player.y + wlf->ray.distance * sn;
 			if ((wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] != 0))
 				break;
-//			sdl_put_pixel(sdl, (int)(wlf->ray.x * MAP_SCALE), (int)(wlf->ray.y * MAP_SCALE), BLUE);
 			wlf->ray.distance += 0.01f;
 		}
 		wlf->ray.colum = WIN_HEIGHT / (wlf->ray.distance

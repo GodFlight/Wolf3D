@@ -48,6 +48,7 @@ typedef struct	s_img
 	int 			width;
 	int 			height;
 	int 			bpp;
+	int             **texture;
 }				t_img;
 
 typedef struct	s_sdl

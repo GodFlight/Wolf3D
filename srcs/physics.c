@@ -9,13 +9,18 @@
 
 static void	move_player(t_wolf *wlf, t_sdl *sdl)
 {
-	float normal_speed;
-	float cash_sin;
-	float cash_cos;
+	float	normal_speed;
+	float	cash_sin;
+	float	cash_cos;
+	float	abs_viev;
 
-	normal_speed = 0.01 * PLAYER_SPEED;
-	cash_sin = sin(wlf->player.view_dir);
-	cash_cos = cos(wlf->player.view_dir);
+	if (wlf->player.view_dir < 0)
+		abs_viev = (float)((fmod(wlf->player.view_dir, 2 * M_PI)) + (2 * M_PI));
+	else
+		abs_viev = (float)fmod(wlf->player.view_dir, 2 * M_PI);
+	normal_speed = 0.01f * PLAYER_SPEED;
+	cash_sin = (float)(sin((double)abs_viev));
+	cash_cos = (float)(cos((double)abs_viev));
 	if (sdl->state[SDL_SCANCODE_W])
 	{
 		SDL_LockMutex(sdl->mutex);
@@ -33,14 +38,14 @@ static void	move_player(t_wolf *wlf, t_sdl *sdl)
 	if (sdl->state[SDL_SCANCODE_A])
 	{
 		SDL_LockMutex(sdl->mutex);
-		wlf->player.x -= ((normal_speed) * cash_sin);
+		wlf->player.x += ((normal_speed) * cash_sin);
 		wlf->player.y -= ((normal_speed) * cash_cos);
 		SDL_UnlockMutex(sdl->mutex);
 	}
 	if (sdl->state[SDL_SCANCODE_D])
 	{
 		SDL_LockMutex(sdl->mutex);
-		wlf->player.x += ((normal_speed) * cash_sin);
+		wlf->player.x -= ((normal_speed) * cash_sin);
 		wlf->player.y += ((normal_speed) * cash_cos);
 		SDL_UnlockMutex(sdl->mutex);
 	}

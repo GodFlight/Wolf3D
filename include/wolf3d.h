@@ -12,6 +12,7 @@
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
+# define STB_IMAGE_IMPLEMENTATION
 
 # include "libft.h"
 # include "define.h"

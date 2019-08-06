@@ -1,0 +1,28 @@
+{
+	"map": "maps/map_01",
+	"objects":
+	[
+		{
+			"id": 1,
+			"type": "wall",
+			"textures": [
+				{
+					"pos": "north",
+					"texture": "hitler"
+				},
+				{
+					"pos": "south",
+					"texture": "wall2"
+				},
+				{
+					"pos": "west",
+					"texture": "wall1"
+				},
+				{
+					"pos": "east",
+					"texture": "wall1"
+				}
+			]
+		}
+	]
+}

@@ -19,6 +19,9 @@
 # define ABS(Value) ((Value < 0) ? -(Value) : (Value))
 # define L_MAX 9223372036854775807L
 
+# define HASH_P		31
+# define HASH_M		1000000009
+
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_strlen(const char *s);
 int					ft_memcmp(const void *arr1, const void *arr2, size_t n);
@@ -72,6 +75,10 @@ char				**ft_strsplit(char const *s, char c);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack,
 						const char *needle, size_t len);
+size_t				ft_strwcnumber(const char *s, int c);
+int					ft_isstn(char c);
+int					ft_strhash(const char *str);
+void				ft_clear_double_pointer(void **arr, int size);
 
 typedef struct		s_list
 {

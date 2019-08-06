@@ -78,6 +78,7 @@ char				*ft_strnstr(const char *haystack,
 size_t				ft_strwcnumber(const char *s, int c);
 int					ft_isstn(char c);
 int					ft_strhash(const char *str);
+void				ft_clear_double_pointer(void **arr, int size);
 
 typedef struct		s_list
 {

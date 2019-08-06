@@ -21,7 +21,17 @@
 # include <SDL_image.h>
 # include <math.h>
 # include <fcntl.h>
+# include "libjtoc.h"
 
+
+# define KNRM				"\x1B[0m"
+# define KRED				"\x1B[31m"
+# define KGRN				"\x1B[32m"
+# define KYEL				"\x1B[33m"
+# define KBLU				"\x1B[34m"
+# define KMAG				"\x1B[35m"
+# define KCYN				"\x1B[36m"
+# define KWHT				"\x1B[37m"
 
 typedef struct	s_player_ray
 {
@@ -77,13 +87,20 @@ typedef struct	s_interface
 	float 	distance;
 }				t_interface;
 
+typedef struct	s_object
+{
+	int	type;
+	int	*texture;
+}				t_obj;
+
 typedef struct	s_wolf
 {
 	int				**map;
-	int				len_xmap;
-	int				len_ymap;
+	int				w_map;
+	int				h_map;
 	float 			x;
 	float 			y;
+	t_obj			*objs;
 	t_wlf_player	player;
 	t_player_ray	ray;
 	t_sdl			*sdl;
@@ -99,7 +116,7 @@ int		physics(void *wlf);
 //init
 t_wolf	*wolf_init(t_sdl *sdl);
 t_sdl	*sdl_init(void);
-void	map_read(t_wolf *wlf);
+int	map_read(t_wolf *wlf, int fd);
 
 //utilits
 int		rgb_to_hex(int r, int g, int b);

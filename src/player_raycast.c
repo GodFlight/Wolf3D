@@ -1,5 +1,5 @@
 
-#include "wolf3d.h"
+#include "raycast.h"
 #include "debug_log.h"
 
 int		draw_celling(t_sdl *sdl, float h_colum, int i)
@@ -7,7 +7,7 @@ int		draw_celling(t_sdl *sdl, float h_colum, int i)
 	int y;
 	float offset;
 
-	offset = (WIN_HEIGHT / 2 - h_colum / 2);
+	offset = (sdl->win_h / 2 - h_colum / 2);
 	offset = offset > 0 ? offset : 1;
 	y = 0;
 	while (y < (int)offset)
@@ -20,14 +20,14 @@ int		draw_celling(t_sdl *sdl, float h_colum, int i)
 
 void	draw_floor(t_sdl *sdl, int i, int y)
 {
-	while (y < WIN_HEIGHT)
+	while (y < sdl->win_h)
 	{
 		sdl_put_pixel(sdl, i, y, DGRAY);
 		y++;
 	}
 }
 
-void	processing_big_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
+void	processing_big_column(t_rc_main *m, float h_colum, int i)
 {
 	int		index;
 	int		tmp_y;
@@ -35,23 +35,22 @@ void	processing_big_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 	float   relation;
 
 	relation = COLUM / h_colum;
-	wlf->ray.eps = 0.01f;
-	tmp_y = (int)((h_colum - WIN_HEIGHT) / 2);
+	tmp_y = (int)((h_colum - m->sdl->win_h) / 2);
 	y = -1;
-	index = wlf->map[(int)wlf->ray.y][(int)wlf->ray.x];
-	if (wlf->ray.hitx < wlf->ray.eps || (wlf->ray.hitx > wlf->ray.hity
-								&& wlf->ray.hity > wlf->ray.eps))
-		wlf->ray.hitx = wlf->ray.hity;
-	while (++y < WIN_HEIGHT)
+	index = m->map[(int)m->ray.y][(int)m->ray.x];
+	if (m->ray.hitx < m->ray.eps || (m->ray.hitx > m->ray.hity
+									 && m->ray.hity > m->ray.eps))
+		m->ray.hitx = m->ray.hity;
+	while (++y < m->sdl->win_h)
 	{
-		sdl_put_pixel(sdl, i, y, sdl->img.texture[(index - 1 > 5
+		sdl_put_pixel(m->sdl, i, y, m->sdl->img.texture[(index - 1 > 5
 		? 64 * ((index - 1) / 5) : 0) + (int) (tmp_y * relation)][64
-		* (index - 1) + (int) (wlf->ray.hitx * COLUM)]);
+		* (index - 1) + (int) (m->ray.hitx * COLUM)]);
 		tmp_y++;
 	}
 }
 
-void	draw_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
+static void	draw_column(t_rc_main *m, float h_colum, int i)
 {
 	int 	index;
 	int 	tmp_y;
@@ -61,53 +60,54 @@ void	draw_colum(t_wolf *wlf, t_sdl *sdl, float h_colum, int i)
 
 	tmp_y = 0;
 	relation = COLUM / h_colum;
-	y = draw_celling(sdl, h_colum, i);
-	offset = WIN_HEIGHT / 2 + h_colum / 2;
-	index = wlf->map[(int)wlf->ray.y][(int)wlf->ray.x];
-	if (wlf->ray.hitx < wlf->ray.eps || (wlf->ray.hitx > wlf->ray.hity
-										&& wlf->ray.hity > wlf->ray.eps))
-		wlf->ray.hitx = wlf->ray.hity;
+	y = draw_celling(m->sdl, h_colum, i);
+	offset = m->sdl->win_h / 2 + h_colum / 2;
+	index = m->map[(int)m->ray.y][(int)m->ray.x];
+	if (m->ray.hitx < m->ray.eps || (m->ray.hitx > m->ray.hity
+									 && m->ray.hity > m->ray.eps))
+		m->ray.hitx = m->ray.hity;
 	while (y < offset - 1)
 	{
-		sdl_put_pixel(sdl, i, y, sdl->img.texture[(index - 1 > 5
+		sdl_put_pixel(m->sdl, i, y, m->sdl->img.texture[(index - 1 > 5
 		? 64 * ((index - 1) / 5) : 0) + (int) (tmp_y * relation)][64
-		* (index - 1) + (int) (wlf->ray.hitx * COLUM)]);
+		* (index - 1) + (int) (m->ray.hitx * COLUM)]);
 		tmp_y++;
 		y++;
 	}
-	draw_floor(sdl, i, y);
+	draw_floor(m->sdl, i, y);
 }
 
-void 	player_raycast(t_wolf *wlf, t_sdl *sdl)
+void 	player_raycast(t_rc_main *m)
 {
     float	cs;
     float 	sn;
     int		i;
+    float	column;
 
     i = 0;
-    while (i < WIN_WIDTH)
+    while (i < m->sdl->win_w)
     {
-    	wlf->ray.angle = (wlf->player.view_dir - FOV / 2)
-    			+ (FOV * i / WIN_WIDTH);
-		wlf->ray.distance = 0.f;
-		cs = cos(wlf->ray.angle);
-		sn = sin(wlf->ray.angle);
-		while (wlf->ray.distance < 15.0f)
+		m->ray.angle = (m->player.view_dir - FOV / 2)
+					   + (FOV * i / m->sdl->win_w);
+		m->ray.distance = 0.f;
+		cs = cos(m->ray.angle);
+		sn = sin(m->ray.angle);
+		while (m->ray.distance < 15.0f)
 		{
-			wlf->ray.x = wlf->player.x + wlf->ray.distance * cs;
-			wlf->ray.y = wlf->player.y + wlf->ray.distance * sn;
-			if ((wlf->map[(int)wlf->ray.y][(int)wlf->ray.x] != 0))
+			m->ray.x = m->player.x + m->ray.distance * cs;
+			m->ray.y = m->player.y + m->ray.distance * sn;
+			if ((m->map[(int)m->ray.y][(int)m->ray.x] != 0))
 				break;
-			wlf->ray.distance += 0.01f;
+			m->ray.distance += 0.01f;
 		}
-		wlf->ray.colum = WIN_HEIGHT / (wlf->ray.distance
-				* cos(wlf->ray.angle - wlf->player.view_dir));
-		wlf->ray.hitx = (wlf->ray.x - (int)wlf->ray.x);
-		wlf->ray.hity = (wlf->ray.y - (int)wlf->ray.y);
-		if (wlf->ray.colum > WIN_HEIGHT)
-			processing_big_colum(wlf, sdl, wlf->ray.colum, i);
+		column = m->sdl->win_h / (m->ray.distance
+							  * cos(m->ray.angle - m->player.view_dir));
+		m->ray.hitx = (m->ray.x - (int)m->ray.x);
+		m->ray.hity = (m->ray.y - (int)m->ray.y);
+		if (column > m->sdl->win_h)
+			processing_big_column(m, m->sdl, column, i);
 		else
-			draw_colum(wlf, sdl, wlf->ray.colum, i);
+			draw_column(m, m->sdl, column, i);
 //		SDL_Log("%sRAY ID: %3d | %sY: %3f | %sX: %3f\n", KGRN,  i, KYEL, wlf->ray.y, KBLU, wlf->ray.x);
 		i++;
 	}

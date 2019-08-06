@@ -1,17 +1,16 @@
-#include "wolf3d.h"
+#include "raycast.h"
 
 int		main(void)
 {
-	t_wolf	*wlf;
+	t_rc_main	*rc_main;
 	t_sdl	*sdl;
 	SDL_Thread	*thread;
 
-	sdl = sdl_init();
-	wlf = wolf_init(sdl);
-	map_read(wlf);
+	rc_main = rc_main_init(sdl);
+	rc_jtoc_main_from_json(rc_main, "../json/config.json");
 	sdl->mutex = SDL_CreateMutex();
-	thread = SDL_CreateThread(physics, "physics", (void *)wlf);
+	thread = SDL_CreateThread(physics, "physics", (void *)rc_main);
 	SDL_DetachThread(thread);
-	main_loop(sdl, wlf);
+	main_loop(rc_main);
 	return (0);
 }

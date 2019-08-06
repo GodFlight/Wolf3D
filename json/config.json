@@ -1,11 +1,37 @@
 {
+	"win":
+	{
+		"title": "Wolf3D",
+		"size":
+		{
+			"x": 1920,
+			"y": 1080
+		}
+	},
 	"map": "maps/map_01",
+	"textures":
+	[
+		{
+			"type": "pack",
+			"num":
+			{
+				"x": 6,
+				"y": 9
+			},
+			"path": "../textures/1375.png"
+		},
+		{
+			"type": "single",
+			"path": "wall01.bmp"
+		}
+	],
 	"objects":
 	[
 		{
 			"id": 1,
 			"type": "wall",
-			"textures": [
+			"textures":
+			[
 				{
 					"pos": "north",
 					"texture": "hitler"
@@ -23,6 +49,12 @@
 					"texture": "wall1"
 				}
 			]
+		},
+		{
+			"id": 100,
+			"type": "player",
+			"move_speed": 20,
+			"rotation_speed": 0.08
 		}
 	]
 }

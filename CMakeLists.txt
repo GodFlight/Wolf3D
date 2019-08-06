@@ -5,7 +5,7 @@ project(WOLF3D LANGUAGES C)
 
 #set(CMAKE_C_STANDARD 11)
 
-add_executable(Wolf3D)
+add_executable(Wolf3D include/config.h)
 
 #add C flags
 #set(GCC_COMPILE_FLAGS "-Wall -Werror -Wextra -O3")

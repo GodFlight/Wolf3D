@@ -1,5 +1,5 @@
 
-#include "wolf3d.h"
+#include "raycast.h"
 #include "debug_log.h"
 
 //TODO A/D - going left/right
@@ -7,7 +7,7 @@
 
 #ifndef DEBUG
 
-static void	move_player(t_wolf *wlf, t_sdl *sdl)
+static void	move_player(t_rc_main *wlf, t_sdl *sdl)
 {
 	float	normal_speed;
 	float	cash_sin;
@@ -53,7 +53,7 @@ static void	move_player(t_wolf *wlf, t_sdl *sdl)
 		wlf->sdl->params |= WOLF_QUIT;
 }
 
-static void	rotation_player(t_wolf *wlf, t_sdl *sdl)
+static void	rotation_player(t_rc_main *wlf, t_sdl *sdl)
 {
 	if (sdl->state[SDL_SCANCODE_RIGHT])
 	{
@@ -70,7 +70,7 @@ static void	rotation_player(t_wolf *wlf, t_sdl *sdl)
 }
 
 #else
-static void	move_player(t_wolf *wlf, t_sdl *sdl)
+static void	move_player(t_rc_main *wlf, t_sdl *sdl)
 {
 	float normal_speed;
 
@@ -111,7 +111,7 @@ static void	move_player(t_wolf *wlf, t_sdl *sdl)
 		wlf->sdl->params |= QUIT;
 }
 
-static void	rotation_player(t_wolf *wlf, t_sdl *sdl)
+static void	rotation_player(t_rc_main *wlf, t_sdl *sdl)
 {
 	if (sdl->state[SDL_SCANCODE_RIGHT])
 	{
@@ -132,10 +132,10 @@ static void	rotation_player(t_wolf *wlf, t_sdl *sdl)
 
 int	physics(void *wolf)
 {
-	t_wolf	*wlf;
+	t_rc_main	*wlf;
 	t_sdl	*sdl;
 
-	wlf = (t_wolf *)wolf;
+	wlf = (t_rc_main *)wolf;
 	sdl = wlf->sdl;
 	while (!(sdl->params & WOLF_QUIT))
 	{

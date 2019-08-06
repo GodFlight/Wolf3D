@@ -1,6 +1,6 @@
-#include "wolf3d.h"
+#include "raycast.h"
 
-char    *ft_str_space_plus_join_free(char *s, char const *s1)
+static char	*ft_str_space_plus_join_free(char *s, char const *s1)
 {
 	char    *check;
 	char    *a;
@@ -28,7 +28,7 @@ char    *ft_str_space_plus_join_free(char *s, char const *s1)
 	return (a);
 }
 //TODO сделать обработку строк разной длины
-char    **create_tmp_arr_and_find_sizes(int fd, t_wolf *wlf)
+static char	**create_tmp_arr_and_find_sizes(int fd, t_rc_main *wlf)
 {
 	char    *line;
 	char    *all_lines;
@@ -51,7 +51,7 @@ char    **create_tmp_arr_and_find_sizes(int fd, t_wolf *wlf)
 	return (tmp_arr);
 }
 
-int	map_read(t_wolf *wlf, int fd)
+static int	map_read(t_rc_main *wlf, int fd)
 {
 	char	**tmp_arr;
 	int		i;
@@ -62,6 +62,7 @@ int	map_read(t_wolf *wlf, int fd)
 	i = -1;
 	k = -1;
 	tmp_arr = create_tmp_arr_and_find_sizes(fd, wlf);
+//TODO сделать обработку строк разной длины
 	if (!tmp_arr)
 		return (FUNCTION_FAILURE);
 	map = (int **)ft_memalloc(sizeof(int *) * wlf->h_map);
@@ -74,5 +75,16 @@ int	map_read(t_wolf *wlf, int fd)
 	}
 	wlf->map = map;
 	ft_clear_double_pointer((void **)tmp_arr, wlf->w_map * wlf->h_map);
+	return (FUNCTION_SUCCESS);
+}
+
+int	rc_jtoc_get_map(t_rc_main *wlf, char *path)
+{
+	int	fd;
+
+	if (!(fd = open(path, O_RDONLY)))
+		return (rc_jtoc_sdl_log_error("OPEN MAP FAILURE", -1));
+	if (map_read(wlf, fd))
+		return (FUNCTION_FAILURE);
 	return (FUNCTION_SUCCESS);
 }

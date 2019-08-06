@@ -1,4 +1,4 @@
-#include "wolf3d.h"
+#include "raycast.h"
 
 int			rgb_to_hex(int r, int g, int b)
 {

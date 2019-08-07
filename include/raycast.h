@@ -39,7 +39,7 @@
 typedef struct	s_conf_json
 {
 	t_list		*textures;
-	int			textures_num;
+	int			index;
 }				t_conf_json;
 
 typedef struct	s_player_ray

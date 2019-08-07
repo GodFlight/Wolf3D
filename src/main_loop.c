@@ -6,15 +6,36 @@ void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color)
 		sdl->data[x + y * sdl->win_w] = color;
 }
 
+void	draw_texture(t_rc_main *m, t_sdl *sdl)
+{
+	int		x;
+	int		y;
+	int		**tmp_arr;
+
+	y = 0;
+	while (y < 64)
+	{
+		x = 0;
+		while (x < 64)
+		{
+			tmp_arr = (int **)m->objs[1].data;
+			sdl->data[x + y * sdl->win_h] = tmp_arr[y][x];
+			x++;
+		}
+		y++;
+	}
+}
+
 void	main_loop(t_rc_main *m)
 {
 	while (666)
 	{
 		SDL_LockMutex(m->sdl->mutex);
-		player_raycast(m);
+//		player_raycast(m);
+//		draw_texture(m, m->sdl);
         SDL_SetRenderTarget(m->sdl->renderer, m->sdl->texture);
         SDL_RenderClear(m->sdl->renderer);
-		draw_interface(m);
+//		draw_interface(m);
 		SDL_UpdateTexture(m->sdl->texture, NULL, (void *)m->sdl->data, m->sdl->win_w * sizeof(int));
 		SDL_UnlockMutex(m->sdl->mutex);
         SDL_SetRenderTarget(m->sdl->renderer, NULL);

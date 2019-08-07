@@ -9,6 +9,7 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 	t_conf_json	conf;
 	t_jnode		*root;
 	t_jnode		*tmp;
+	t_object	*objs;
 
 	//root
 	if (!(root = jtoc_read(path)))
@@ -35,6 +36,8 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 	//objects
 	if (!(tmp = jtoc_node_get_by_path(root, "objects")) || tmp->type != array)
 		return (rc_jtoc_sdl_log_error("MISSING OBJECTS", -1));
+	objs = (t_object *)ft_memalloc(sizeof(t_object) * 100000);
+	m->objs = objs;
 	tmp = tmp->down;
 	while (tmp)
 	{

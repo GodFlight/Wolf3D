@@ -44,7 +44,6 @@ static int	get_textures_from_texture_pack(t_rc_main *wlf, t_conf_json *conf, cha
 
 	img_data = stbi_load(path, &wlf->textures.w,
 						 &wlf->textures.h, &wlf->textures.bpp, 4);
-	conf->index = -1;
 	y = 0;
 	x = 0;
 	while (++y < wlf->textures.h / 64)
@@ -60,6 +59,7 @@ static int	get_textures_from_texture_pack(t_rc_main *wlf, t_conf_json *conf, cha
 		}
 		//TODO create new node in list conf->textures, content this node will link on texture's t int array
 	}
+	return (FUNCTION_SUCCESS);
 }
 
 int	rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *n_texture)
@@ -67,6 +67,7 @@ int	rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *n_texture)
 	t_jnode *tmp;
 	char	*path;
 
+	conf->index = 0;
 	conf->textures = NULL;
 	while (n_texture)
 	{
@@ -81,4 +82,5 @@ int	rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *n_texture)
 			get_textures_from_texture_pack(wlf, conf, path);
 		n_texture = n_texture->right;
 	}
+	return (FUNCTION_SUCCESS);
 }

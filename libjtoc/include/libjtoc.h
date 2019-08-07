@@ -62,46 +62,46 @@ void						jtoc_node_clear(t_jnode *parent);
 int							jtoc_remove_spaces(char **str);
 
 int							jtoc_find(const char *str, const char s, int i,
-int d);
+																		int d);
 int							jtoc_find_comma(const char *str, int i);
 
 int							jtoc_read_file(const char *path, char **res);
 
 int							jtoc_validate_field(const char *str, int b,
-int e);
+																		int e);
 
 int							jtoc_validate_value(const char *str, int c,
-int e);
+																		int e);
 
 int							jtoc_validate_number(const char *str, int b,
-int e);
+																		int e);
 int							jtoc_validate_string(const char *str, int b,
-int e);
+																		int e);
 int							jtoc_validate_object(const char *str, int b,
-int e);
+																		int e);
 int							jtoc_validate_array(const char *str, int b,
-int e);
+																		int e);
 
 t_jnode						*jtoc_parse(const char *str);
 
 enum e_type					jtoc_get_field_type(char *f);
 
 int							jtoc_parse_field(t_jnode *p, const char *str,
-int b, int e);
+																int b, int e);
 
 int							jtoc_parse_value(t_jnode *p, const char *str,
-int b, int e);
+																int b, int e);
 
 int							jtoc_parse_integer(t_jnode *p, const char *str,
-int b, int e);
+																int b, int e);
 int							jtoc_parse_fractional(t_jnode *p, const char *str,
-int b, int e);
+																int b, int e);
 int							jtoc_parse_string(t_jnode *p, const char *str,
-int b, int e);
+																int b, int e);
 int							jtoc_parse_object(t_jnode *p, const char *str,
-int b, int e);
+																int b, int e);
 int							jtoc_parse_array(t_jnode *p, const char *str,
-int b, int e);
+																int b, int e);
 
 t_jnode						*jtoc_read(const char *str);
 
@@ -114,7 +114,7 @@ size_t						jtoc_get_child_count(t_jnode *n);
 void						*jtoc_get_raw_data(t_jnode *n);
 
 int							jtoc_write_children(t_jnode *n, int fd,
-		char arr);
+																	char arr);
 
 char						*jtoc_ftoa(float n, int flen);
 int							jtoc_write(t_jnode *n, const char *str);

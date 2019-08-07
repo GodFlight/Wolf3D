@@ -15,9 +15,9 @@ static void	move_player(t_rc_main *wlf, t_sdl *sdl)
 	float	abs_viev;
 
 	if (wlf->player.view_dir < 0)
-		abs_viev = (float)((fmod(wlf->player.view_dir, 2 * M_PI)) + (2 * M_PI));
+		abs_viev = (float)((fmod(wlf->player.view_dir, CIRCLE_ANGLE)) + (CIRCLE_ANGLE));
 	else
-		abs_viev = (float)fmod(wlf->player.view_dir, 2 * M_PI);
+		abs_viev = (float)fmod(wlf->player.view_dir, CIRCLE_ANGLE);
 	normal_speed = 0.01f * PLAYER_SPEED;
 	cash_sin = (float)(sin((double)abs_viev));
 	cash_cos = (float)(cos((double)abs_viev));

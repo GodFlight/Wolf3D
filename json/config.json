@@ -16,7 +16,7 @@
 			"num":
 			{
 				"x": 6,
-				"y": 9
+				"y": 19
 			},
 			"path": "../textures/1375.png"
 		},
@@ -30,23 +30,31 @@
 		{
 			"id": 1,
 			"type": "wall",
+			"params":
+			[
+				"OBJ_IS_DESTRUCTIBLE"
+			],
 			"textures":
 			[
 				{
+					"state": "default",
 					"pos": "north",
-					"texture": "hitler"
+					"index": 1
 				},
 				{
+					"state": "default",
 					"pos": "south",
-					"texture": "wall2"
+					"index": 2
 				},
 				{
+					"state": "default",
 					"pos": "west",
-					"texture": "wall1"
+					"index": 3
 				},
 				{
+					"state": "default",
 					"pos": "east",
-					"texture": "wall1"
+					"index": 4
 				}
 			]
 		},

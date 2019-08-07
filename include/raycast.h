@@ -33,6 +33,9 @@
 # define KCYN				"\x1B[36m"
 # define KWHT				"\x1B[37m"
 
+//obj params
+# define OBJ_IS_DESTRUCTIBLE	(1 << 0)
+
 typedef struct	s_conf_json
 {
 	t_list		*textures;
@@ -83,11 +86,29 @@ typedef struct	s_interface
 	float 	distance;
 }				t_interface;
 
+typedef struct	s_wall_texture_state
+{
+	int			**texture_north;
+	int			**texture_south;
+	int			**texture_west;
+	int			**texture_east;
+}				t_wts;
+
+typedef struct	s_wall
+{
+	t_wts	*state1;
+	t_wts	*state2;
+	t_wts	*state3;
+}				t_wall;
+
 typedef struct	s_object
 {
+	int			id;
 	int			type;
-	int			*texture;
-}				t_obj;
+	int			state;
+	int			params;
+	void		*data;
+}				t_object;
 
 typedef struct	s_textures
 {
@@ -97,7 +118,7 @@ typedef struct	s_textures
 	int				bpp;
 }				t_textures;
 
-typedef struct	s_rc_main
+typedef struct	s_ray_cast_main
 {
 	t_textures		textures;
 
@@ -106,7 +127,7 @@ typedef struct	s_rc_main
 	int				h_map;
 	float 			x;		//what is it?
 	float 			y;		//?
-	t_obj			*objs;
+	t_object		*objs;
 	t_wlf_player	player;
 	t_player_ray	ray;
 	t_sdl			*sdl;
@@ -119,7 +140,9 @@ int		rc_jtoc_sdl_log_error(const char *p, const int id);
 int		rc_jtoc_is_num(enum e_type type);
 int		rc_jtoc_get_map(t_rc_main *wlf, char *path);
 int		rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *n_texture);
-
+int		rc_jtoc_get_obj(t_rc_main *m, t_jnode *n, t_conf_json *conf);
+int		rc_jtoc_get_texture_state(int *state, t_jnode *n, int obj_id);
+int		rc_jtoc_get_wall_obj(t_object *obj, t_jnode *n, t_conf_json *conf);
 
 void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
 void 	player_raycast(t_rc_main *m);

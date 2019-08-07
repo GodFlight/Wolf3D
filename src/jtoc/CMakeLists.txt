@@ -8,5 +8,8 @@ target_sources(Wolf3D PUBLIC
         rc_jtoc_win_from_json.c
         rc_jtoc_utilits.c
         rc_jtoc_get_textures.c
+        rc_jtoc_get_obj.c
+        rc_jtoc_obj_utilits.c
+        rc_jtoc_get_wall_obj.c
         )
 

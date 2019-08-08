@@ -30,6 +30,7 @@ t_list	*get_node_by_index_in_content_size(t_list *lst, int index)
 	{
 		if (lst->content_size == (size_t)index)
 			return (lst);
+		lst = lst->next;
 	}
 	return (NULL);
 }
@@ -102,6 +103,7 @@ int	rc_jtoc_get_wall_obj(t_object *obj, t_jnode *n, t_conf_json *conf)
 			return (FUNCTION_FAILURE);
 		if (get_wall_texture(wall, tmp, conf, (int []){(obj->id), (state), (pos)}))
 			return (rc_jtoc_sdl_log_error("OBJECT TEXTURE FAILURE", obj->id));
+		tmp = tmp->right;
 	}
 	obj->data = (void *)wall;
 	return (FUNCTION_SUCCESS);

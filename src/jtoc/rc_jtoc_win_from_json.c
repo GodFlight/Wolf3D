@@ -13,10 +13,10 @@ int	rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w)
 	if (!(tmp = jtoc_node_get_by_path(n_w, "title")) || tmp->type != string)
 		return (rc_jtoc_sdl_log_error("MISSING WIN TITLE", -1));
 	sdl->win_title = ft_strdup(jtoc_get_string(tmp));
-	if (!(tmp = jtoc_node_get_by_path(n_w, "size.x")) || !(rc_jtoc_is_num(n_w->type)))
+	if (!(tmp = jtoc_node_get_by_path(n_w, "size.x")) || !(rc_jtoc_is_num(tmp->type)))
 		return (rc_jtoc_sdl_log_error("WINDOW SIZE.X ERROR", -1));
 	sdl->win_w = jtoc_get_int(tmp);
-	if (!(tmp = jtoc_node_get_by_path(n_w, "size.y")) || !(rc_jtoc_is_num(n_w->type)))
+	if (!(tmp = jtoc_node_get_by_path(n_w, "size.y")) || !(rc_jtoc_is_num(tmp->type)))
 		return (rc_jtoc_sdl_log_error("WINDOW SIZE.Y ERROR", -1));
 	sdl->win_h = jtoc_get_int(tmp);
 	if (!(sdl->data = (int *)ft_memalloc(sizeof(int) * (sdl->win_w * sdl->win_h))))

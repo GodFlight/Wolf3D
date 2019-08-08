@@ -45,10 +45,10 @@ static int	get_textures_from_texture_pack(t_rc_main *wlf, t_conf_json *conf, cha
 	img_data = stbi_load(path, &wlf->textures.w,
 						 &wlf->textures.h, &wlf->textures.bpp, 4);
 	y = 0;
-	x = 0;
-	while (++y < wlf->textures.h / 64)
+	while (++y < (wlf->textures.h / 64 + 1))
 	{
-		while (++x < wlf->textures.w / 64)
+		x = 0;
+		while (++x < (wlf->textures.w / 64) + 1)
 		{
 			tmp = ft_lstnew(NULL, 0);
 			x = (x * 64 ==  wlf->textures.w * 64 ? 0 : x * 64);
@@ -56,6 +56,7 @@ static int	get_textures_from_texture_pack(t_rc_main *wlf, t_conf_json *conf, cha
 			tmp->content = (void **)arr;
 			tmp->content_size = ++(conf->index);
 			ft_lstadd(&conf->textures, tmp);
+			x = x / 64;
 		}
 		//TODO create new node in list conf->textures, content this node will link on texture's t int array
 	}
@@ -78,7 +79,7 @@ int	rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *node)
 		path = jtoc_get_string(tmp);
 		if (!(tmp = jtoc_node_get_by_path(node, "type")) || tmp->type != string)
 			return (rc_jtoc_sdl_log_error("TEXTURE TYPE ERROR", -1));
-		if (!(ft_strcmp(jtoc_get_string(tmp), "texture_pack")))
+		if (!(ft_strcmp(jtoc_get_string(tmp), "pack")))
 			get_textures_from_texture_pack(wlf, conf, path);
 		node = node->right;
 	}

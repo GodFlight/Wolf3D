@@ -11,5 +11,5 @@ target_sources(Wolf3D PUBLIC
         player_raycast.c
         )
 
-add_subdirectory(jtoc)
-add_subdirectory(utilits)
+add_subdirectory(rc_jtoc)
+add_subdirectory(rc_utilits)

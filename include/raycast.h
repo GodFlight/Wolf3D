@@ -12,7 +12,6 @@
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
-# define STB_IMAGE_IMPLEMENTATION
 
 # include "libft.h"
 # include "define.h"
@@ -133,7 +132,7 @@ typedef struct	s_ray_cast_main
 	t_sdl			*sdl;
 }				t_rc_main;
 
-//jtoc
+//rc_jtoc
 int		rc_jtoc_main_from_json(t_rc_main *m, const char *path);
 int		rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w);
 int		rc_jtoc_sdl_log_error(const char *p, const int id);
@@ -152,7 +151,7 @@ int		physics(void *m);
 //init
 t_rc_main	*rc_main_init();
 
-//utilits
+//rc_utilits
 int		rgb_to_hex(int r, int g, int b);
 
 

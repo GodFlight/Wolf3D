@@ -339,17 +339,17 @@ if(SDL2_FOUND)
                           IMPORTED_LOCATION "${SDL2_LIBRARY}"
                           INTERFACE_INCLUDE_DIRECTORIES "${SDL2_INCLUDE_DIR}")
 
-    if(APPLE)
+ #   if(APPLE)
       # For OS X, SDL2 uses Cocoa as a backend so it must link to Cocoa.
       # For more details, please see above.
-      set_property(TARGET SDL2::Core APPEND PROPERTY
-                   INTERFACE_LINK_OPTIONS "-framework Cocoa")
-    else()
+  #    set_property(TARGET SDL2::Core APPEND PROPERTY
+   #                INTERFACE_LINK_OPTIONS "-framework Cocoa")
+    #else()
       # For threads, as mentioned Apple doesn't need this.
       # For more details, please see above.
-      set_property(TARGET SDL2::Core APPEND PROPERTY
-                   INTERFACE_LINK_LIBRARIES Threads::Threads)
-    endif()
+   #   set_property(TARGET SDL2::Core APPEND PROPERTY
+    #               INTERFACE_LINK_LIBRARIES Threads::Threads)
+  #  endif()
   endif()
 
   # SDL2::Main target

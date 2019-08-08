@@ -28,7 +28,7 @@ t_list	*get_node_by_index_in_content_size(t_list *lst, int index)
 {
 	while (lst)
 	{
-		if (lst->content_size == index)
+		if (lst->content_size == (size_t)index)
 			return (lst);
 	}
 	return (NULL);
@@ -61,7 +61,6 @@ static int	fill_cur_wall_texture_state(t_wts *cur_state, t_conf_json *conf, t_jn
 
 static int	get_wall_texture(t_wall *wall, t_jnode *n, t_conf_json *conf, int *arr)
 {
-	t_jnode	*tmp;
 	int		obj_id;
 	int		state;
 	int		pos;

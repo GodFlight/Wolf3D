@@ -1,16 +1,16 @@
+# define STB_IMAGE_IMPLEMENTATION
 #include "raycast.h"
 
 int		main(void)
 {
-	t_rc_main	*rc_main;
-	t_sdl	*sdl;
+	t_rc_main	*m;
 	SDL_Thread	*thread;
 
-	rc_main = rc_main_init(sdl);
-	rc_jtoc_main_from_json(rc_main, "../json/config.json");
-	sdl->mutex = SDL_CreateMutex();
-	thread = SDL_CreateThread(physics, "physics", (void *)rc_main);
+	m = rc_main_init();
+	rc_jtoc_main_from_json(m, "../json/config.json");
+	m->sdl->mutex = SDL_CreateMutex();
+	thread = SDL_CreateThread(physics, "physics", (void *)m);
 	SDL_DetachThread(thread);
-	main_loop(rc_main);
+	main_loop(m);
 	return (0);
 }

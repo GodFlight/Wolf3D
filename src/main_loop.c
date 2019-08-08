@@ -13,12 +13,12 @@ void	draw_texture(t_rc_main *m, t_sdl *sdl)
 	int		**tmp_arr;
 
 	y = 0;
+	tmp_arr = (int **)m->objs[0].data;
 	while (y < 64)
 	{
 		x = 0;
 		while (x < 64)
 		{
-			tmp_arr = (int **)m->objs[1].data;
 			sdl->data[x + y * sdl->win_h] = tmp_arr[y][x];
 			x++;
 		}
@@ -32,7 +32,7 @@ void	main_loop(t_rc_main *m)
 	{
 		SDL_LockMutex(m->sdl->mutex);
 //		player_raycast(m);
-//		draw_texture(m, m->sdl);
+		draw_texture(m, m->sdl);
         SDL_SetRenderTarget(m->sdl->renderer, m->sdl->texture);
         SDL_RenderClear(m->sdl->renderer);
 //		draw_interface(m);

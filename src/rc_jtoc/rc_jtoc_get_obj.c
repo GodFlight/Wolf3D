@@ -27,6 +27,7 @@ int	rc_jtoc_get_obj(t_rc_main *m, t_jnode *n, t_conf_json *conf)
 				return (rc_jtoc_sdl_log_error("OBJECT PARAMS FAILURE", cur_obj.id));
 			if (ft_strcmp(jtoc_get_string(tmp), "OBJ_IS_DESTRUCTIBLE"))
 				cur_obj.params |= OBJ_IS_DESTRUCTIBLE;
+			tmp = tmp->right;
 		}
 	}
 

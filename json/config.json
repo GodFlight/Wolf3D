@@ -57,12 +57,6 @@
 					"index": 4
 				}
 			]
-		},
-		{
-			"id": 100,
-			"type": "player",
-			"move_speed": 20,
-			"rotation_speed": 0.08
 		}
 	]
 }

@@ -62,25 +62,25 @@ static int	get_textures_from_texture_pack(t_rc_main *wlf, t_conf_json *conf, cha
 	return (FUNCTION_SUCCESS);
 }
 
-int	rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *n_texture)
+int	rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *node)
 {
 	t_jnode *tmp;
 	char	*path;
 
 	conf->index = 0;
 	conf->textures = NULL;
-	while (n_texture)
+	while (node)
 	{
-		if (n_texture->type != object)
+		if (node->type != object)
 			return (rc_jtoc_sdl_log_error("TEXTURE TYPE ERROR", -1));
-		if (!(tmp = jtoc_node_get_by_path(tmp, "path")) || tmp->type != string)
+		if (!(tmp = jtoc_node_get_by_path(node, "path")) || tmp->type != string)
 			return (rc_jtoc_sdl_log_error("TEXTURE PATH ERROR", -1));
 		path = jtoc_get_string(tmp);
-		if (!(tmp = jtoc_node_get_by_path(tmp, "type")) || tmp->type != string)
+		if (!(tmp = jtoc_node_get_by_path(node, "type")) || tmp->type != string)
 			return (rc_jtoc_sdl_log_error("TEXTURE TYPE ERROR", -1));
 		if (!(ft_strcmp(jtoc_get_string(tmp), "texture_pack")))
 			get_textures_from_texture_pack(wlf, conf, path);
-		n_texture = n_texture->right;
+		node = node->right;
 	}
 	return (FUNCTION_SUCCESS);
 }

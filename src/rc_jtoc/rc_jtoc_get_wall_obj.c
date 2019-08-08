@@ -10,7 +10,7 @@ static int get_wall_texture_pos(int *pos, t_jnode *n, int obj_id)
 	char	*s;
 
 	if (!(tmp = jtoc_node_get_by_path(n, "pos")) || tmp->type != string)
-		return (rc_jtoc_sdl_log_error("TEXTURE POS FAILURE", obj_id));
+		return (rc_jtoc_sdl_log_error("WALL TEXTURE POS FAILURE", obj_id));
 	if ((s = jtoc_get_string(tmp)) && !(ft_strcmp(s, "north")))
 		*pos = 1;
 	else if (!(ft_strcmp(s, "south")))
@@ -20,7 +20,7 @@ static int get_wall_texture_pos(int *pos, t_jnode *n, int obj_id)
 	else if (!(ft_strcmp(s, "east")))
 		*pos = 4;
 	else
-		return (rc_jtoc_sdl_log_error("TEXTURE POS FAILURE", obj_id));
+		return (rc_jtoc_sdl_log_error("WALL TEXTURE POS NOT FOUND", obj_id));
 	return (FUNCTION_SUCCESS);
 }
 
@@ -42,9 +42,9 @@ static int	fill_cur_wall_texture_state(t_wts *cur_state, t_conf_json *conf, t_jn
 
 	if (cur_state == NULL)
 		cur_state = (t_wts *)ft_memalloc(sizeof(t_wts));
-	if (!(tmp = jtoc_node_get_by_path(n, "index")) || rc_jtoc_is_num(tmp->type))
+	if (!(tmp = jtoc_node_get_by_path(n, "index")) || !rc_jtoc_is_num(tmp->type))
 		return (rc_jtoc_sdl_log_error("TEXTURE INDEX FAILURE", -1));
-	cur_lst = get_node_by_index_in_content_size(conf->textures, jtoc_get_int(n));
+	cur_lst = get_node_by_index_in_content_size(conf->textures, jtoc_get_int(tmp));
 	if (cur_lst == NULL)
 		return (rc_jtoc_sdl_log_error("GET TEXTURE BY INDEX FAILURE", -1));
 	tmp_arr = (int **)cur_lst->content;
@@ -98,7 +98,7 @@ int	rc_jtoc_get_wall_obj(t_object *obj, t_jnode *n, t_conf_json *conf)
 	{
 		if (tmp->type != object)
 			return (rc_jtoc_sdl_log_error("OBJECT TEXTURE FAILURE", obj->id));
-		if (rc_jtoc_get_texture_state(&state, tmp, obj->id) || get_wall_texture_pos(&pos, n, obj->id))
+		if (rc_jtoc_get_texture_state(&state, tmp, obj->id) || get_wall_texture_pos(&pos, tmp, obj->id))
 			return (FUNCTION_FAILURE);
 		if (get_wall_texture(wall, tmp, conf, (int []){(obj->id), (state), (pos)}))
 			return (rc_jtoc_sdl_log_error("OBJECT TEXTURE FAILURE", obj->id));

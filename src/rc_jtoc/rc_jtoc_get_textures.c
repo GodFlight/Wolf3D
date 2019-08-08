@@ -59,6 +59,7 @@ static int	get_textures_from_texture_pack(t_rc_main *wlf, t_conf_json *conf, cha
 		}
 		//TODO create new node in list conf->textures, content this node will link on texture's t int array
 	}
+	conf->textures = tmp;
 	return (FUNCTION_SUCCESS);
 }
 
@@ -78,8 +79,12 @@ int	rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *node)
 		path = jtoc_get_string(tmp);
 		if (!(tmp = jtoc_node_get_by_path(node, "type")) || tmp->type != string)
 			return (rc_jtoc_sdl_log_error("TEXTURE TYPE ERROR", -1));
-		if (!(ft_strcmp(jtoc_get_string(tmp), "texture_pack")))
+		if (!(ft_strcmp(jtoc_get_string(tmp), "pack")))
 			get_textures_from_texture_pack(wlf, conf, path);
+		else if (!(ft_strcmp(jtoc_get_string(tmp), "single")))
+			; //TODO
+		else
+			return (rc_jtoc_sdl_log_error("TEXTURE TYPE ERROR", -1));
 		node = node->right;
 	}
 	return (FUNCTION_SUCCESS);

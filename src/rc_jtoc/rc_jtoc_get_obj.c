@@ -34,11 +34,13 @@ int	rc_jtoc_get_obj(t_rc_main *m, t_jnode *n, t_conf_json *conf)
 	if (!(tmp = jtoc_node_get_by_path(n, "type")) || tmp->type != string)
 		return (rc_jtoc_sdl_log_error("OBJECT TYPE FAILURE", cur_obj.id));
 	s = jtoc_get_string(tmp);
-	if (ft_strcmp(s, "wall"))
+	if (!(ft_strcmp(s, "wall")))
 	{
 		cur_obj.type = 1;
 		rc_jtoc_get_wall_obj(&cur_obj, n, conf);
 	}
+	else
+		return (rc_jtoc_sdl_log_error("OBJECT FAILURE", cur_obj.id));
 	m->objs[cur_obj.id] = cur_obj;
 	return (FUNCTION_SUCCESS);
 }

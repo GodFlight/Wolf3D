@@ -155,6 +155,7 @@ t_rc_main	*rc_main_init();
 //utilits
 int		rgb_to_hex(int r, int g, int b);
 
+
 //interface
 void	draw_interface(t_rc_main *m);
 

@@ -38,7 +38,7 @@ static char	**create_tmp_arr_and_find_sizes(int fd, t_rc_main *wlf)
 	wlf->h_map = 1;
 	wlf->w_map = ft_strwcnumber(line, ' ');
 	all_lines = ft_strdup(line);
-	free(line);
+//	free(line);
 	while (get_next_line(fd, &line) == 1)
 	{
 		all_lines = ft_str_space_plus_join_free(all_lines, line);
@@ -46,7 +46,7 @@ static char	**create_tmp_arr_and_find_sizes(int fd, t_rc_main *wlf)
 		wlf->h_map++;
 	}
 	tmp_arr = ft_strsplit(all_lines, ' ');
-	free(line);
+//	free(line);
 	free(all_lines);
 	return (tmp_arr);
 }

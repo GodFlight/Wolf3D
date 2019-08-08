@@ -145,4 +145,5 @@ int	physics(void *wolf)
 		rotation_player(wlf, sdl);
 		SDL_Delay(15);
 	}
+	return (1);
 }

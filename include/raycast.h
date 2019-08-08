@@ -6,14 +6,12 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 15:16:27 by rkeli             #+#    #+#             */
-/*   Updated: 2019/07/23 18:04:50 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/08 09:21:17 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
-# define STB_IMAGE_IMPLEMENTATION
-
 # include "libft.h"
 # include "define.h"
 # include <SDL.h>
@@ -139,7 +137,7 @@ int		rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w);
 int		rc_jtoc_sdl_log_error(const char *p, const int id);
 int		rc_jtoc_is_num(enum e_type type);
 int		rc_jtoc_get_map(t_rc_main *wlf, char *path);
-int		rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *n_texture);
+int		rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *node);
 int		rc_jtoc_get_obj(t_rc_main *m, t_jnode *n, t_conf_json *conf);
 int		rc_jtoc_get_texture_state(int *state, t_jnode *n, int obj_id);
 int		rc_jtoc_get_wall_obj(t_object *obj, t_jnode *n, t_conf_json *conf);
@@ -154,7 +152,6 @@ t_rc_main	*rc_main_init();
 
 //utilits
 int		rgb_to_hex(int r, int g, int b);
-
 
 //interface
 void	draw_interface(t_rc_main *m);

@@ -6,13 +6,23 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 00:57:48 by rkeli             #+#    #+#             */
-/*   Updated: 2019/08/09 11:54:32 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/09 13:36:04 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "raycast.h"
 #include "debug_log.h"
+
+int		**choose_side(t_rc_main *m, int **tmp_arr)
+{
+	int index;
+
+	index = m->map[(int)(m->ray.y)][(int)(m->ray.x)];
+	index = (index == 0 ? 1 : m->map[(int)(m->ray.y)][(int)(m->ray.x)]);
+	tmp_arr = ((t_wall *)m->objs[index].data)->state1->texture_south;
+	return (tmp_arr);
+}
 
 int		draw_celling(t_sdl *sdl, float h_colum, int i)
 {
@@ -39,10 +49,8 @@ void	draw_floor(t_sdl *sdl, int i, int y)
 	}
 }
 
-void	processing_big_column(t_rc_main *m, float h_colum, int i)
+void	processing_big_column(t_rc_main *m, float h_colum, int i, int **tmp_arr)
 {
-	int 	**tmp_arr;
-	int		index;
 	int		tmp_y;
 	int		y;
 	float   relation;
@@ -50,9 +58,6 @@ void	processing_big_column(t_rc_main *m, float h_colum, int i)
 	relation = COLUM / h_colum;
 	tmp_y = (int)((h_colum - m->sdl->win_h) / 2);
 	y = -1;
-	index = m->map[(int)(m->ray.y)][(int)(m->ray.x)];
-	index = (index == 0 ? 1 : index);
-	tmp_arr = ((t_wall *)m->objs[index].data)->state1->texture_north;
 	if (m->ray.hitx < m->ray.eps || (m->ray.hitx > m->ray.hity
 									 && m->ray.hity > m->ray.eps))
 		m->ray.hitx = m->ray.hity;
@@ -63,10 +68,8 @@ void	processing_big_column(t_rc_main *m, float h_colum, int i)
 	}
 }
 
-static void	draw_column(t_rc_main *m, float h_colum, int i)
+static void	draw_column(t_rc_main *m, float h_colum, int i, int **tmp_arr)
 {
-	int 	**tmp_arr;
-	int 	index;
 	int 	tmp_y;
 	int 	y;
 	float 	offset;
@@ -76,9 +79,6 @@ static void	draw_column(t_rc_main *m, float h_colum, int i)
 	relation = COLUM / h_colum;
 	y = draw_celling(m->sdl, h_colum, i);
 	offset = m->sdl->win_h / 2 + h_colum / 2;
-	index = m->map[(int)(m->ray.y)][(int)(m->ray.x)];
-	index = (index == 0 ? 1 : index);
-	tmp_arr = ((t_wall *)m->objs[index].data)->state1->texture_north;
 	if (m->ray.hitx < m->ray.eps || (m->ray.hitx > m->ray.hity
 									 && m->ray.hity > m->ray.eps))
 		m->ray.hitx = m->ray.hity;
@@ -93,10 +93,11 @@ static void	draw_column(t_rc_main *m, float h_colum, int i)
 
 void 	player_raycast(t_rc_main *m)
 {
+    float	column;
     float	cs;
     float 	sn;
+	int 	**tmp_arr;
     int		i;
-    float	column;
 
     i = 0;
     while (i < m->sdl->win_w)
@@ -118,10 +119,11 @@ void 	player_raycast(t_rc_main *m)
 							  * cos(m->ray.angle - m->player.view_dir));
 		m->ray.hitx = (m->ray.x - (int)m->ray.x);
 		m->ray.hity = (m->ray.y - (int)m->ray.y);
+		tmp_arr = choose_side(m, tmp_arr);
 		if (column > m->sdl->win_h)
-			processing_big_column(m, column, i);
+			processing_big_column(m, column, i, tmp_arr);
 		else
-			draw_column(m, column, i);
+			draw_column(m, column, i, tmp_arr);
 //		SDL_Log("%sRAY ID: %3d | %sY: %3f | %sX: %3f\n", KGRN,  i, KYEL, wlf->ray.y, KBLU, wlf->ray.x);
 		i++;
 	}

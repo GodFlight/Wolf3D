@@ -31,8 +31,8 @@ void	main_loop(t_rc_main *m)
 	while (666)
 	{
 		SDL_LockMutex(m->sdl->mutex);
-//		player_raycast(m);
-		draw_texture(m, m->sdl);
+		player_raycast(m);
+//		draw_texture(m, m->sdl);
         SDL_SetRenderTarget(m->sdl->renderer, m->sdl->texture);
         SDL_RenderClear(m->sdl->renderer);
 //		draw_interface(m);

@@ -38,7 +38,7 @@ static char	**create_tmp_arr_and_find_sizes(int fd, t_rc_main *wlf)
 	wlf->h_map = 1;
 	wlf->w_map = ft_strwcnumber(line, ' ');
 	all_lines = ft_strdup(line);
-//	free(line);
+	free(line);
 	while (get_next_line(fd, &line) == 1)
 	{
 		all_lines = ft_str_space_plus_join_free(all_lines, line);
@@ -46,7 +46,6 @@ static char	**create_tmp_arr_and_find_sizes(int fd, t_rc_main *wlf)
 		wlf->h_map++;
 	}
 	tmp_arr = ft_strsplit(all_lines, ' ');
-//	free(line);
 	free(all_lines);
 	return (tmp_arr);
 }
@@ -82,7 +81,7 @@ int	rc_jtoc_get_map(t_rc_main *wlf, char *path)
 {
 	int	fd;
 
-	if (!(fd = open(path, O_RDONLY)))
+	if ((fd = open(path, O_RDONLY)) == -1)
 		return (rc_jtoc_sdl_log_error("OPEN MAP FAILURE", -1));
 	if (map_read(wlf, fd))
 		return (FUNCTION_FAILURE);

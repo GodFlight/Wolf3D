@@ -19,7 +19,7 @@ void	draw_texture(t_rc_main *m, t_sdl *sdl)
 		x = 0;
 		while (x < 64)
 		{
-			sdl->data[x + y * sdl->win_h] = tmp_arr[y][x];
+			sdl->data[x + y * sdl->win_w] = tmp_arr[y][x];
 			x++;
 		}
 		y++;

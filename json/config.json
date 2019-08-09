@@ -44,17 +44,17 @@
 				{
 					"state": "default",
 					"pos": "south",
-					"index": 2
+					"index": 1
 				},
 				{
 					"state": "default",
 					"pos": "west",
-					"index": 3
+					"index": 1
 				},
 				{
 					"state": "default",
 					"pos": "east",
-					"index": 4
+					"index": 1
 				}
 			]
 		},
@@ -70,22 +70,22 @@
 				{
 					"state": "default",
 					"pos": "north",
-					"index": 5
+					"index": 2
 				},
 				{
 					"state": "default",
 					"pos": "south",
-					"index": 6
+					"index": 2
 				},
 				{
 					"state": "default",
 					"pos": "west",
-					"index": 7
+					"index": 2
 				},
 				{
 					"state": "default",
 					"pos": "east",
-					"index": 8
+					"index": 2
 				}
 			]
 		},
@@ -305,6 +305,131 @@
 					"index": 36
 				}
 			]
+		},
+		{
+			"id": 10,
+			"type": "wall",
+			"params":
+			[
+				"OBJ_IS_DESTRUCTIBLE"
+			],
+			"textures":
+			[
+				{
+					"state": "default",
+					"pos": "north",
+					"index": 37
+				},
+				{
+					"state": "default",
+					"pos": "south",
+					"index": 38
+				},
+				{
+					"state": "default",
+					"pos": "west",
+					"index": 39
+				},
+				{
+					"state": "default",
+					"pos": "east",
+					"index": 40
+				}
+			]
+		},
+		{
+			"id": 10,
+			"type": "wall",
+			"params":
+			[
+				"OBJ_IS_DESTRUCTIBLE"
+			],
+			"textures":
+			[
+				{
+					"state": "default",
+					"pos": "north",
+					"index": 41
+				},
+				{
+					"state": "default",
+					"pos": "south",
+					"index": 42
+				},
+				{
+					"state": "default",
+					"pos": "west",
+					"index": 43
+				},
+				{
+					"state": "default",
+					"pos": "east",
+					"index": 44
+				}
+			]
+		},
+		{
+			"id": 11,
+			"type": "wall",
+			"params":
+			[
+				"OBJ_IS_DESTRUCTIBLE"
+			],
+			"textures":
+			[
+				{
+					"state": "default",
+					"pos": "north",
+					"index": 45
+				},
+				{
+					"state": "default",
+					"pos": "south",
+					"index": 46
+				},
+				{
+					"state": "default",
+					"pos": "west",
+					"index": 47
+				},
+				{
+					"state": "default",
+					"pos": "east",
+					"index": 48
+				}
+			]
+		},
+		{
+			"id": 12,
+			"type": "wall",
+			"params":
+			[
+				"OBJ_IS_DESTRUCTIBLE"
+			],
+			"textures":
+			[
+				{
+					"state": "default",
+					"pos": "north",
+					"index": 49
+				},
+				{
+					"state": "default",
+					"pos": "south",
+					"index": 50
+				},
+				{
+					"state": "default",
+					"pos": "west",
+					"index": 51
+				},
+				{
+					"state": "default",
+					"pos": "east",
+					"index": 52
+				}
+			]
 		}
 	]
 }
+w

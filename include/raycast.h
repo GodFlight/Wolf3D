@@ -137,7 +137,7 @@ int		rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w);
 int		rc_jtoc_sdl_log_error(const char *p, const int id);
 int		rc_jtoc_is_num(enum e_type type);
 int		rc_jtoc_get_map(t_rc_main *wlf, char *path);
-int		rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *node);
+int		rc_jtoc_get_textures(t_rc_main *m, t_conf_json *conf, t_jnode *node);
 int		rc_jtoc_get_obj(t_rc_main *m, t_jnode *n, t_conf_json *conf);
 int		rc_jtoc_get_texture_state(int *state, t_jnode *n, int obj_id);
 int		rc_jtoc_get_wall_obj(t_object *obj, t_jnode *n, t_conf_json *conf);

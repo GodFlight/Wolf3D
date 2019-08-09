@@ -51,11 +51,11 @@ static int	fill_cur_wall_texture_state(t_wts *cur_state, t_conf_json *conf, t_jn
 	tmp_arr = (int **)cur_lst->content;
 	if (pos == 1)
 		cur_state->texture_north = tmp_arr;
-	if (pos == 2)
+	else if (pos == 2)
 		cur_state->texture_south = tmp_arr;
-	if (pos == 3)
+	else if (pos == 3)
 		cur_state->texture_west = tmp_arr;
-	if (pos == 4)
+	else if (pos == 4)
 		cur_state->texture_east = tmp_arr;
 	return (FUNCTION_SUCCESS);
 }

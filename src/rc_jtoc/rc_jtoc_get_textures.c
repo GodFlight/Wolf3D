@@ -4,7 +4,7 @@
 
 #include "raycast.h"
 
-static int	**texture_load(int y, int x, unsigned char *img_data, t_rc_main *wlf)
+static int	**texture_load(int y, int x, unsigned char *img_data, t_rc_main *m)
 {
 	int y_tx;
 	int x_tx;
@@ -14,17 +14,17 @@ static int	**texture_load(int y, int x, unsigned char *img_data, t_rc_main *wlf)
 
 	y_d = 0;
 	y_tx = (y >= 64 ? y - 64 : y);
-	if (!(arr = (int **)ft_memalloc(sizeof(int *) * wlf->textures.w)))
+	if (!(arr = (int **)ft_memalloc(sizeof(int *) * m->textures.w)))
 		exit(39);
 	while (y_tx <= y)
 	{
-		if (!(arr[y_d] = (int *)ft_memalloc(sizeof(int) * wlf->textures.h)))
+		if (!(arr[y_d] = (int *)ft_memalloc(sizeof(int) * m->textures.h)))
 			exit(36);
 		x_d = 0;
 		x_tx = x - 64;
 		while (x_tx < x)
 		{
-			arr[y_d][x_d] = *((int*)img_data + (x_tx + y_tx * wlf->textures.w));
+			arr[y_d][x_d] = *((int*)img_data + (x_tx + y_tx * m->textures.w));
 			x_d++;
 			x_tx++;
 		}
@@ -34,25 +34,25 @@ static int	**texture_load(int y, int x, unsigned char *img_data, t_rc_main *wlf)
 	return (arr);
 }
 
-static int	get_textures_from_texture_pack(t_rc_main *wlf, t_conf_json *conf, char *path)
+static int	get_textures_from_texture_pack(t_rc_main *m, t_conf_json *conf, char *path)
 {
 	int				y;
 	int				x;
-	unsigned char	*img_data;
+	unsigned char	*img_data = 0;
 	int				**arr;
 	t_list			*tmp;
 
-	img_data = stbi_load(path, &wlf->textures.w,
-						 &wlf->textures.h, &wlf->textures.bpp, 4);
+	img_data = stbi_load(path, &m->textures.w,
+                         &m->textures.h, &m->textures.bpp, 4);
 	y = 0;
-	while (++y < (wlf->textures.h / 64 + 1))
+	while (++y < (m->textures.h / 64 + 1))
 	{
 		x = 0;
-		while (++x < (wlf->textures.w / 64) + 1)
+		while (++x < (m->textures.w / 64) + 1)
 		{
 			tmp = ft_lstnew(NULL, 0);
-			x = (x * 64 ==  wlf->textures.w * 64 ? 0 : x * 64);
-			arr = texture_load(y * 64, x, img_data, wlf);
+			x = (x * 64 == m->textures.w * 64 ? 0 : x * 64);
+			arr = texture_load(y * 64, x, img_data, m);
 			tmp->content = (void **)arr;
 			tmp->content_size = ++(conf->index);
 			ft_lstadd(&conf->textures, tmp);
@@ -64,7 +64,7 @@ static int	get_textures_from_texture_pack(t_rc_main *wlf, t_conf_json *conf, cha
 	return (FUNCTION_SUCCESS);
 }
 
-int	rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *node)
+int	rc_jtoc_get_textures(t_rc_main *m, t_conf_json *conf, t_jnode *node)
 {
 	t_jnode *tmp;
 	char	*path;
@@ -81,7 +81,7 @@ int	rc_jtoc_get_textures(t_rc_main *wlf, t_conf_json *conf, t_jnode *node)
 		if (!(tmp = jtoc_node_get_by_path(node, "type")) || tmp->type != string)
 			return (rc_jtoc_sdl_log_error("TEXTURE TYPE ERROR", -1));
 		if (!(ft_strcmp(jtoc_get_string(tmp), "pack")))
-			get_textures_from_texture_pack(wlf, conf, path);
+			get_textures_from_texture_pack(m, conf, path);
 		else if (!(ft_strcmp(jtoc_get_string(tmp), "single")))
 			; //TODO
 		else

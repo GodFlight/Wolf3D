@@ -13,16 +13,30 @@ set_target_properties(Wolf3D
         RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
         )
 
-if (NOT SDL2_FOUND)
-    set(SDL2_PATH /Users/$ENV{USER}/.brew/Cellar/sdl2/2.0.9_1)
+if (APPLE)
+    if (NOT SDL2_FOUND)
+        set(SDL2_PATH /Users/$ENV{USER}/.brew/Cellar/sdl2/2.0.9_1)
+    endif()
+
+    if (NOT SDL2_IMAGE_FOUND)
+        set(SDL2_IMAGE_PATH /Users/$ENV{USER}/.brew/Cellar/sdl2_image/2.0.5)
+    endif()
+
+    if (NOT SDL2_TTF_FOUND)
+        set(SDL2_TTF_PATH /Users/$ENV{USER}/.brew/Cellar/sdl2_ttf/2.0.15)
+    endif()
 endif()
 
-if (NOT SDL2_IMAGE_FOUND)
-    set(SDL2_IMAGE_PATH /Users/$ENV{USER}/.brew/Cellar/sdl2_image/2.0.5)
-endif()
-
-if (NOT SDL2_TTF_FOUND)
-    set(SDL2_TTF_PATH /Users/$ENV{USER}/.brew/Cellar/sdl2_ttf/2.0.15)
+if (NOT APPLE)
+    set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+    set(THREADS_PREFER_PTHREAD_FLAG TRUE)
+    find_package(Threads REQUIRED)
+    if(NOT CMAKE_THREAD_LIBS_INIT)
+        set(SDL2_THREADS_NOT_FOUND "Could NOT find Threads (Threads is required by SDL2).")
+        if(SDL2_FIND_REQUIRED)
+            message(FATAL_ERROR ${SDL2_THREADS_NOT_FOUND})
+        endif()
+    endif()
 endif()
 
 find_package(SDL2 REQUIRED)
@@ -30,8 +44,10 @@ find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 
 #add C flags
-set(GCC_COMPILE_FLAGS "-Wall -Werror -Wextra -O3")
-add_definitions(${GCC_COMPILE_FLAGS})
+if (APPLE)
+    set(GCC_COMPILE_FLAGS "-Wall -Werror -Wextra -O3 -D APPLE___")
+    add_definitions(${GCC_COMPILE_FLAGS})
+endif()
 
 #add custom libs
 add_subdirectory(libft)

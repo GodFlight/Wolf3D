@@ -18,7 +18,7 @@
 				"x": 6,
 				"y": 19
 			},
-			"path": "../textures/1375.png"
+			"path": "./textures/1375.png"
 		},
 		{
 			"type": "single",

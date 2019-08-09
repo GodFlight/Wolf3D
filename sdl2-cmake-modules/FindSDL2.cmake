@@ -232,24 +232,27 @@ if(NOT SDL2_BUILDING_LIBRARY)
 endif()
 
 # SDL2 may require threads on your system.
-# The Apple build may not need an explicit flag because one of the
+# The  thbuild may not need an explicit flag because one of the
 # frameworks may already provide it.
 # But for non-OSX systems, I will use the CMake Threads package.
-if(NOT APPLE)
-  find_package(Threads QUIET)
-  if(NOT CMAKE_THREAD_LIBS_INIT)
-    set(SDL2_THREADS_NOT_FOUND "Could NOT find Threads (Threads is required by SDL2).")
-    if(SDL2_FIND_REQUIRED)
-      message(FATAL_ERROR ${SDL2_THREADS_NOT_FOUND})
-    else()
-        if(NOT SDL2_FIND_QUIETLY)
-          message(STATUS ${SDL2_THREADS_NOT_FOUND})
-        endif()
-      return()
-    endif()
-    unset(SDL2_THREADS_NOT_FOUND)
-  endif()
-endif()
+
+#if(NOT APPLE)
+#  set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+#  set(THREADS_PREFER_PTHREAD_FLAG TRUE)
+#  find_package(Threads REQUIRED)
+#  if(NOT CMAKE_THREAD_LIBS_INIT)
+#    set(SDL2_THREADS_NOT_FOUND "Could NOT find Threads (Threads is required by SDL2).")
+#    if(SDL2_FIND_REQUIRED)
+#      message(FATAL_ERROR ${SDL2_THREADS_NOT_FOUND})
+#    else()
+#        if(NOT SDL2_FIND_QUIETLY)
+#          message(STATUS ${SDL2_THREADS_NOT_FOUND})
+#        endif()
+#      return()
+#    endif()
+#    unset(SDL2_THREADS_NOT_FOUND)
+#  endif()
+#endif()
 
 # MinGW needs an additional link flag, -mwindows
 # It's total link flags should look like -lmingw32 -lSDL2main -lSDL2 -mwindows

@@ -13,7 +13,7 @@ void	draw_texture(t_rc_main *m, t_sdl *sdl)
 	int		**tmp_arr;
 
 	y = 0;
-	tmp_arr = (int **)m->objs[0].data;
+	tmp_arr = ((t_wall *)m->objs[1].data)->state1->texture_north;
 	while (y < 64)
 	{
 		x = 0;

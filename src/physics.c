@@ -2,9 +2,6 @@
 #include "raycast.h"
 #include "debug_log.h"
 
-//TODO A/D - going left/right
-//TODO arrow - change ray view
-
 #ifndef DEBUG
 
 static void	move_player(t_rc_main *wlf, t_sdl *sdl)
@@ -38,15 +35,15 @@ static void	move_player(t_rc_main *wlf, t_sdl *sdl)
 	if (sdl->state[SDL_SCANCODE_A])
 	{
 		SDL_LockMutex(sdl->mutex);
-		wlf->player.x += ((normal_speed) * cash_sin);
-		wlf->player.y -= ((normal_speed) * cash_cos);
+		wlf->player.x += ((normal_speed - 0.06f) * cash_sin);
+		wlf->player.y -= ((normal_speed - 0.06f) * cash_cos);
 		SDL_UnlockMutex(sdl->mutex);
 	}
 	if (sdl->state[SDL_SCANCODE_D])
 	{
 		SDL_LockMutex(sdl->mutex);
-		wlf->player.x -= ((normal_speed) * cash_sin);
-		wlf->player.y += ((normal_speed) * cash_cos);
+		wlf->player.x -= ((normal_speed - 0.06f) * cash_sin);
+		wlf->player.y += ((normal_speed - 0.06f) * cash_cos);
 		SDL_UnlockMutex(sdl->mutex);
 	}
 	if (sdl->state[SDL_SCANCODE_ESCAPE])
@@ -133,7 +130,7 @@ static void	rotation_player(t_rc_main *wlf, t_sdl *sdl)
 int	physics(void *wolf)
 {
 	t_rc_main	*wlf;
-	t_sdl	*sdl;
+	t_sdl		*sdl;
 
 	wlf = (t_rc_main *)wolf;
 	sdl = wlf->sdl;

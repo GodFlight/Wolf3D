@@ -25,284 +25,1457 @@
 			"path": "wall01.bmp"
 		}
 	],
-	"objects":
+	"player":
+	{
+		"guns":
+		[
+			"machine_gun",
+			"pistols"
+		],
+		"hp": 100
+	},
+	"walls":
 	[
 		{
-			"id": 1,
-			"type": "wall",
-			"params":
-			[
-				"OBJ_IS_DESTRUCTIBLE"
-			],
-			"textures":
+			"default_walls":
 			[
 				{
-					"state": "default",
-					"pos": "north",
-					"index": 1
+					"id": 1,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 1
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 2
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 3
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 4
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "south",
-					"index": 2
+					"id": 2,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 5
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 6
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 7
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 8
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "west",
-					"index": 3
+					"id": 3,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 9
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 10
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 11
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 12
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "east",
-					"index": 4
+					"id": 4,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 13
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 14
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 15
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 16
+						}
+					]
+				},
+				{
+					"id": 5,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 17
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 18
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 19
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 20
+						}
+					]
+				},
+				{
+					"id": 6,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 21
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 22
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 23
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 24
+						}
+					]
+				},
+				{
+					"id": 7,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 25
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 26
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 27
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 28
+						}
+					]
+				},
+				{
+					"id": 8,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 29
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 30
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 31
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 32
+						}
+					]
+				},
+				{
+					"id": 9,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				}
 			]
 		},
 		{
-			"id": 2,
-			"type": "wall",
-			"params":
-			[
-				"OBJ_IS_DESTRUCTIBLE"
-			],
-			"textures":
+			"lever":
 			[
 				{
-					"state": "default",
-					"pos": "north",
-					"index": 5
+					"id": 100,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "south",
-					"index": 6
+					"id": 101,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "west",
-					"index": 7
+					"id": 102,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "east",
-					"index": 8
+					"id": 103,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 104,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 105,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 106,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 107,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 108,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 109,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 110,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 111,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 112,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 113,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 114,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 115,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 116,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 117,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 118,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 119,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 120,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				}
 			]
 		},
 		{
-			"id": 3,
-			"type": "wall",
-			"params":
-			[
-				"OBJ_IS_DESTRUCTIBLE"
-			],
-			"textures":
+			"door":
 			[
 				{
-					"state": "default",
-					"pos": "north",
-					"index": 9
+					"id": 200,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "south",
-					"index": 10
+					"id": 201,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "west",
-					"index": 11
+					"id": 202,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "east",
-					"index": 12
-				}
-			]
-		},
-		{
-			"id": 4,
-			"type": "wall",
-			"params":
-			[
-				"OBJ_IS_DESTRUCTIBLE"
-			],
-			"textures":
-			[
-				{
-					"state": "default",
-					"pos": "north",
-					"index": 13
+					"id": 203,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "south",
-					"index": 14
+					"id": 204,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "west",
-					"index": 15
+					"id": 205,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "east",
-					"index": 16
-				}
-			]
-		},
-		{
-			"id": 5,
-			"type": "wall",
-			"params":
-			[
-				"OBJ_IS_DESTRUCTIBLE"
-			],
-			"textures":
-			[
-				{
-					"state": "default",
-					"pos": "north",
-					"index": 17
+					"id": 206,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "south",
-					"index": 18
+					"id": 207,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "west",
-					"index": 19
+					"id": 208,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "east",
-					"index": 20
-				}
-			]
-		},
-		{
-			"id": 6,
-			"type": "wall",
-			"params":
-			[
-				"OBJ_IS_DESTRUCTIBLE"
-			],
-			"textures":
-			[
-				{
-					"state": "default",
-					"pos": "north",
-					"index": 21
+					"id": 209,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "south",
-					"index": 22
+					"id": 210,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "west",
-					"index": 23
+					"id": 211,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "east",
-					"index": 24
-				}
-			]
-		},
-		{
-			"id": 7,
-			"type": "wall",
-			"params":
-			[
-				"OBJ_IS_DESTRUCTIBLE"
-			],
-			"textures":
-			[
-				{
-					"state": "default",
-					"pos": "north",
-					"index": 25
+					"id": 212,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "south",
-					"index": 26
+					"id": 213,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "west",
-					"index": 27
+					"id": 214,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "east",
-					"index": 28
-				}
-			]
-		},
-		{
-			"id": 8,
-			"type": "wall",
-			"params":
-			[
-				"OBJ_IS_DESTRUCTIBLE"
-			],
-			"textures":
-			[
-				{
-					"state": "default",
-					"pos": "north",
-					"index": 29
+					"id": 215,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "south",
-					"index": 30
+					"id": 216,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "west",
-					"index": 31
+					"id": 217,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "east",
-					"index": 32
-				}
-			]
-		},
-		{
-			"id": 9,
-			"type": "wall",
-			"params":
-			[
-				"OBJ_IS_DESTRUCTIBLE"
-			],
-			"textures":
-			[
-				{
-					"state": "default",
-					"pos": "north",
-					"index": 33
+					"id": 218,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "south",
-					"index": 34
+					"id": 219,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				},
 				{
-					"state": "default",
-					"pos": "west",
-					"index": 35
-				},
-				{
-					"state": "default",
-					"pos": "east",
-					"index": 36
+					"id": 220,
+					"params": [
+						"OBJ_IS_DESTRUCTIBLE"
+					],
+					"textures": [
+						{
+							"state": "default",
+							"pos": "north",
+							"index": 33
+						},
+						{
+							"state": "default",
+							"pos": "south",
+							"index": 34
+						},
+						{
+							"state": "default",
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"state": "default",
+							"pos": "east",
+							"index": 36
+						}
+					]
 				}
 			]
 		}

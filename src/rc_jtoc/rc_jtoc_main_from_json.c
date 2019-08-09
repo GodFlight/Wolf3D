@@ -33,8 +33,25 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 	if (rc_jtoc_get_textures(m, &conf, tmp->down))
 		return (rc_jtoc_sdl_log_error("GETTING TEXTURES FAILURE", -1));
 
+	//walls
+	if (!(tmp = jtoc_node_get_by_path(root, "walls")) || tmp->type != array)
+		return (rc_jtoc_sdl_log_error("MISSING WALLS", -1));
+	if (rc_jtoc_get_walls(m, tmp))
+		return (rc_jtoc_sdl_log_error("WALLS ERROR", -1));
+	objs = (t_object *)ft_memalloc(sizeof(t_object) * 100000);
+	m->objs = objs;
+	tmp = tmp->down;
+	while (tmp)
+	{
+		if (tmp->type != object)
+			return (rc_jtoc_sdl_log_error("WALLS TYPE ERROR", -1));
+		if (rc_jtoc_get_obj(m, tmp, &conf))
+			return (rc_jtoc_sdl_log_error("OBJECT ERROR", -1));
+		tmp = tmp->right;
+	}
+
 	//objects
-	if (!(tmp = jtoc_node_get_by_path(root, "objects")) || tmp->type != array)
+/*	if (!(tmp = jtoc_node_get_by_path(root, "objects")) || tmp->type != array)
 		return (rc_jtoc_sdl_log_error("MISSING OBJECTS", -1));
 	objs = (t_object *)ft_memalloc(sizeof(t_object) * 100000);
 	m->objs = objs;
@@ -46,6 +63,6 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 		if (rc_jtoc_get_obj(m, tmp, &conf))
 			return (rc_jtoc_sdl_log_error("OBJECT ERROR", -1));
 		tmp = tmp->right;
-	}
+	}*/
 	return (FUNCTION_SUCCESS);
 }

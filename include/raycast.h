@@ -84,19 +84,48 @@ typedef struct	s_interface
 	float 	distance;
 }				t_interface;
 
-typedef struct	s_wall_texture_state
+typedef struct s_door_wall
+{
+	int			state;
+	int			open_flag;
+	int			**texture1;
+	int			**texture2;
+	int			**texture3;
+	int			**texture4;
+	int			**texture5;
+	int			**texture6;
+	int			**texture7;
+	int			**texture8;
+}				t_door_wall;
+
+typedef struct	s_lever_wall
+{
+	int			state;
+	int			**texture_north_state1;
+	int			**texture_south_state1;
+	int			**texture_west_state1;
+	int			**texture_east_state1;
+	int			**texture_north_state2;
+	int			**texture_south_state2;
+	int			**texture_west_state2;
+	int			**texture_east_state2;
+}				t_lever_wall;
+
+typedef struct	s_simple_wall
 {
 	int			**texture_north;
 	int			**texture_south;
 	int			**texture_west;
 	int			**texture_east;
-}				t_wts;
+}				t_simple_wall;
 
 typedef struct	s_wall
 {
-	t_wts	*state1;
-	t_wts	*state2;
-	t_wts	*state3;
+	int				id;
+	int				type;
+	t_door_wall		*doors;
+	t_lever_wall	*levers;
+	t_simple_wall	*walls;
 }				t_wall;
 
 typedef struct	s_object
@@ -120,6 +149,7 @@ typedef struct	s_ray_cast_main
 {
 	t_textures		textures;
 
+	t_wall			*walls;
 	int				**map;
 	int				w_map;
 	int				h_map;

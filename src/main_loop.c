@@ -35,7 +35,7 @@ void	main_loop(t_rc_main *m)
 //		draw_texture(m, m->sdl);
         SDL_SetRenderTarget(m->sdl->renderer, m->sdl->texture);
         SDL_RenderClear(m->sdl->renderer);
-//		draw_interface(m);
+		draw_interface(m);
 		SDL_UpdateTexture(m->sdl->texture, NULL, (void *)m->sdl->data, m->sdl->win_w * sizeof(int));
 		SDL_UnlockMutex(m->sdl->mutex);
         SDL_SetRenderTarget(m->sdl->renderer, NULL);

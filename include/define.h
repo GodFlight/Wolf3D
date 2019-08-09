@@ -11,8 +11,6 @@
 ** MAP
 */
 
-# define MAP_PATH "../maps/map_01"
-# define MAP_PATH_TWO "/Users//Desktop/Wolf3D/maps/map_02"
 # define MAP_SCALE 30
 
 /*
@@ -37,8 +35,8 @@
 # define BLACK 0x00000000
 # define WHITE 0xFFFFFFFF
 # define GREEN 0x00FF0000
-# define GRAY 0xC6E3E400
-# define DGRAY 0xa9a9a900
+# define GRAY 0xd3d3d3
+# define DGRAY 0xa9a9a9
 # define BLUE 0x0000FF00
 # define RED 0xFF000000
 

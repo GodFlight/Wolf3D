@@ -111,7 +111,7 @@ typedef struct  s_enemy
 {
     float       x;
     float       y;
-    int         *texture;
+    int         **texture;
 }               t_enemy;
 
 typedef struct	s_ray_cast_main
@@ -131,7 +131,7 @@ typedef struct	s_ray_cast_main
 
 //rc_jtoc
 int		rc_jtoc_is_num(enum e_type type);
-int     rc_jtoc_fill_texture_by_index(int ***texture, t_conf_json *conf, t_jnode *n);
+int     rc_jtoc_fill_texture_by_index(int ***texture, t_conf_json *conf, t_jnode *n, int id);
 int		rc_jtoc_sdl_log_error(const char *p, const int id);
 int		rc_jtoc_main_from_json(t_rc_main *m, const char *path);
 int		rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w);

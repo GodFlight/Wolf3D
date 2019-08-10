@@ -36,7 +36,7 @@ static int	get_default_wall_textures(t_wall *wall, t_conf_json *conf, t_jnode *n
     {
         if (tmp->type != object)
             return (rc_jtoc_sdl_log_error("DEFAULT WALL TEXTURE FAILURE", id));
-        if (rc_jtoc_fill_texture_by_index(&tmp_texture, conf, tmp))
+        if (rc_jtoc_fill_texture_by_index(&tmp_texture, conf, tmp, id))
             return (rc_jtoc_sdl_log_error("FILL WALL TEXTURE BY ID FAILURE", id));
         if (fill_default_wall_by_pos(wall, tmp_texture, tmp, id))
             return (FUNCTION_FAILURE);

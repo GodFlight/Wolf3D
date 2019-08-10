@@ -32,16 +32,16 @@ static t_list	*get_node_by_index_in_content_size(t_list *lst, int index)
     return (NULL);
 }
 
-int	rc_jtoc_fill_texture_by_index(int ***texture, t_conf_json *conf, t_jnode *n)
+int	rc_jtoc_fill_texture_by_index(int ***texture, t_conf_json *conf, t_jnode *n, int id)
 {
     t_jnode	*tmp;
     t_list	*cur_lst;
 
     if (!(tmp = jtoc_node_get_by_path(n, "index")) || !rc_jtoc_is_num(tmp->type))
-        return (rc_jtoc_sdl_log_error("TEXTURE INDEX FAILURE", -1));
+        return (rc_jtoc_sdl_log_error("TEXTURE INDEX FAILURE", id));
     cur_lst = get_node_by_index_in_content_size(conf->textures, jtoc_get_int(tmp));
     if (cur_lst == NULL)
-        return (rc_jtoc_sdl_log_error("GET TEXTURE BY INDEX FAILURE", -1));
+        return (rc_jtoc_sdl_log_error("GET TEXTURE BY INDEX FAILURE", id));
     *texture = (int **)cur_lst->content;
     return (FUNCTION_SUCCESS);
 }

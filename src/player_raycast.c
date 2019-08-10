@@ -6,46 +6,34 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 00:57:48 by rkeli             #+#    #+#             */
-/*   Updated: 2019/08/09 18:38:37 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/10 09:13:42 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
 #include "debug_log.h"
 
-int **choose_side(t_rc_main *m, int **tmp_arr)
+int		**choose_side(t_rc_main *m, int **tmp_arr)
 {
 	int		index;
 
 	index = m->map[(int)(m->ray.y)][(int)(m->ray.x)];
 	index = (index == 0 ? 1 : m->map[(int)(m->ray.y)][(int)(m->ray.x)]);
 	if (m->ray.hitx < m->ray.eps)
-	{
 		tmp_arr = ((t_wall *)m->objs[index].data)->state1->texture_east;
-//		SDL_Log("%sEAST%s\n", KGRN, KGRN);
-	}
 	else if (m->ray.hitx > m->ray.hity && m->ray.hity > m->ray.eps)
-	{
 		tmp_arr = ((t_wall *)m->objs[index].data)->state1->texture_west;
-//		SDL_Log("%sWEST%s\n", KYEL, KYEL);
-	}
 	else if (m->ray.hity > m->ray.eps)
-	{
 		tmp_arr = ((t_wall *)m->objs[index].data)->state1->texture_north;
-//		SDL_Log("%sNORTH%s\n", KBLU, KBLU);
-	}
-	else
-	{
+	else if (m->ray.x != 0 || m->ray.y != 0)
 		tmp_arr = ((t_wall *)m->objs[index].data)->state1->texture_south;
-//		SDL_Log("%sSOUTH%s\n", KCYN, KCYN);
-	}
 	return (tmp_arr);
 }
 
-int		draw_celling(t_sdl *sdl, float h_colum, int i)
+int			draw_celling(t_sdl *sdl, float h_colum, int i)
 {
-	int y;
-	float offset;
+	int		y;
+	float	offset;
 
 	offset = (sdl->win_h / 2 - h_colum / 2);
 	offset = offset > 0 ? offset : 1;
@@ -58,8 +46,18 @@ int		draw_celling(t_sdl *sdl, float h_colum, int i)
 	return (y);
 }
 
-void	draw_floor(t_sdl *sdl, int i, int y)
+void		draw_floor(t_sdl *sdl, int i, int y, t_rc_main *m)
 {
+//	float point_distance = m->ray.distance;
+//	float point = y;
+	if (!m)
+		return;
+//	float dist = (float)(sdl->win_w / 2 / tan(FOV / 2));
+//	for (float point = y; point < sdl->win_h; point++)
+//	{
+//		point_distance = y
+//	}
+
 	while (y < sdl->win_h)
 	{
 		sdl_put_pixel(sdl, i, y, DGRAY);
@@ -67,7 +65,7 @@ void	draw_floor(t_sdl *sdl, int i, int y)
 	}
 }
 
-void	processing_big_column(t_rc_main *m, float h_colum, int i, int **tmp_arr)
+void		processing_big_column(t_rc_main *m, float h_colum, int i, int **tmp_arr)
 {
 	int		tmp_y;
 	int		y;
@@ -108,10 +106,10 @@ static void	draw_column(t_rc_main *m, float h_colum, int i, int **tmp_arr)
 		tmp_y++;
 		y++;
 	}
-	draw_floor(m->sdl, i, y);
+	draw_floor(m->sdl, i, y, m);
 }
 
-void 	player_raycast(t_rc_main *m)
+void		player_raycast(t_rc_main *m)
 {
     float	column;
     float	cs;
@@ -123,7 +121,7 @@ void 	player_raycast(t_rc_main *m)
     tmp_arr = NULL;
     while (i < m->sdl->win_w)
     {
-		m->ray.angle = (m->player.view_dir - FOV / 2)
+    	m->ray.angle = (m->player.view_dir - FOV / 2)
 					   + (FOV * i / m->sdl->win_w);
 		m->ray.distance = 0.f;
 		cs = cos(m->ray.angle);

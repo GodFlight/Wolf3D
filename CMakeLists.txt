@@ -46,8 +46,10 @@ find_package(SDL2_ttf REQUIRED)
 #add C flags
 if (APPLE)
     set(GCC_COMPILE_FLAGS "-Wall -Werror -Wextra -O3 -D APPLE___")
-    add_definitions(${GCC_COMPILE_FLAGS})
+else()
+    set(GCC_COMPILE_FLAGS "-O3")
 endif()
+add_definitions(${GCC_COMPILE_FLAGS})
 
 #add custom libs
 add_subdirectory(libft)

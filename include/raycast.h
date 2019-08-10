@@ -107,10 +107,18 @@ typedef struct	s_textures
 	int				bpp;
 }				t_textures;
 
+typedef struct  s_enemy
+{
+    float       x;
+    float       y;
+    int         *texture;
+}               t_enemy;
+
 typedef struct	s_ray_cast_main
 {
-	t_textures		textures;
 	t_wall			*walls;
+	t_enemy         *enemies;
+    t_textures		textures;
 	int				**map;
 	int				w_map;
 	int				h_map;

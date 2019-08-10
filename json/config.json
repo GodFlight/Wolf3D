@@ -41,27 +41,21 @@
 			[
 				{
 					"id": 1,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
+					"textures":
+					[
 						{
-							"state": "default",
 							"pos": "north",
 							"index": 1
 						},
 						{
-							"state": "default",
 							"pos": "south",
 							"index": 2
 						},
 						{
-							"state": "default",
 							"pos": "west",
 							"index": 3
 						},
 						{
-							"state": "default",
 							"pos": "east",
 							"index": 4
 						}
@@ -69,223 +63,200 @@
 				},
 				{
 					"id": 2,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
+					"textures":
+					[
 						{
-							"state": "default",
+							"pos": "north",
+							"index": 1
+						},
+						{
+							"pos": "south",
+							"index": 2
+						},
+						{
+							"pos": "west",
+							"index": 3
+						},
+						{
+							"pos": "east",
+							"index": 4
+						}
+					]
+				},
+				{
+					"id": 3,
+					"textures":
+					[
+						{
 							"pos": "north",
 							"index": 5
 						},
 						{
-							"state": "default",
 							"pos": "south",
 							"index": 6
 						},
 						{
-							"state": "default",
 							"pos": "west",
 							"index": 7
 						},
 						{
-							"state": "default",
 							"pos": "east",
 							"index": 8
 						}
 					]
 				},
 				{
-					"id": 3,
-					"params": [
+					"id": 4,
+					"params":
+					[
 						"OBJ_IS_DESTRUCTIBLE"
 					],
 					"textures": [
 						{
-							"state": "default",
 							"pos": "north",
 							"index": 9
 						},
 						{
-							"state": "default",
 							"pos": "south",
 							"index": 10
 						},
 						{
-							"state": "default",
 							"pos": "west",
 							"index": 11
 						},
 						{
-							"state": "default",
 							"pos": "east",
 							"index": 12
 						}
 					]
 				},
 				{
-					"id": 4,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
+					"id": 5,
+					"textures":
+					[
 						{
-							"state": "default",
 							"pos": "north",
 							"index": 13
 						},
 						{
-							"state": "default",
 							"pos": "south",
 							"index": 14
 						},
 						{
-							"state": "default",
 							"pos": "west",
 							"index": 15
 						},
 						{
-							"state": "default",
 							"pos": "east",
 							"index": 16
 						}
 					]
 				},
 				{
-					"id": 5,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
+					"id": 6,
+					"textures":
+					[
 						{
-							"state": "default",
 							"pos": "north",
 							"index": 17
 						},
 						{
-							"state": "default",
 							"pos": "south",
 							"index": 18
 						},
 						{
-							"state": "default",
 							"pos": "west",
 							"index": 19
 						},
 						{
-							"state": "default",
 							"pos": "east",
 							"index": 20
 						}
 					]
 				},
 				{
-					"id": 6,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
+					"id": 7,
+					"textures":
+					[
 						{
-							"state": "default",
 							"pos": "north",
 							"index": 21
 						},
 						{
-							"state": "default",
 							"pos": "south",
 							"index": 22
 						},
 						{
-							"state": "default",
 							"pos": "west",
 							"index": 23
 						},
 						{
-							"state": "default",
 							"pos": "east",
 							"index": 24
 						}
 					]
 				},
 				{
-					"id": 7,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
+					"id": 8,
+					"textures":
+					[
 						{
-							"state": "default",
 							"pos": "north",
 							"index": 25
 						},
 						{
-							"state": "default",
 							"pos": "south",
 							"index": 26
 						},
 						{
-							"state": "default",
 							"pos": "west",
 							"index": 27
 						},
 						{
-							"state": "default",
 							"pos": "east",
 							"index": 28
 						}
 					]
 				},
 				{
-					"id": 8,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
+					"id": 9,
+					"textures":
+					[
 						{
-							"state": "default",
 							"pos": "north",
 							"index": 29
 						},
 						{
-							"state": "default",
 							"pos": "south",
 							"index": 30
 						},
 						{
-							"state": "default",
 							"pos": "west",
 							"index": 31
 						},
 						{
-							"state": "default",
 							"pos": "east",
 							"index": 32
 						}
 					]
 				},
 				{
-					"id": 9,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
+					"id": 10,
+					"textures":
+					[
 						{
-							"state": "default",
 							"pos": "north",
 							"index": 33
 						},
 						{
-							"state": "default",
 							"pos": "south",
 							"index": 34
 						},
 						{
-							"state": "default",
 							"pos": "west",
 							"index": 35
 						},
 						{
-							"state": "default",
 							"pos": "east",
 							"index": 36
 						}
@@ -294,16 +265,15 @@
 			]
 		},
 		{
-			"lever":
+			"walls_with_states":
 			[
 				{
-					"id": 100,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
+					"type": "levers",
+					"begin_id": 100,
+					"end_id": 199,
+					"textures":
+					[
 						{
-							"state": "default",
 							"pos": "north",
 							"index": 33
 						},
@@ -321,1159 +291,66 @@
 							"state": "default",
 							"pos": "east",
 							"index": 36
+						},
+						{
+							"state": "modified",
+							"pos": "north",
+							"index": 37
+						},
+						{
+							"state": "modified",
+							"pos": "south",
+							"index": 37
+						},
+						{
+							"state": "modified",
+							"pos": "west",
+							"index": 37
+						},
+						{
+							"state": "modified",
+							"pos": "east",
+							"index": 37
 						}
 					]
 				},
 				{
-					"id": 101,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
+					"type": "doors",
+					"begin_id": 200,
+					"end_id": 299,
+					"textures":
+					[
 						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
+							"state": "state1",
+							"index": 200
 						},
 						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
+							"state": "state2",
+							"index": 201
 						},
 						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
+							"state": "state3",
+							"index": 202
 						},
 						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 102,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 103,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 104,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 105,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 106,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 107,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 108,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 109,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 110,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 111,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 112,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 113,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 114,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 115,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 116,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 117,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 118,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 119,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 120,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				}
-			]
-		},
-		{
-			"door":
-			[
-				{
-					"id": 200,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
+							"state": "state4",
+							"index": 203
 						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 201,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 202,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 203,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 204,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 205,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 206,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 207,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 208,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 209,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 210,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 211,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 212,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 213,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 214,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 215,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 216,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 217,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 218,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 219,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
-						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						}
-					]
-				},
-				{
-					"id": 220,
-					"params": [
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
 						{
-							"state": "default",
-							"pos": "north",
-							"index": 33
+							"state": "state5",
+							"index": 204
 						},
 						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
+							"state": "state6",
+							"index": 205
 						},
 						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
+							"state": "state7",
+							"index": 206
 						},
 						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
+							"state": "state8",
+							"index": 207
 						}
 					]
 				}

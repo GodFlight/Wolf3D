@@ -52,7 +52,7 @@ void	processing_big_column(t_rc_main *m, float h_colum, int i)
 	y = -1;
 	index = m->map[(int)(m->ray.y)][(int)(m->ray.x)];
 	index = (index == 0 ? 1 : index);
-	tmp_arr = ((t_wall *)m->objs[index].data)->state1->texture_north;
+	tmp_arr = (m->walls[index]).texture1;
 	if (m->ray.hitx < m->ray.eps || (m->ray.hitx > m->ray.hity
 									 && m->ray.hity > m->ray.eps))
 		m->ray.hitx = m->ray.hity;
@@ -78,7 +78,7 @@ static void	draw_column(t_rc_main *m, float h_colum, int i)
 	offset = m->sdl->win_h / 2 + h_colum / 2;
 	index = m->map[(int)(m->ray.y)][(int)(m->ray.x)];
 	index = (index == 0 ? 1 : index);
-	tmp_arr = ((t_wall *)m->objs[index].data)->state1->texture_north;
+    tmp_arr = (m->walls[index]).texture1;
 	if (m->ray.hitx < m->ray.eps || (m->ray.hitx > m->ray.hity
 									 && m->ray.hity > m->ray.eps))
 		m->ray.hitx = m->ray.hity;

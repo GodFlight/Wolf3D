@@ -84,58 +84,20 @@ typedef struct	s_interface
 	float 	distance;
 }				t_interface;
 
-typedef struct s_door_wall
-{
-	int			state;
-	int			open_flag;
-	int			**texture1;
-	int			**texture2;
-	int			**texture3;
-	int			**texture4;
-	int			**texture5;
-	int			**texture6;
-	int			**texture7;
-	int			**texture8;
-}				t_door_wall;
-
-typedef struct	s_lever_wall
-{
-	int			state;
-	int			**texture_north_state1;
-	int			**texture_south_state1;
-	int			**texture_west_state1;
-	int			**texture_east_state1;
-	int			**texture_north_state2;
-	int			**texture_south_state2;
-	int			**texture_west_state2;
-	int			**texture_east_state2;
-}				t_lever_wall;
-
-typedef struct	s_simple_wall
-{
-	int			**texture_north;
-	int			**texture_south;
-	int			**texture_west;
-	int			**texture_east;
-}				t_simple_wall;
-
 typedef struct	s_wall
-{
-	int				id;
-	int				type;
-	t_door_wall		*doors;
-	t_lever_wall	*levers;
-	t_simple_wall	*walls;
-}				t_wall;
-
-typedef struct	s_object
 {
 	int			id;
 	int			type;
-	int			state;
-	int			params;
-	void		*data;
-}				t_object;
+	int         state;
+    int			**texture1;
+    int			**texture2;
+    int			**texture3;
+    int			**texture4;
+    int			**texture5;
+    int			**texture6;
+    int			**texture7;
+    int			**texture8;
+}				t_wall;
 
 typedef struct	s_textures
 {
@@ -148,29 +110,29 @@ typedef struct	s_textures
 typedef struct	s_ray_cast_main
 {
 	t_textures		textures;
-
 	t_wall			*walls;
 	int				**map;
 	int				w_map;
 	int				h_map;
 	float 			x;		//what is it?
 	float 			y;		//?
-	t_object		*objs;
 	t_wlf_player	player;
 	t_player_ray	ray;
 	t_sdl			*sdl;
 }				t_rc_main;
 
 //rc_jtoc
+int		rc_jtoc_is_num(enum e_type type);
+int     rc_jtoc_fill_texture_by_index(int ***texture, t_conf_json *conf, t_jnode *n);
+int		rc_jtoc_sdl_log_error(const char *p, const int id);
 int		rc_jtoc_main_from_json(t_rc_main *m, const char *path);
 int		rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w);
-int		rc_jtoc_sdl_log_error(const char *p, const int id);
-int		rc_jtoc_is_num(enum e_type type);
 int		rc_jtoc_get_map(t_rc_main *wlf, char *path);
 int		rc_jtoc_get_textures(t_rc_main *m, t_conf_json *conf, t_jnode *node);
-int		rc_jtoc_get_obj(t_rc_main *m, t_jnode *n, t_conf_json *conf);
 int		rc_jtoc_get_texture_state(int *state, t_jnode *n, int obj_id);
-int		rc_jtoc_get_wall_obj(t_object *obj, t_jnode *n, t_conf_json *conf);
+int		rc_jtoc_get_walls(t_rc_main *m, t_conf_json *conf, t_jnode *n);
+int     rc_jtoc_get_default_walls(t_wall *walls, t_conf_json *conf, t_jnode *n);
+
 
 void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
 void 	player_raycast(t_rc_main *m);

@@ -26,7 +26,8 @@
 */
 
 # define COLUM 64
-# define FOV M_PI / 3
+//# define FOV M_PI / 3
+# define FOV 66 * M_PI / 180
 
 /*
 ** COLOR

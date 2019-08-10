@@ -106,7 +106,7 @@ void 	player_raycast(t_rc_main *m)
 		m->ray.distance = 0.f;
 		cs = cos(m->ray.angle);
 		sn = sin(m->ray.angle);
-		while (m->ray.distance < 15.0f)
+		while (m->ray.distance < 50.0f)
 		{
 			m->ray.x = m->player.x + m->ray.distance * cs;
 			m->ray.y = m->player.y + m->ray.distance * sn;

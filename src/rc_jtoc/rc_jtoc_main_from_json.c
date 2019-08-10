@@ -4,6 +4,17 @@
 
 #include "raycast.h"
 
+int	rc_jtoc_get_enemies(t_rc_main *m, t_conf_json *conf, t_jnode *n)
+{
+	n = n->down;
+	while (n)
+	{
+		if (n->type != object)
+			return (rc_jtoc_sdl_log_error("ENEMY TYPE FAILURE", -1));
+		n = n->right;
+	}
+}
+
 int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 {
 	t_conf_json	conf;
@@ -26,7 +37,7 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 	if (rc_jtoc_get_map(m, jtoc_get_string(tmp)))
 		return (rc_jtoc_sdl_log_error("READING MAP FAILURE", -1));
 
-	//TODO !!textures!!
+	//TODO reading from few packs
 	if (!(tmp = jtoc_node_get_by_path(root, "textures")) || tmp->type != array)
 		return (rc_jtoc_sdl_log_error("MISSING TEXTURES", -1));
 	if (rc_jtoc_get_textures(m, &conf, tmp->down))
@@ -37,6 +48,13 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 		return (rc_jtoc_sdl_log_error("MISSING WALLS", -1));
     if (rc_jtoc_get_walls(m, &conf, tmp))
 		return (rc_jtoc_sdl_log_error("WALLS ERROR", -1));
+
+    //enemies
+	if ((tmp = jtoc_node_get_by_path(root, "enemies")) && tmp->type == array)
+	{
+		if (rc_jtoc_get_enemies(m, &conf, tmp))
+			return (rc_jtoc_sdl_log_error("ENEMIES ERROR", -1));
+	}
 
 	return (FUNCTION_SUCCESS);
 }

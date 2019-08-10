@@ -6,26 +6,27 @@ void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color)
 		sdl->data[x + y * sdl->win_w] = color;
 }
 
-void	draw_texture(t_rc_main *m, t_sdl *sdl)
-{
-	int		x;
-	int		y;
-	int		**tmp_arr;
-
-	y = 0;
-	tmp_arr = (m->walls[1]).texture1;
-	while (y < 64)
-	{
-		x = 0;
-		while (x < 64)
-		{
-			sdl->data[x + y * sdl->win_w] = tmp_arr[y][x];
-			x++;
-		}
-		y++;
-	}
-}
-
+//void	draw_texture(t_rc_main *m, t_sdl *sdl)
+//{
+//	int		x;
+//	int		y;
+//	int		**tmp_arr;
+//
+//	y = 0;
+//	tmp_arr = (m->walls[1]).texture1;
+//	m->walls->
+//	while (y < 64)
+//	{
+//		x = 0;
+//		while (x < 64)
+//		{
+//			sdl->data[x + y * sdl->win_w] = tmp_arr[y][x];
+//			x++;
+//		}
+//		y++;
+//	}
+//}
+//
 void	main_loop(t_rc_main *m)
 {
 	while (666)

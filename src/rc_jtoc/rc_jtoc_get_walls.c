@@ -27,4 +27,5 @@ int rc_jtoc_get_walls(t_rc_main *m, t_conf_json *conf, t_jnode *n)
             return (rc_jtoc_sdl_log_error("THIS WALL TYPE DOESN'T EXIST", -1));
         n = n->right;
     }
+	return (0);
 }

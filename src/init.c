@@ -28,7 +28,7 @@ t_rc_main	*rc_main_init(void)
 	m->player.rdir_y = 1.f;
 	m->player.plane_x = 0;
 	m->player.plane_y = 0.66f;
-	m->ray.eps = 0.01f;
+//	m->flr.eps = 0.01f;
 	m->objects_num = 0;
 	///////////////////////
 	m->sdl = sdl_init();

@@ -38,17 +38,23 @@
 # define OBJ_IS_DESTRUCTIBLE	(1 << 0)
 
 
-typedef struct	s_player_ray
+typedef struct	s_flr
 {
-	float 		hitx;
-	float 		hity;
-	float 		x;
-	float 		y;
-	float		i;
-	float		eps;
-	float 		angle;
-	float 		distance;
-}				t_player_ray;
+	int		map_x;
+	int		map_y;
+	int 	step_x;
+	int 	step_y;
+	int 	side;
+	int		draw_start;
+	float	side_dist_x;
+	float	side_dist_y;
+	float	wall_dist;
+	float 	hit_x;
+	float	floor_wall_x;
+	float	floor_wall_y;
+	float	floor_x;
+	float	floor_y;
+}				t_flr;
 
 typedef struct	s_rc_player
 {
@@ -60,6 +66,10 @@ typedef struct	s_rc_player
 	float		rdir_y;
 	float		plane_x;
 	float		plane_y;
+	float		camera_x;
+	float 		delta_dist_x;
+	float		delta_dist_y;
+	float		intensity;
 }				t_rc_player;
 
 typedef struct	s_sdl
@@ -114,7 +124,7 @@ typedef struct	s_object
 typedef struct	s_ray_cast_main
 {
 	t_rc_player		player;
-	t_player_ray	ray;
+	t_flr			flr;
 	t_wall			*walls;
 	t_object		*objects;
 	int				objects_num;
@@ -130,20 +140,29 @@ int		rc_jtoc_fill_texture_by_index(int ***texture, t_conf_json *conf, t_jnode *n
 int		rc_jtoc_sdl_log_error(const char *p, const int id);
 int		rc_jtoc_main_from_json(t_rc_main *m, const char *path);
 int		rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w);
-int rc_jtoc_get_map(t_rc_main *m, char *path);
-int rc_jtoc_get_textures(t_conf_json *conf, t_jnode *node);
+int		rc_jtoc_get_map(t_rc_main *m, char *path);
+int		rc_jtoc_get_textures(t_conf_json *conf, t_jnode *node);
 int		rc_jtoc_get_texture_state(int *state, t_jnode *n, int obj_id);
 int		rc_jtoc_get_walls(t_rc_main *m, t_conf_json *conf, t_jnode *n);
 int		rc_jtoc_get_default_walls(t_wall *walls, t_conf_json *conf, t_jnode *n);
-int rc_jtoc_processing_map(t_rc_main *m);
+int		rc_jtoc_processing_map(t_rc_main *m);
 
 void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
 void 	raycast_and_draw(t_rc_main *m);
 void	draw_objects(t_rc_main *m);
 void	main_loop(t_rc_main *m);
 int		physics(void *m);
+int		step_y_calculate(t_rc_main *m, float ray_dir_y);
+int		step_x_calculate(t_rc_main *m, float ray_dir_x);
+void	wall_dist_and_hit_x_calculate(t_rc_main *m, float ray_dir_x,
+										  float ray_dir_y);
+void	find_dist_y(t_rc_main *m, float ray_dir_x, float ray_dir_y);
+void	flr_or_clng_offset_calculate(t_rc_main *m, float ray_dir_x,
+										 float ray_dir_y);
 t_rc_main	*rc_main_init();
-int		rgb_to_hex(int r, int g, int b);
+int		rgb_to_hex(char r, char g, char b, char a);
 void	draw_interface(t_rc_main *m);
+int 		rgb_mod(int color, float mod);
+int		clmp(int a, int min, int max);
 
 #endif

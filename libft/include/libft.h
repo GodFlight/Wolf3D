@@ -108,5 +108,6 @@ char				*ft_updt(char *str, char *update);
 void				ft_swap(int *a, int *b);
 void				ft_sort_bubl(int ac, char **av);
 int					ft_abs(int a);
+void    ft_segfault(void);
 
 #endif

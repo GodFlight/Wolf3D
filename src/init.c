@@ -20,10 +20,16 @@ t_rc_main	*rc_main_init(void)
 	if (!(m = (t_rc_main *)ft_memalloc(sizeof(t_rc_main))))
 		exit(20);
 	//TODO IT'S JSON WORK!
-	m->player.y = 1.4f;
-	m->player.x =  1.4f;
-	m->player.view_dir = 0.5f;
+	m->player.y = 8.5f;
+	m->player.x = 3.5f;
+	m->player.fdir_x = -1.f;
+	m->player.fdir_y = 0.f;
+	m->player.rdir_x = 0.f;
+	m->player.rdir_y = 1.f;
+	m->player.plane_x = 0;
+	m->player.plane_y = 0.66f;
 	m->ray.eps = 0.01f;
+	m->objects_num = 0;
 	///////////////////////
 	m->sdl = sdl_init();
 	return (m);

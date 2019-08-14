@@ -12,15 +12,15 @@
 
 #include "raycast.h"
 
-static void	draw_ray(t_rc_main *m)
+/*static void	draw_ray(t_rc_main *m)
 {
 	t_interface	intf;
 	float		cs;
 	float		sn;
 	int			i;
 
-	i = 0;
-	while (i < m->sdl->win_w)
+	i = -1;
+	while (++i < m->sdl->win_w)
 	{
 		intf.angle = (m->player.view_dir - FOV / 2)
 						 + (FOV * i / m->sdl->win_w);
@@ -37,9 +37,8 @@ static void	draw_ray(t_rc_main *m)
 			* MAP_SCALE), BLUE);
 			intf.distance += 0.03f;
 		}
-		i++;
 	}
-}
+}*/
 
 static void	draw_map(t_rc_main *m)
 {
@@ -47,10 +46,10 @@ static void	draw_map(t_rc_main *m)
 	int x;
 
 	y = 0;
-	while (y < m->h_map * MAP_SCALE)
+	while (y < m->map_h * MAP_SCALE)
 	{
 		x = 0;
-		while (x < m->w_map * MAP_SCALE)
+		while (x < m->map_w * MAP_SCALE)
 		{
 			if (m->player.y && m->player.x)
 				sdl_put_pixel(m->sdl, m->player.x * MAP_SCALE,
@@ -68,5 +67,5 @@ static void	draw_map(t_rc_main *m)
 void	draw_interface(t_rc_main *m)
 {
 	draw_map(m);
-	draw_ray(m);
+//	draw_ray(m);
 }

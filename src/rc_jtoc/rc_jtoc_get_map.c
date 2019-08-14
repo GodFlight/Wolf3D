@@ -27,7 +27,7 @@ static char	*ft_str_space_plus_join_free(char *s, char const *s1)
 	free(check);
 	return (a);
 }
-//TODO сделать обработку строк разной длины
+
 static char	**create_tmp_arr_and_find_sizes(int fd, t_rc_main *wlf)
 {
 	char    *line;
@@ -35,22 +35,24 @@ static char	**create_tmp_arr_and_find_sizes(int fd, t_rc_main *wlf)
 	char    **tmp_arr;
 
 	get_next_line(fd, &line);
-	wlf->h_map = 1;
-	wlf->w_map = ft_strwcnumber(line, ' ');
+	wlf->map_h = 1;
+	wlf->map_w = ft_strwcnumber(line, ' ');
 	all_lines = ft_strdup(line);
 	free(line);
 	while (get_next_line(fd, &line) == 1)
 	{
+	    if (ft_strwcnumber(line, ' ') != wlf->map_w)
+            return (NULL);
 		all_lines = ft_str_space_plus_join_free(all_lines, line);
 		free(line);
-		wlf->h_map++;
+		wlf->map_h++;
 	}
 	tmp_arr = ft_strsplit(all_lines, ' ');
 	free(all_lines);
 	return (tmp_arr);
 }
 
-static int	map_read(t_rc_main *wlf, int fd)
+static int	map_read(t_rc_main *m, int fd)
 {
 	char	**tmp_arr;
 	int		i;
@@ -60,30 +62,31 @@ static int	map_read(t_rc_main *wlf, int fd)
 
 	i = -1;
 	k = -1;
-	tmp_arr = create_tmp_arr_and_find_sizes(fd, wlf);
-//TODO сделать обработку строк разной длины
-	if (!tmp_arr)
-		return (FUNCTION_FAILURE);
-	map = (int **)ft_memalloc(sizeof(int *) * wlf->h_map);
-	while (++i < wlf->h_map)
+	tmp_arr = create_tmp_arr_and_find_sizes(fd, m);
+	if (!tmp_arr || m->map_w == 1 || m->map_h == 1)
+	    return (rc_jtoc_sdl_log_error("MAP NOT VALID (BAD READING OR STRINGS SIZE)", -1));
+	map = (int **)ft_memalloc(sizeof(int *) * m->map_h);
+	while (++i < m->map_h)
 	{
 		j = -1;
-		map[i] = (int *)ft_memalloc(sizeof(int) * wlf->w_map);
-		while (++j < wlf->w_map)
+		map[i] = (int *)ft_memalloc(sizeof(int) * m->map_w);
+		while (++j < m->map_w)
 			map[i][j] = ft_atoi(tmp_arr[++k]);
 	}
-	wlf->map = map;
-	ft_clear_double_pointer((void **)tmp_arr, wlf->w_map * wlf->h_map);
+	m->map = map;
+	ft_clear_double_pointer((void **)tmp_arr, m->map_w * m->map_h);
 	return (FUNCTION_SUCCESS);
 }
 
-int	rc_jtoc_get_map(t_rc_main *wlf, char *path)
+int	rc_jtoc_get_map(t_rc_main *m, char *path, t_conf_json *conf)
 {
 	int	fd;
 
 	if ((fd = open(path, O_RDONLY)) == -1)
 		return (rc_jtoc_sdl_log_error("OPEN MAP FAILURE", -1));
-	if (map_read(wlf, fd))
+	if (map_read(m, fd))
 		return (FUNCTION_FAILURE);
+    if (rc_jtoc_processing_map(m, conf))
+        return (rc_jtoc_sdl_log_error("MAP NOT VALID", -1));
 	return (FUNCTION_SUCCESS);
 }

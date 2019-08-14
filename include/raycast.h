@@ -1,3 +1,5 @@
+
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -20,6 +22,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include "libjtoc.h"
+# include "rc_jtoc.h"
 
 
 # define KNRM				"\x1B[0m"
@@ -34,11 +37,6 @@
 //obj params
 # define OBJ_IS_DESTRUCTIBLE	(1 << 0)
 
-typedef struct	s_conf_json
-{
-	t_list		*textures;
-	int			index;
-}				t_conf_json;
 
 typedef struct	s_player_ray
 {
@@ -52,12 +50,17 @@ typedef struct	s_player_ray
 	float 		distance;
 }				t_player_ray;
 
-typedef struct	s_wlf_player
+typedef struct	s_rc_player
 {
-	float 		x;
-	float 		y;
-	float 		view_dir;
-}				t_wlf_player;
+	float		x;
+	float		y;
+	float		fdir_x;
+	float		fdir_y;
+	float		rdir_x;
+	float		rdir_y;
+	float		plane_x;
+	float		plane_y;
+}				t_rc_player;
 
 typedef struct	s_sdl
 {
@@ -89,72 +92,58 @@ typedef struct	s_wall
 	int			id;
 	int			type;
 	int         state;
-    int			**texture1;
-    int			**texture2;
-    int			**texture3;
-    int			**texture4;
-    int			**texture5;
-    int			**texture6;
-    int			**texture7;
-    int			**texture8;
+	int			**texture1;
+	int			**texture2;
+	int			**texture3;
+	int			**texture4;
+	int			**texture5;
+	int			**texture6;
+	int			**texture7;
+	int			**texture8;
 }				t_wall;
 
-typedef struct	s_textures
-{
-	int				num;
-	int				w;
-	int				h;
-	int				bpp;
-}				t_textures;
 
-typedef struct  s_enemy
+typedef struct	s_object
 {
-    float       x;
-    float       y;
-    int         **texture;
-}               t_enemy;
+	float		x;
+	float		y;
+	int			id;
+	int			**texture;
+}				t_object;
 
 typedef struct	s_ray_cast_main
 {
-	t_wall			*walls;
-	t_enemy         *enemies;
-    t_textures		textures;
-	int				**map;
-	int				w_map;
-	int				h_map;
-	float 			x;		//what is it?
-	float 			y;		//?
-	t_wlf_player	player;
+	t_rc_player		player;
 	t_player_ray	ray;
+	t_wall			*walls;
+	t_object		*objects;
+	int				objects_num;
+	int				**map;
+	int				**phys_map;
+	int				map_w;
+	int				map_h;
 	t_sdl			*sdl;
 }				t_rc_main;
 
-//rc_jtoc
 int		rc_jtoc_is_num(enum e_type type);
-int     rc_jtoc_fill_texture_by_index(int ***texture, t_conf_json *conf, t_jnode *n, int id);
+int		rc_jtoc_fill_texture_by_index(int ***texture, t_conf_json *conf, t_jnode *n, int id);
 int		rc_jtoc_sdl_log_error(const char *p, const int id);
 int		rc_jtoc_main_from_json(t_rc_main *m, const char *path);
 int		rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w);
-int		rc_jtoc_get_map(t_rc_main *wlf, char *path);
+int		rc_jtoc_get_map(t_rc_main *m, char *path, t_conf_json *conf);
 int		rc_jtoc_get_textures(t_rc_main *m, t_conf_json *conf, t_jnode *node);
 int		rc_jtoc_get_texture_state(int *state, t_jnode *n, int obj_id);
 int		rc_jtoc_get_walls(t_rc_main *m, t_conf_json *conf, t_jnode *n);
-int     rc_jtoc_get_default_walls(t_wall *walls, t_conf_json *conf, t_jnode *n);
-
+int		rc_jtoc_get_default_walls(t_wall *walls, t_conf_json *conf, t_jnode *n);
+int		rc_jtoc_processing_map(t_rc_main *m, t_conf_json *conf);
 
 void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
-void 	player_raycast(t_rc_main *m);
+void 	raycast_and_draw(t_rc_main *m);
+void	draw_objects(t_rc_main *m);
 void	main_loop(t_rc_main *m);
 int		physics(void *m);
-
-//init
 t_rc_main	*rc_main_init();
-
-//rc_utilits
 int		rgb_to_hex(int r, int g, int b);
-
-
-//interface
 void	draw_interface(t_rc_main *m);
 
 #endif

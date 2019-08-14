@@ -73,4 +73,5 @@ target_sources(ft PUBLIC
         ft_isstn.c
         ft_strhash.c
         ft_clear_double_pointer.c
+        ft_segfault.c
         )

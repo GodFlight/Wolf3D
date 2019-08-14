@@ -4,58 +4,59 @@
 
 #include "raycast.h"
 
-int get_enemy_textures(t_enemy *enemy, t_conf_json *conf, t_jnode *n, int id)
+int get_object_textures(t_object *obj, t_conf_json *conf, t_jnode *n, int id)
 {
-    t_jnode *tmp;
-    int     **tmp_texture;
+	t_jnode *tmp;
+	int     **tmp_texture;
 
-    if (!(tmp = jtoc_node_get_by_path(n, "textures")))
-        return (rc_jtoc_sdl_log_error("ENEMY TEXTURE FAILURE", id));
-    tmp = tmp->down;
-    while (tmp)
-    {
-        if (tmp->type != object)
-            return (rc_jtoc_sdl_log_error("ENEMY TEXTURE TYPE FAILURE", id));
-        if (rc_jtoc_fill_texture_by_index(&tmp_texture, conf, tmp, id))
-            return (rc_jtoc_sdl_log_error("ENEMY GET TEXTURE BY INDEX FAILURE", id));
-        enemy->texture = tmp_texture;
-        tmp = tmp->right;
-    }
-    return (FUNCTION_SUCCESS);
+	if (!(tmp = jtoc_node_get_by_path(n, "textures")))
+		return (rc_jtoc_sdl_log_error("OBJECT TEXTURE FAILURE", id));
+	tmp = tmp->down;
+	while (tmp)
+	{
+		if (tmp->type != object)
+			return (rc_jtoc_sdl_log_error("OBJECT TEXTURE TYPE FAILURE", id));
+		if (rc_jtoc_fill_texture_by_index(&tmp_texture, conf, tmp, id))
+			return (rc_jtoc_sdl_log_error("OBJECT GET TEXTURE BY INDEX FAILURE", id));
+		obj->texture = tmp_texture;  //TODO now there is only one texture in object
+		tmp = tmp->right;
+	}
+	return (FUNCTION_SUCCESS);
 }
 
-int	rc_jtoc_get_enemies(t_rc_main *m, t_conf_json *conf, t_jnode *n)
+static void	fill_objects_by_id(t_rc_main *m, t_object *object)
 {
-    int     i;
-    t_jnode *tmp_n;
-    t_jnode *tmp;
-    t_enemy tmp_enemy;
-    int     id;
+	int			i;
+	t_object	*objs;
 
-    i = 0;
-    tmp_n = n->down;
-    while (tmp_n)
-    {
-        if (tmp_n->type != object)
-            return (rc_jtoc_sdl_log_error("ENEMY TYPE FAILURE", -1));
-        i++;
-        tmp_n = tmp_n->right;
-    }
-    m->enemies = (t_enemy *)ft_memalloc(sizeof(t_enemy) * i);
-	n = n->down;
 	i = -1;
+	objs = m->objects;
+	while (++i < m->objects_num)
+	{
+		if (object->id == objs[i].id)
+		{
+			objs[i].texture = object->texture;
+		}
+	}
+}
+
+int	rc_jtoc_get_objects(t_rc_main *m, t_conf_json *conf, t_jnode *n)
+{
+	t_jnode		*tmp;
+	t_object	tmp_obj;
+
+	n = n->down;
 	while (n)
 	{
-	    i++;
-        if (!(tmp = jtoc_node_get_by_path(n, "id")) || !(rc_jtoc_is_num(tmp->type)))
-            return (rc_jtoc_sdl_log_error("ENEMY ID FAILURE", -1));
-        id = jtoc_get_int(tmp);
-        if (id < 1000 || id > 1999)
-            return (rc_jtoc_sdl_log_error("ENEMY INCORRECT ID", -1));
-        if (get_enemy_textures(&tmp_enemy, conf, n, id))
-            return (rc_jtoc_sdl_log_error("ENEMY TEXTURES FAILURE", -1));
-        m->enemies[i] = tmp_enemy;
-        n = n->right;
+		if (!(tmp = jtoc_node_get_by_path(n, "id")) || !(rc_jtoc_is_num(tmp->type)))
+			return (rc_jtoc_sdl_log_error("OBJECT ID FAILURE", -1));
+		tmp_obj.id = jtoc_get_int(tmp);
+		if (tmp_obj.id < 800 || tmp_obj.id > 998)
+			return (rc_jtoc_sdl_log_error("OBJECT INCORRECT ID", tmp_obj.id));
+		if (get_object_textures(&tmp_obj, conf, n, tmp_obj.id))
+			return (rc_jtoc_sdl_log_error("OBJECT TEXTURES FAILURE", tmp_obj.id));
+		fill_objects_by_id(m, &tmp_obj);
+		n = n->right;
 	}
 	return (FUNCTION_SUCCESS);
 }
@@ -65,6 +66,10 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 	t_conf_json	conf;
 	t_jnode		*root;
 	t_jnode		*tmp;
+
+	//conf init
+	conf.index = 0;
+	conf.textures = NULL;
 
 	//root
 	if (!(root = jtoc_read(path)))
@@ -79,7 +84,7 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 	//map
 	if (!(tmp = jtoc_node_get_by_path(root, "map")) || tmp->type != string)
 		return (rc_jtoc_sdl_log_error("MISSING MAP", -1));
-	if (rc_jtoc_get_map(m, jtoc_get_string(tmp)))
+	if (rc_jtoc_get_map(m, jtoc_get_string(tmp), &conf))
 		return (rc_jtoc_sdl_log_error("READING MAP FAILURE", -1));
 
 	//TODO reading from few packs
@@ -94,11 +99,11 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
     if (rc_jtoc_get_walls(m, &conf, tmp))
 		return (rc_jtoc_sdl_log_error("WALLS ERROR", -1));
 
-    //enemies
-	if ((tmp = jtoc_node_get_by_path(root, "enemies")) && tmp->type == array)
+    //objects
+	if ((tmp = jtoc_node_get_by_path(root, "objects")) && tmp->type == array)
 	{
-		if (rc_jtoc_get_enemies(m, &conf, tmp))
-			return (rc_jtoc_sdl_log_error("ENEMIES ERROR", -1));
+		if (rc_jtoc_get_objects(m, &conf, tmp))
+			return (rc_jtoc_sdl_log_error("OBJECTS ERROR", -1));
 	}
 
 	return (FUNCTION_SUCCESS);

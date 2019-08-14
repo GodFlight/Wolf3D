@@ -8,7 +8,7 @@ target_sources(Wolf3D PUBLIC
         main.c
         main_loop.c
         physics.c
-        player_raycast.c
+        raycast_and_draw.c
         )
 
 add_subdirectory(rc_jtoc)

@@ -84,13 +84,13 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 	//map
 	if (!(tmp = jtoc_node_get_by_path(root, "map")) || tmp->type != string)
 		return (rc_jtoc_sdl_log_error("MISSING MAP", -1));
-	if (rc_jtoc_get_map(m, jtoc_get_string(tmp), &conf))
+	if (rc_jtoc_get_map(m, jtoc_get_string(tmp)))
 		return (rc_jtoc_sdl_log_error("READING MAP FAILURE", -1));
 
 	//TODO reading from few packs
 	if (!(tmp = jtoc_node_get_by_path(root, "textures")) || tmp->type != array)
 		return (rc_jtoc_sdl_log_error("MISSING TEXTURES", -1));
-	if (rc_jtoc_get_textures(m, &conf, tmp->down))
+	if (rc_jtoc_get_textures(&conf, tmp->down))
 		return (rc_jtoc_sdl_log_error("GETTING TEXTURES FAILURE", -1));
 
 	//walls

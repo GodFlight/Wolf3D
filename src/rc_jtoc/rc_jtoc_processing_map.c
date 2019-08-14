@@ -19,7 +19,7 @@ static int	check_bounds(int **map, int h_map, int w_map)
 	return (FUNCTION_SUCCESS);
 }
 
-static int	get_phys_map_and_objs_num(t_rc_main *m, t_conf_json *conf, int **map)
+static int get_phys_map_and_objs_num(t_rc_main *m, int **map)
 {
 	int	i;
 	int	j;
@@ -50,7 +50,7 @@ static int	get_phys_map_and_objs_num(t_rc_main *m, t_conf_json *conf, int **map)
 	return (FUNCTION_SUCCESS);
 }
 
-static int	get_objects_arr(t_rc_main *m, t_conf_json *conf, int **map)
+static int get_objects_arr(t_rc_main *m, int **map)
 {
 	int	i;
 	int	j;
@@ -73,13 +73,15 @@ static int	get_objects_arr(t_rc_main *m, t_conf_json *conf, int **map)
 			}
 		}
 	}
+	return (FUNCTION_SUCCESS);
 }
 
-int	rc_jtoc_processing_map(t_rc_main *m, t_conf_json *conf)
+int rc_jtoc_processing_map(t_rc_main *m)
 {
 	if (check_bounds(m->map, m->map_h, m->map_w))
 		return (rc_jtoc_sdl_log_error("BAD BOUNDS", -1));
-	if (get_phys_map_and_objs_num(m, conf, m->map))
+	if (get_phys_map_and_objs_num(m, m->map))
 		return (rc_jtoc_sdl_log_error("PROCESSING MAP FAILURE", -1));
-	get_objects_arr(m, conf, m->phys_map);
+	get_objects_arr(m, m->phys_map);
+	return (FUNCTION_SUCCESS);
 }

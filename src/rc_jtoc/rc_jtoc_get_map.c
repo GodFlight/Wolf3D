@@ -41,7 +41,7 @@ static char	**create_tmp_arr_and_find_sizes(int fd, t_rc_main *wlf)
 	free(line);
 	while (get_next_line(fd, &line) == 1)
 	{
-	    if (ft_strwcnumber(line, ' ') != wlf->map_w)
+	    if (ft_strwcnumber(line, ' ') != (size_t)wlf->map_w)
             return (NULL);
 		all_lines = ft_str_space_plus_join_free(all_lines, line);
 		free(line);
@@ -78,7 +78,7 @@ static int	map_read(t_rc_main *m, int fd)
 	return (FUNCTION_SUCCESS);
 }
 
-int	rc_jtoc_get_map(t_rc_main *m, char *path, t_conf_json *conf)
+int rc_jtoc_get_map(t_rc_main *m, char *path)
 {
 	int	fd;
 
@@ -86,7 +86,7 @@ int	rc_jtoc_get_map(t_rc_main *m, char *path, t_conf_json *conf)
 		return (rc_jtoc_sdl_log_error("OPEN MAP FAILURE", -1));
 	if (map_read(m, fd))
 		return (FUNCTION_FAILURE);
-    if (rc_jtoc_processing_map(m, conf))
+    if (rc_jtoc_processing_map(m))
         return (rc_jtoc_sdl_log_error("MAP NOT VALID", -1));
 	return (FUNCTION_SUCCESS);
 }

@@ -67,8 +67,8 @@ static int get_objects_arr(t_rc_main *m, int **map)
 			if (map[i][j] >= 800 && map[i][j] <= 998)
 			{
 				m->objects[obj_count].id = map[i][j];
-				m->objects[obj_count].x = j + 0.5f;
-				m->objects[obj_count].y = i + 0.5f;
+				m->objects[obj_count].x = i + 0.5f;
+				m->objects[obj_count].y = j + 0.5f;
 				obj_count++;
 			}
 		}

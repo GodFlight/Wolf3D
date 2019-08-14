@@ -20,8 +20,8 @@ t_rc_main	*rc_main_init(void)
 	if (!(m = (t_rc_main *)ft_memalloc(sizeof(t_rc_main))))
 		exit(20);
 	//TODO IT'S JSON WORK!
-	m->player.y = 8.5f;
-	m->player.x = 3.5f;
+	m->player.y = 1.6f;
+	m->player.x = 1.6f;
 	m->player.fdir_x = -1.f;
 	m->player.fdir_y = 0.f;
 	m->player.rdir_x = 0.f;

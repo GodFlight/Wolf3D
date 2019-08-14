@@ -32,7 +32,7 @@ void	main_loop(t_rc_main *m)
 	{
 		SDL_LockMutex(m->sdl->mutex);
 		raycast_and_draw(m);
-//		draw_objects(m);
+		draw_objects(m);
 //		draw_texture(m, m->sdl);
 		SDL_SetRenderTarget(m->sdl->renderer, m->sdl->texture);
 		SDL_RenderClear(m->sdl->renderer);

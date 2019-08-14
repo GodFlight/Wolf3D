@@ -2,31 +2,30 @@
 
 void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color)
 {
-	if ((x >= 0 && x < sdl->win_w) && (y >= 0 && y < sdl->win_w))
+	if ((x >= 0 && x < sdl->win_w) && (y >= 0 && y < sdl->win_h))
 		sdl->data[x + y * sdl->win_w] = color;
 }
 
-//void	draw_texture(t_rc_main *m, t_sdl *sdl)
-//{
-//	int		x;
-//	int		y;
-//	int		**tmp_arr;
-//
-//	y = 0;
-//	tmp_arr = (m->walls[1]).texture1;
-//	m->walls->
-//	while (y < 64)
-//	{
-//		x = 0;
-//		while (x < 64)
-//		{
-//			sdl->data[x + y * sdl->win_w] = tmp_arr[y][x];
-//			x++;
-//		}
-//		y++;
-//	}
-//}
-//
+void	draw_texture(t_rc_main *m, t_sdl *sdl)
+{
+	int		x;
+	int		y;
+	int		**tmp_arr;
+
+	y = 0;
+	tmp_arr = (m->walls[1]).texture3;
+	while (y < 64)
+	{
+		x = 0;
+		while (x < 64)
+		{
+			sdl->data[x + y * sdl->win_w] = tmp_arr[y][x];
+			x++;
+		}
+		y++;
+	}
+}
+
 void	main_loop(t_rc_main *m)
 {
 	while (666)
@@ -37,7 +36,7 @@ void	main_loop(t_rc_main *m)
 //		draw_texture(m, m->sdl);
 		SDL_SetRenderTarget(m->sdl->renderer, m->sdl->texture);
 		SDL_RenderClear(m->sdl->renderer);
-		draw_interface(m);
+//		draw_interface(m);
 		SDL_UpdateTexture(m->sdl->texture, NULL, (void *)m->sdl->data, m->sdl->win_w * sizeof(int));
 		SDL_UnlockMutex(m->sdl->mutex);
 		SDL_SetRenderTarget(m->sdl->renderer, NULL);

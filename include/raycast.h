@@ -130,12 +130,12 @@ int		rc_jtoc_fill_texture_by_index(int ***texture, t_conf_json *conf, t_jnode *n
 int		rc_jtoc_sdl_log_error(const char *p, const int id);
 int		rc_jtoc_main_from_json(t_rc_main *m, const char *path);
 int		rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w);
-int		rc_jtoc_get_map(t_rc_main *m, char *path, t_conf_json *conf);
-int		rc_jtoc_get_textures(t_rc_main *m, t_conf_json *conf, t_jnode *node);
+int rc_jtoc_get_map(t_rc_main *m, char *path);
+int rc_jtoc_get_textures(t_conf_json *conf, t_jnode *node);
 int		rc_jtoc_get_texture_state(int *state, t_jnode *n, int obj_id);
 int		rc_jtoc_get_walls(t_rc_main *m, t_conf_json *conf, t_jnode *n);
 int		rc_jtoc_get_default_walls(t_wall *walls, t_conf_json *conf, t_jnode *n);
-int		rc_jtoc_processing_map(t_rc_main *m, t_conf_json *conf);
+int rc_jtoc_processing_map(t_rc_main *m);
 
 void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
 void 	raycast_and_draw(t_rc_main *m);

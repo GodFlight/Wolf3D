@@ -6,23 +6,23 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 00:57:35 by rkeli             #+#    #+#             */
-/*   Updated: 2019/08/07 00:57:35 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/14 11:08:06 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
 
-/*static void	draw_ray(t_rc_main *m)
+static void	draw_ray(t_rc_main *m)
 {
 	t_interface	intf;
 	float		cs;
 	float		sn;
 	int			i;
 
-	i = -1;
-	while (++i < m->sdl->win_w)
+	i = 0;
+	while (i < m->sdl->win_w)
 	{
-		intf.angle = (m->player.view_dir - FOV / 2)
+		intf.angle = (1 - FOV / 2)
 						 + (FOV * i / m->sdl->win_w);
 		intf.distance = 0.f;
 		cs = cos(intf.angle);
@@ -37,8 +37,9 @@
 			* MAP_SCALE), BLUE);
 			intf.distance += 0.03f;
 		}
+		i++;
 	}
-}*/
+}
 
 static void	draw_map(t_rc_main *m)
 {
@@ -67,5 +68,5 @@ static void	draw_map(t_rc_main *m)
 void	draw_interface(t_rc_main *m)
 {
 	draw_map(m);
-//	draw_ray(m);
+	draw_ray(m);
 }

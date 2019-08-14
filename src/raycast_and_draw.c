@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast_and_draw.c                                   :+:      :+:    :+:   */
+/*   raycast_and_draw.c                                   :+:      :+:    :+: */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 00:57:48 by rkeli             #+#    #+#             */
-/*   Updated: 2019/08/10 17:27:11 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/14 12:47:08 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,36 +83,38 @@ void		processing_big_column(t_rc_main *m, float h_colum, int i, int **tmp_arr)
 	}
 }
 
-static void	draw_column(t_rc_main *m, float h_colum, int i, int **tmp_arr)
-{
-	int 	tmp_y;
-	int 	y;
-	float 	offset;
-	float 	relation;
-
-	tmp_y = 0;
-	relation = COLUM / h_colum;
-	y = draw_celling(m->sdl, h_colum, i);
-	offset = m->sdl->win_h / 2 + h_colum / 2;
-	if (m->ray.hitx < m->ray.eps || (m->ray.hitx > m->ray.hity
-									 && m->ray.hity > m->ray.eps))
-		m->ray.hitx = m->ray.hity;
-	while (y < offset - 1)
-	{
-		sdl_put_pixel(m->sdl, i, y,
-				tmp_arr[(int)(tmp_y * relation)][(int)(m->ray.hitx * COLUM)]);
-		tmp_y++;
-		y++;
-	}
-	while (y < m->sdl->win_h)
-	{
-        sdl_put_pixel(m->sdl, i, y, 120);
-        y++;
-    }
+//static void	draw_column(t_rc_main *m, float h_colum, int i, int **tmp_arr)
+//{
+//	int 	tmp_y;
+//	int 	y;
+//	float 	offset;
+//	float 	relation;
+//
+//	tmp_y = 0;
+//	relation = COLUM / h_colum;
+//	y = draw_celling(m->sdl, h_colum, i);
+//	offset = m->sdl->win_h / 2 + h_colum / 2;
+//	if (m->ray.hitx < m->ray.eps || (m->ray.hitx > m->ray.hity
+//									 && m->ray.hity > m->ray.eps))
+//		m->ray.hitx = m->ray.hity;
+//	while (y < offset - 1)
+//	{
+//		sdl_put_pixel(m->sdl, i, y,
+//				tmp_arr[(int)(tmp_y * relation)][(int)(m->ray.hitx * COLUM)]);
+//		tmp_y++;
+//		y++;
+//	}
+//	while (y < m->sdl->win_h)
+//	{
+//        sdl_put_pixel(m->sdl, i, y, 120);
+//        y++;
+//    }
 //	draw_floor(m->sdl, i, y, m);
-}
+//}
 
 //void raycast
+
+//void		floor_casting(int j, int h, )
 
 void		raycast_and_draw(t_rc_main *m)
 {
@@ -136,7 +138,19 @@ void		raycast_and_draw(t_rc_main *m)
 	int		line_h;
 	int		draw_start;
 	int		draw_end;
+	int		wall_tex_x;
+	int 	**tmp_arr;
+	float	weight;
+	float	floor_wall_x;
+	float	floor_wall_y;
+	float 	hit_x;
+	float	floor_x;
+	float	floor_y;
+	float	current_dist;
+	int		floor_tex_x;
+	int		floor_tex_y;
 
+	tmp_arr = (m->walls[3]).texture1;
 	i = -1;
 	while (++i < w)
 	{
@@ -146,11 +160,8 @@ void		raycast_and_draw(t_rc_main *m)
 		camera_x = 2.f * i / (float)w - 1.f;
 		ray_dir_x = m->player.fdir_x + m->player.plane_x * camera_x;
 		ray_dir_y = m->player.fdir_y + m->player.plane_y * camera_x;
-		delta_dist_x = sqrtf(1 + (ray_dir_y * ray_dir_y) / (ray_dir_x * ray_dir_x));
-		delta_dist_y = sqrtf(1 + (ray_dir_x * ray_dir_x) / (ray_dir_y * ray_dir_y));
-		//it must work, but it not
-//		delta_dist_x = abs(1.f / ray_dir_x);
-//		delta_dist_y = abs(1.f / ray_dir_y);
+		delta_dist_x = ABS(1.f / ray_dir_x);
+		delta_dist_y = ABS(1.f / ray_dir_y);
 		if (ray_dir_x < 0)
 		{
 			step_x = -1;
@@ -192,6 +203,11 @@ void		raycast_and_draw(t_rc_main *m)
 			wall_dist = (map_x - m->player.x + (1 - step_x) / 2) / ray_dir_x;
 		else
 			wall_dist = (map_y - m->player.y + (1 - step_y) / 2) / ray_dir_y;
+		if (side == 0)
+			hit_x = m->player.y + wall_dist * ray_dir_y;
+		else
+			hit_x = m->player.x + wall_dist * ray_dir_x;
+		hit_x -= floor((hit_x));
 		line_h = (int)(h / wall_dist);
 		draw_start = -line_h / 2 + h / 2;
 		if (draw_start < 0)
@@ -199,33 +215,67 @@ void		raycast_and_draw(t_rc_main *m)
 		draw_end = line_h / 2 + h / 2;
 		if (draw_end >= h)
 			draw_end = h - 1;
+		wall_tex_x = (int)(hit_x * (float)(COLUM));
+		if (side == 0 && ray_dir_x > 0)
+			wall_tex_x = COLUM - wall_tex_x - 1;
+		else if (side == 1 && ray_dir_y < 0)
+			wall_tex_x = COLUM - wall_tex_x - 1;
 		int j = -1;
 		while (++j < draw_start)
-			sdl_put_pixel(m->sdl, i, j, 0);
+			sdl_put_pixel(m->sdl, i, j, 50); // celling
 		int color;
 		if (m->map[map_x][map_y] > 0 && m->map[map_x][map_y] <= 2)
-			color = 200000;
+//			color = 200000;
+			color = 200500;
 		else if (m->map[map_x][map_y] > 2 && m->map[map_x][map_y] <= 4)
-			color = 299999912;
+//			color = 299999912;
+			color = 29912;
 		else
 			color = 10000000;
-		while (j < draw_end)
+		while (j < draw_end) //walls
 		{
-			sdl_put_pixel(m->sdl, i, j, color);
+			int d = j * 256 - h * 128 + line_h * 128;  //256 and 128 factors to avoid floats
+			// TODO: avoid the division to speed this up
+			int texY = ((d * COLUM) / line_h) / 256;
+//			sdl_put_pixel(m->sdl, i, j, color);
+			sdl_put_pixel(m->sdl, i, j, tmp_arr[texY][wall_tex_x]);
 			j++;
 		}
-		while (j < h)
+		if(side == 0 && ray_dir_x > 0)
 		{
-			sdl_put_pixel(m->sdl, i, j, 0);
-			j++;
+			floor_wall_x = map_x;
+			floor_wall_y = map_y + hit_x;
 		}
+		else if(side == 0 && ray_dir_x < 0)
+		{
+			floor_wall_x = map_x + 1.0f;
+			floor_wall_y = map_y + hit_x;
+		}
+		else if(side == 1 && ray_dir_y > 0)
+		{
+			floor_wall_x = map_x + hit_x;
+			floor_wall_y = map_y;
+		}
+		else
+		{
+			floor_wall_x = map_x + hit_x;
+			floor_wall_y = map_y + 1.0f;
+		}
+		//floor_casting
+		while (j < h) // floor
+		{
+			current_dist = h / (2.0f * j - h); //you could make a small lookup table for this instead
 
-//		column = m->sdl->win_h / (m->ray.distance
-//							  * cosf(m->ray.angle - m->player.view_dir));
-//		m->ray.hitx = (m->ray.x - (int)(m->ray.x));
-//		m->ray.hity = (m->ray.y - (int)(m->ray.y));
-//		tmp_arr = choose_side(m, tmp_arr);
-//		draw_column(m, column, i, tmp_arr);*/
-//		SDL_Log("%sRAY ID: %3d | %sY: %3f | %sX: %3f\n", KGRN,  i, KYEL, wlf->ray.y, KBLU, wlf->ray.x);
+			weight = (current_dist) / (wall_dist);
+
+			floor_x = weight * floor_wall_x + (1.0 - weight) * m->player.x;
+			floor_y = weight * floor_wall_y + (1.0 - weight) * m->player.y;
+
+			floor_tex_x = (int)(floor_x * COLUM) % COLUM;
+			floor_tex_y = (int)(floor_y * COLUM) % COLUM;
+			sdl_put_pixel(m->sdl, i, j, tmp_arr[floor_tex_y][floor_tex_x]);
+			sdl_put_pixel(m->sdl, i, h - j, tmp_arr[floor_tex_y][floor_tex_x]);
+			j++;
+		}
 	}
 }

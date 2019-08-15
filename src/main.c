@@ -8,7 +8,8 @@ int		main()
     SDL_Thread	*thread;
 
     m = rc_main_init();
-    rc_jtoc_main_from_json(m, "./json/config.json");
+    if (rc_jtoc_main_from_json(m, "./json/config.json"))
+    	exit(0);
     m->sdl->mutex = SDL_CreateMutex();
     thread = SDL_CreateThread(draw_loop, "draw_loop", (void *)m);
     SDL_DetachThread(thread);

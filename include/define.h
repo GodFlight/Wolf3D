@@ -26,7 +26,7 @@
 */
 
 # define COLUM 64
-# define FOG_DIST 100.f
+# define FOG_DIST 3.f
 # define FOV M_PI / 2
 # define PLAYER_HEIGHT 32
 //# define FOV 66 * M_PI / 180

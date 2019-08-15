@@ -43,13 +43,13 @@ int		**choose_side(t_rc_main *m, float ray_dir_x, float ray_dir_y, int **tmp_arr
 	tmp_arr = (m->walls[1]).texture1;
 	if (ray_dir_x == 0 && ray_dir_y == 0)
 		exit(0);
-	if (m->flr.side == 0 && m->player.fdir_x <= 0 )
+	if (m->flr.side == 0 && m->flr.step_x < 0 )
 		tmp_arr = (m->walls[index]).texture1;
-	else if (m->flr.side == 0 && m->player.fdir_x >= 0)
+	else if (m->flr.side == 0 && m->flr.step_x >= 0)
 		tmp_arr = (m->walls[index]).texture3;
-	else if (m->flr.side == 1 && m->player.fdir_y <= 0)
+	else if (m->flr.side == 1 && m->flr.step_y < 0)
 		tmp_arr = (m->walls[index]).texture2;
-	else if (m->flr.side == 1 && m->player.fdir_y >= 0)
+	else if (m->flr.side == 1 && m->flr.step_y >= 0)
 		tmp_arr = (m->walls[index]).texture4;
 	return (tmp_arr);
 }

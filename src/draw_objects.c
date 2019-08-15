@@ -69,7 +69,7 @@ void	draw_objects(t_rc_main *m)
 	int		texture_x;
 	int		texture_y;
 
-	float	*arr = (float *)malloc(sizeof(float) * m->objects_num);
+/*	float	*arr = (float *)malloc(sizeof(float) * m->objects_num);
 	int		*index_arr;
 	i = -1;
 	while (++i < m->objects_num)
@@ -83,7 +83,7 @@ void	draw_objects(t_rc_main *m)
 	{
 		SDL_Log("%f, ", arr[i]);
 	}
-	i = -1;
+	i = -1;*/
 	while (++i < m->objects_num)
 	{
 		obj_x = obj[i].x - player->x;

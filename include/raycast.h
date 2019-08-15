@@ -70,6 +70,7 @@ typedef struct	s_rc_player
 	float 		delta_dist_x;
 	float		delta_dist_y;
 	float		intensity;
+	float 		current_dist;
 }				t_rc_player;
 
 typedef struct	s_sdl
@@ -160,9 +161,9 @@ void	find_dist_y(t_rc_main *m, float ray_dir_x, float ray_dir_y);
 void	flr_or_clng_offset_calculate(t_rc_main *m, float ray_dir_x,
 										 float ray_dir_y);
 t_rc_main	*rc_main_init();
-int		rgb_to_hex(char r, char g, char b, char a);
+int		rgb_to_hex(char r, char g, char b);
 void	draw_interface(t_rc_main *m);
-int 		rgb_mod(int color, float mod);
-int		clmp(int a, int min, int max);
+int rgb_mod(float mod, int r, int g, int b);
+float		clmp(float a, float min, float max);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 00:57:48 by rkeli             #+#    #+#             */
-/*   Updated: 2019/08/14 23:41:09 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/15 15:35:56 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,11 @@ int draw_walls(t_rc_main *m, float ray_dir_x, float ray_dir_y, int i)
 	{
 		int d = j * 256 - m->sdl->win_h * 128 + line_h * 128;
 		wall_tex_y = ((d * COLUM) / line_h) / 256;
-//		color = rgb_mod(tmp_arr[wall_tex_y][wall_tex_x],
-//						clmp(1.f - (m->flr.wall_dist / FOG_DIST), 0, 1));
-		color = tmp_arr[wall_tex_y][wall_tex_x];
+		color = rgb_mod(m->player.intensity,
+						(tmp_arr[wall_tex_y][wall_tex_x] >> 16) & 0xFF,
+						(tmp_arr[wall_tex_y][wall_tex_x] >> 8) & 0xFF,
+						(tmp_arr[wall_tex_y][wall_tex_x] & 0xFF));
 		sdl_put_pixel(m->sdl, i, j, color);
-//		sdl_put_pixel(m->sdl, i, j, tmp_arr[wall_tex_y][wall_tex_x]);
-//		sdl_put_pixel(m->sdl, i, j, (int)(tmp_arr[wall_tex_y][wall_tex_x] * (1 - (m->flr.wall_dist / FOG_DIST)))); - TOP
 		j++;
 	}
 	return (j);
@@ -78,7 +77,7 @@ int draw_walls(t_rc_main *m, float ray_dir_x, float ray_dir_y, int i)
 
 void		draw_floor_or_celling(t_rc_main *m, int j, int i)
 {
-	float	current_dist;
+//	float	current_dist;
 	float	weight;
 	int		floor_tex_x;
 	int		floor_tex_y;
@@ -86,8 +85,8 @@ void		draw_floor_or_celling(t_rc_main *m, int j, int i)
 
 	while (j < m->sdl->win_h)
 	{
-		current_dist = (float)m->sdl->win_h / (float)(2 * j - m->sdl->win_h);
-		weight = (current_dist) / (m->flr.wall_dist);
+		m->player.current_dist = (float)m->sdl->win_h / (float)(2 * j - m->sdl->win_h);
+		weight = (m->player.current_dist) / (m->flr.wall_dist);
 		m->flr.floor_x = weight * m->flr.floor_wall_x + (1.0f - weight)
 														* m->player.x;
 		m->flr.floor_y = weight * m->flr.floor_wall_y + (1.0f - weight)
@@ -96,14 +95,18 @@ void		draw_floor_or_celling(t_rc_main *m, int j, int i)
 		floor_tex_y = (int)(m->flr.floor_y * COLUM) % COLUM;
 		tmp_arr = (m->walls[2]).texture2;
 		int color;
-		color = tmp_arr[floor_tex_y][floor_tex_x];
-//		color = rgb_mod(tmp_arr[floor_tex_y][floor_tex_x],
-//						clmp(1.f - (m->flr.wall_dist / FOG_DIST), 0, 1));
+		color = rgb_mod(m->player.intensity,
+						(tmp_arr[floor_tex_y][floor_tex_x] >> 16) & 0xFF,
+						(tmp_arr[floor_tex_y][floor_tex_x] >> 8) & 0xFF,
+						(tmp_arr[floor_tex_y][floor_tex_x] & 0xFF));
 		sdl_put_pixel(m->sdl, i, j, color);
 		tmp_arr = (m->walls[1]).texture2;
-		color = tmp_arr[floor_tex_y][floor_tex_x];
+		color = rgb_mod(m->player.intensity,
+						(tmp_arr[floor_tex_y][floor_tex_x] >> 16) & 0xFF,
+						(tmp_arr[floor_tex_y][floor_tex_x] >> 8) & 0xFF,
+						(tmp_arr[floor_tex_y][floor_tex_x] & 0xFF));
 //		color = rgb_mod(tmp_arr[floor_tex_y][floor_tex_x],
-//						clmp(1.f - (m->flr.wall_dist / FOG_DIST), 0, 1));
+//						clmp(1.f - (m->flr.wall_dist * 100 / FOG_DIST), 0, 1));
 		sdl_put_pixel(m->sdl, i, m->sdl->win_h - j, color);
 		j++;
 	}
@@ -112,12 +115,19 @@ void		draw_floor_or_celling(t_rc_main *m, int j, int i)
 float		fog_calculate(t_rc_main *m)
 {
 	float distance;
-//	float obj_intensity;
 	float intensity;
 
-	distance = m->flr.wall_dist * 100;
-	intensity = 1;
-
+//	distance = m->flr.wall_dist * 10;
+//	distance = sqrtf(m->flr.side_dist_x * m->flr.side_dist_x + m->flr.side_dist_y * m->flr.side_dist_y);
+	distance = m->player.rdir_x;
+//	SDL_Log("distnace %f", distance);
+	intensity = clmp((distance / FOG_DIST), 0, 1);
+//	if (distance <= 500)
+//		return (1);
+//	else if (distance > 500 && distance <= 1000)
+//		return (0.75f);
+//	else
+//		return (0.5f);
 	return (intensity);
 }
 
@@ -142,6 +152,8 @@ void		raycast_and_draw(t_rc_main *m)
 		find_dist_y(m, ray_dir_x, ray_dir_y);
 		m->player.intensity = fog_calculate(m);
 //		SDL_Log("distance: %f", m->flr.wall_dist * 100);
+//		SDL_Log("distance: %f", m->flr.wall_dist * 100);
+//		SDL_Log("distance: %f", (((m->flr.wall_dist * 100) / FOG_DIST)));
 		j = draw_walls(m, ray_dir_x, ray_dir_y, i);
 		flr_or_clng_offset_calculate(m, ray_dir_x, ray_dir_y);
 		draw_floor_or_celling(m, j, i);

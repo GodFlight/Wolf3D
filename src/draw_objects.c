@@ -4,6 +4,49 @@
 
 #include "raycast.h"
 
+void	q_sort(float *arr, int *index_arr, int left, int right)
+{
+	int		l_hold;
+	int		r_hold;
+	float	pivot;
+
+	pivot = arr[(left + right) / 2];
+	l_hold = left;
+	r_hold = right;
+	while (left <= right)
+	{
+		while (arr[left] < pivot)
+			left++;
+		while (arr[right] > pivot)
+			right--;
+		if (left <= right)
+		{
+			ft_fswap(&arr[left], &arr[right]);
+			left++;
+			right++;
+		}
+	}
+	SDL_Log("(%d, %d), (%d, %d)", left, right, l_hold, r_hold);
+	if (l_hold < right)
+		q_sort(arr, index_arr, l_hold, right);
+	if (r_hold > left)
+		q_sort(arr, index_arr, left, r_hold);
+}
+
+int		*quick_sort(float *arr, int size)
+{
+	int		*index_arr;
+	int		i;
+
+	SDL_Log("%d", size);
+	index_arr = (int *)malloc(sizeof(int) * size);
+	i = -1;
+	while (++i < size)
+		index_arr[i] = i;
+	q_sort(arr, index_arr, 0, size - 1);
+	return (index_arr);
+}
+
 void	draw_objects(t_rc_main *m)
 {
 	t_object *obj = m->objects;
@@ -26,6 +69,20 @@ void	draw_objects(t_rc_main *m)
 	int		texture_x;
 	int		texture_y;
 
+	float	*arr = (float *)malloc(sizeof(float) * m->objects_num);
+	int		*index_arr;
+	i = -1;
+	while (++i < m->objects_num)
+	{
+		arr[i] = (m->player.x - obj[i].x) * (m->player.x - obj[i].x) +
+				(m->player.y - obj[i].y) * (m->player.y - obj[i].y);
+	}
+	index_arr = quick_sort(arr, m->objects_num);
+	i = -1;
+	while (++i < m->objects_num)
+	{
+		SDL_Log("%f, ", arr[i]);
+	}
 	i = -1;
 	while (++i < m->objects_num)
 	{
@@ -42,8 +99,6 @@ void	draw_objects(t_rc_main *m)
 		draw_end_y = obj_h / 2 + m->sdl->win_h / 2;
 		draw_start_x = -obj_w / 2 + obj_screen_x;
 		draw_end_x = obj_w / 2 + obj_screen_x;
-		if (draw_start_x < 0)
-			draw_start_x = 0;
 		if (draw_start_y < 0)
 			draw_start_y = 0;
 		if (draw_end_x >= m->sdl->win_w)

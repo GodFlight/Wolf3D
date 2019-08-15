@@ -65,6 +65,7 @@ target_sources(ft PUBLIC
         ft_strsub.c
         ft_strtrim.c
         ft_swap.c
+        ft_fswap.c
         ft_tolower.c
         ft_toupper.c
         ft_updt.c

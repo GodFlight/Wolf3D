@@ -111,6 +111,10 @@ void		draw_floor_or_celling(t_rc_main *m, int j, int i)
 														* m->player.y;
 		floor_tex_x = (int)(m->flr.floor_x * COLUM) % COLUM;
 		floor_tex_y = (int)(m->flr.floor_y * COLUM) % COLUM;
+		if (floor_tex_x < 0)
+			floor_tex_x = 0;
+		if (floor_tex_y < 0)
+			floor_tex_y = 0;
 		tmp_arr = (m->walls[2]).texture2;
 		m->player.intensity = fog_calculate_for_floor(m);
 		int color;

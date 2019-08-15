@@ -60,11 +60,18 @@ int draw_walls(t_rc_main *m, float ray_dir_x, float ray_dir_y, int i)
 	else if (m->flr.side == 1 && ray_dir_y < 0)
 		wall_tex_x = COLUM - wall_tex_x - 1;
 	tmp_arr = choose_side(m, ray_dir_x, ray_dir_y, tmp_arr);
+	if (wall_tex_x < 0 || wall_tex_x > 63)
+		SDL_Log("x %d", wall_tex_x);
 	int color;
 	while (j < draw_end)
 	{
 		int d = j * 256 - m->sdl->win_h * 128 + line_h * 128;
 		wall_tex_y = ((d * COLUM) / line_h) / 256;
+		//TODO maybe up distance from the wall and don't use that fix
+	/*	if (wall_tex_y < 0 || wall_tex_y > 63)
+			SDL_Log("y %d", wall_tex_y);
+		if (wall_tex_y < 0)
+			wall_tex_y = 0;*/
 		color = rgb_mod(m->player.intensity,
 						(tmp_arr[wall_tex_y][wall_tex_x] >> 16) & 0xFF,
 						(tmp_arr[wall_tex_y][wall_tex_x] >> 8) & 0xFF,
@@ -93,6 +100,14 @@ void		draw_floor_or_celling(t_rc_main *m, int j, int i)
 														* m->player.y;
 		floor_tex_x = (int)(m->flr.floor_x * COLUM) % COLUM;
 		floor_tex_y = (int)(m->flr.floor_y * COLUM) % COLUM;
+		//TODO it could be bad fix
+		if (floor_tex_x < 0)
+			floor_tex_x = 0;
+		if (floor_tex_y < 0)
+			floor_tex_y = 0;
+		/*if (floor_tex_x > 63 || floor_tex_x < 0 || floor_tex_y < 0 || floor_tex_y > 63)
+			SDL_Log("tex_x %d, tex_y %d, fl_x %d fl_y %d",
+					floor_tex_x, floor_tex_y, m->flr.floor_x, m->flr.floor_y);*/
 		tmp_arr = (m->walls[2]).texture2;
 		int color;
 		color = rgb_mod(m->player.intensity,

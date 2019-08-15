@@ -34,10 +34,6 @@
 # define KCYN				"\x1B[36m"
 # define KWHT				"\x1B[37m"
 
-//obj params
-# define OBJ_IS_DESTRUCTIBLE	(1 << 0)
-
-
 typedef struct	s_flr
 {
 	int		map_x;
@@ -83,7 +79,6 @@ typedef struct	s_sdl
 	int 			y;
 	const Uint8		*state;
 	SDL_mutex		*mutex;
-	int				params;
 	int				win_h;
 	int				win_w;
 	char			*win_title;
@@ -133,6 +128,7 @@ typedef struct	s_ray_cast_main
 	int				map_w;
 	int				map_h;
 	t_sdl			*sdl;
+	int				params;
 }				t_rc_main;
 
 int		rc_jtoc_is_num(enum e_type type);
@@ -147,11 +143,13 @@ int		rc_jtoc_get_walls(t_rc_main *m, t_conf_json *conf, t_jnode *n);
 int		rc_jtoc_get_default_walls(t_wall *walls, t_conf_json *conf, t_jnode *n);
 int		rc_jtoc_processing_map(t_rc_main *m);
 
+void	main_loop(t_rc_main *m);
+int		physic_loop(void *m_v);
+int		draw_loop(void *m_v);
+
 void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
 void 	raycast_and_draw(t_rc_main *m);
 void	draw_objects(t_rc_main *m);
-void	main_loop(t_rc_main *m);
-int		physics(void *m);
 int		step_y_calculate(t_rc_main *m, float ray_dir_y);
 int		step_x_calculate(t_rc_main *m, float ray_dir_x);
 void	wall_dist_and_hit_x_calculate(t_rc_main *m, float ray_dir_x,
@@ -162,7 +160,7 @@ void	flr_or_clng_offset_calculate(t_rc_main *m, float ray_dir_x,
 t_rc_main	*rc_main_init();
 int		rgb_to_hex(char r, char g, char b, char a);
 void	draw_interface(t_rc_main *m);
-int 		rgb_mod(int color, float mod);
+int 	rgb_mod(int color, float mod);
 int		clmp(int a, int min, int max);
 
 #endif

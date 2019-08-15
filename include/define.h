@@ -5,7 +5,7 @@
 #ifndef WOLF3D_DEFINE_H
 #define WOLF3D_DEFINE_H
 
-# define WOLF_QUIT (1 << 0)
+# define QUIT_PROGRAM (1 << 0)
 
 /*
 ** MAP

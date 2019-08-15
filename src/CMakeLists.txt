@@ -6,8 +6,9 @@ target_sources(Wolf3D PUBLIC
         draw_interface.c
         init.c
         main.c
+        draw_loop.c
+        physic_loop.c
         main_loop.c
-        physics.c
         raycast_and_draw.c
         draw_objects.c
         )

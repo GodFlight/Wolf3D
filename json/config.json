@@ -41,7 +41,34 @@
 			"textures":
 			[
 				{
-					"index": 100
+					"index": 7
+				}
+			]
+		},
+		{
+			"id": 901,
+			"textures":
+			[
+				{
+					"index": 97
+				}
+			]
+		},
+		{
+			"id": 902,
+			"textures":
+			[
+				{
+					"index": 21
+				}
+			]
+		},
+		{
+			"id": 903,
+			"textures":
+			[
+				{
+					"index": 93
 				}
 			]
 		}

@@ -4,8 +4,10 @@
 
 #include "raycast.h"
 
-static void draw_object(t_object *obj, t_rc_main *m, t_rc_player *player)
+void	draw_objects(t_rc_main *m)
 {
+	t_object *obj = m->objects;
+	t_rc_player *player = &m->player;
 	int		i;
 	float	obj_x;
 	float	obj_y;
@@ -19,10 +21,11 @@ static void draw_object(t_object *obj, t_rc_main *m, t_rc_player *player)
 	int		draw_end_y;
 	int		draw_start_x;
 	int		draw_end_x;
-	int		column;
+	int		stripe;
 	int		y;
+	int		texture_x;
+	int		texture_y;
 
-	SDL_Log("%d\n", m->objects_num);
 	i = -1;
 	while (++i < m->objects_num)
 	{
@@ -47,22 +50,20 @@ static void draw_object(t_object *obj, t_rc_main *m, t_rc_player *player)
 			draw_end_x = m->sdl->win_w - 1;
 		if (draw_end_y >= m->sdl->win_h)
 			draw_end_y = m->sdl->win_h - 1;
-		column = draw_start_x - 1;
-		while (++column < draw_end_x)
+		stripe = draw_start_x - 1;
+		while (++stripe < draw_end_x)
 		{
+			//TODO 64 - texture w and texture h
+			texture_x = (int)((256 * (stripe - (-obj_w / 2 + obj_screen_x)) * 64 / obj_w) / 256);
 			y = draw_start_y - 1;
-			while (++y < draw_end_y)
-				sdl_put_pixel(m->sdl, column, y, 0);
+			if (transf_y > 0 && stripe > 0 && stripe < m->sdl->win_w) //TODO z-buffer
+				while (++y < draw_end_y)
+				{
+					int tmp = y * 256 - m->sdl->win_h * 128 + obj_h * 128;
+					texture_y = ((tmp * 64) / obj_h) / 256;
+					int color = obj[i].texture[texture_y][texture_x];
+					sdl_put_pixel(m->sdl, stripe, y, color);
+				}
 		}
 	}
-}
-
-void draw_objects(t_rc_main *m)
-{
-	t_object	*objs;
-	int			i;
-
-	i = -1;
-	objs = m->objects;
-	draw_object(&(objs[i]), m, &(m->player));
 }

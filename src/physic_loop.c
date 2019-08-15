@@ -40,8 +40,6 @@ static void	move_player(t_rc_main *m, t_sdl *sdl, float speed)
 			m->player.y += m->player.rdir_y * speed;
 		SDL_UnlockMutex(sdl->mutex);
 	}
-	if (sdl->state[SDL_SCANCODE_ESCAPE])
-		m->sdl->params |= WOLF_QUIT;
 }
 
 static void	rotation_player(t_rc_main *m, t_sdl *sdl, float speed)
@@ -83,8 +81,7 @@ static void	rotation_player(t_rc_main *m, t_sdl *sdl, float speed)
 	}
 }
 
-
-int	physics(void *m_v)
+int	physic_loop(void *m_v)
 {
 	t_rc_main	*m;
 	t_sdl		*sdl;
@@ -97,18 +94,17 @@ int	physics(void *m_v)
 	m = (t_rc_main *)m_v;
 	sdl = m->sdl;
 	time = 0;
-	while (!(sdl->params & WOLF_QUIT))
+	while (!(m->params & QUIT_PROGRAM))
 	{
-		old_time = time;
-		time = SDL_GetTicks();
-		frame_time = time - old_time;
-		move_speed = frame_time * 0.003;
-		rot_speed = frame_time * 0.002;
-		if (sdl->state[SDL_SCANCODE_W] || sdl->state[SDL_SCANCODE_S]
-		|| sdl->state[SDL_SCANCODE_A] || sdl->state[SDL_SCANCODE_D])
-			move_player(m, sdl, move_speed);
-		rotation_player(m, sdl, rot_speed);
-		SDL_Delay(15);
+			old_time = time;
+			time = SDL_GetTicks();
+			frame_time = time - old_time;
+			move_speed = frame_time * 0.003;
+			rot_speed = frame_time * 0.002;
+			if (sdl->state[SDL_SCANCODE_W] || sdl->state[SDL_SCANCODE_S]
+				|| sdl->state[SDL_SCANCODE_A] || sdl->state[SDL_SCANCODE_D])
+				move_player(m, sdl, move_speed);
+			rotation_player(m, sdl, rot_speed);
 	}
-	return (1);
+	return (0);
 }

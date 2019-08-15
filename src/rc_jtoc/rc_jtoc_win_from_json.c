@@ -26,8 +26,12 @@ int	rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w)
 		return (rc_jtoc_sdl_log_error("CREATE WINDOW ERROR", -1));
 	if (!(sdl->renderer = SDL_CreateRenderer(sdl->win, -1, 0)))
 		return (rc_jtoc_sdl_log_error("CREATE WINDOW RENDERER ERROR", -1));
+//	if (!(sdl->texture = SDL_CreateTexture(sdl->renderer, SDL_PIXELFORMAT_ARGB8888,
+//			SDL_TEXTUREACCESS_STATIC, sdl->win_w, sdl->win_h)))
 	if (!(sdl->texture = SDL_CreateTexture(sdl->renderer, SDL_PIXELFORMAT_RGBA32,
-			SDL_TEXTUREACCESS_STATIC, sdl->win_w, sdl->win_h)))
+	SDL_TEXTUREACCESS_STATIC, sdl->win_w, sdl->win_h)))
+//		if (!(sdl->texture = SDL_CreateTexture(sdl->renderer, SDL_PIXELFORMAT_BGR888,
+//											   SDL_TEXTUREACCESS_STATIC, sdl->win_w, sdl->win_h)))
 		return (rc_jtoc_sdl_log_error("CREATE WINDOW TEXTURE ERROR", -1));
 	return (FUNCTION_SUCCESS);
 }

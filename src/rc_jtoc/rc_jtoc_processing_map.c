@@ -36,9 +36,14 @@ static int get_phys_map_and_objs_num(t_rc_main *m, int **map)
 		{
 			if (map[i][j] < 0 || map[i][j] > 999 || (map[i][j] > 299 && map[i][j] < 800))
 				return (rc_jtoc_sdl_log_error("BAD ID (ID COULD BE ONLY 0-299, 800-999)", -1));
-			m->phys_map[i][j] = map[i][j];
 			if (map[i][j] == 999)
+			{
+				m->player.x = i + 0.5f;
+				m->player.y = j + 0.5f;
 				player_id_flag++;
+			}
+			else
+				m->phys_map[i][j] = map[i][j];
 			if (map[i][j] >= 800 && map[i][j] <= 998)
 				m->objects_num++;
 			if (map[i][j] > 299)

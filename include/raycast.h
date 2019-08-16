@@ -91,10 +91,8 @@ typedef struct	s_sdl
 
 typedef	struct	s_sdl_sound
 {
-	Uint32				wav_len;
-	Uint8 				*wav_buff;
-	SDL_AudioSpec		spec;
-	SDL_AudioDeviceID	deviceId;
+	Mix_Chunk		**samples;
+	Mix_Music		*music;
 }				t_sound;
 
 typedef struct	s_interface

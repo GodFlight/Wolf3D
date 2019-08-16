@@ -115,7 +115,7 @@ void		draw_floor_or_celling(t_rc_main *m, int j, int i)
 			floor_tex_x = 0;
 		if (floor_tex_y < 0)
 			floor_tex_y = 0;
-		tmp_arr = (m->walls[2]).texture2;
+		tmp_arr = (m->walls[99]).texture2;
 		m->player.intensity = fog_calculate_for_floor(m);
 		int color;
 		color = rgb_mod(m->player.intensity,
@@ -123,7 +123,7 @@ void		draw_floor_or_celling(t_rc_main *m, int j, int i)
 						(tmp_arr[floor_tex_y][floor_tex_x] >> 8) & 0xFF,
 						(tmp_arr[floor_tex_y][floor_tex_x] & 0xFF));
 		sdl_put_pixel(m->sdl, i, j, color);
-		tmp_arr = (m->walls[1]).texture2;
+		tmp_arr = (m->walls[99]).texture2;
 		color = rgb_mod(m->player.intensity,
 						(tmp_arr[floor_tex_y][floor_tex_x] >> 16) & 0xFF,
 						(tmp_arr[floor_tex_y][floor_tex_x] >> 8) & 0xFF,

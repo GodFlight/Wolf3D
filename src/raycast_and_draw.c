@@ -155,5 +155,6 @@ void		raycast_and_draw(t_rc_main *m)
 		j = draw_walls(m, ray_dir_x, ray_dir_y, i);
 		flr_or_clng_offset_calculate(m, ray_dir_x, ray_dir_y);
 		draw_floor_or_celling(m, j, i);
+		m->z_buffer[i] = m->flr.wall_dist;
 	}
 }

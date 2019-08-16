@@ -33,5 +33,6 @@ int	rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w)
 //		if (!(sdl->texture = SDL_CreateTexture(sdl->renderer, SDL_PIXELFORMAT_BGR888,
 //											   SDL_TEXTUREACCESS_STATIC, sdl->win_w, sdl->win_h)))
 		return (rc_jtoc_sdl_log_error("CREATE WINDOW TEXTURE ERROR", -1));
+	m->z_buffer = (float *)ft_memalloc(sizeof(float) * sdl->win_w);
 	return (FUNCTION_SUCCESS);
 }

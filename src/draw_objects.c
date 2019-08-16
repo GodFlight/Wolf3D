@@ -15,18 +15,18 @@ void	q_sort(float *arr, int *index_arr, int left, int right)
 	r_hold = right;
 	while (left <= right)
 	{
-		while (arr[left] < pivot)
+		while (arr[left] > pivot)
 			left++;
-		while (arr[right] > pivot)
+		while (arr[right] < pivot)
 			right--;
 		if (left <= right)
 		{
 			ft_fswap(&arr[left], &arr[right]);
+			ft_swap(&index_arr[left], &index_arr[right]);
 			left++;
-			right++;
+			right--;
 		}
 	}
-	SDL_Log("(%d, %d), (%d, %d)", left, right, l_hold, r_hold);
 	if (l_hold < right)
 		q_sort(arr, index_arr, l_hold, right);
 	if (r_hold > left)
@@ -38,7 +38,6 @@ int		*quick_sort(float *arr, int size)
 	int		*index_arr;
 	int		i;
 
-	SDL_Log("%d", size);
 	index_arr = (int *)malloc(sizeof(int) * size);
 	i = -1;
 	while (++i < size)
@@ -69,7 +68,7 @@ void	draw_objects(t_rc_main *m)
 	int		texture_x;
 	int		texture_y;
 
-/*	float	*arr = (float *)malloc(sizeof(float) * m->objects_num);
+	float	*arr = (float *)malloc(sizeof(float) * m->objects_num);
 	int		*index_arr;
 	i = -1;
 	while (++i < m->objects_num)
@@ -81,13 +80,8 @@ void	draw_objects(t_rc_main *m)
 	i = -1;
 	while (++i < m->objects_num)
 	{
-		SDL_Log("%f, ", arr[i]);
-	}
-	i = -1;*/
-	while (++i < m->objects_num)
-	{
-		obj_x = obj[i].x - player->x;
-		obj_y = obj[i].y - player->y;
+		obj_x = obj[index_arr[i]].x - player->x;
+		obj_y = obj[index_arr[i]].y - player->y;
 		inv_cam = 1.0f / (player->plane_x * player->fdir_y - player->fdir_x * player->plane_y);
 		transf_x = inv_cam * (player->fdir_y * obj_x - player->fdir_x * obj_y);
 		transf_y = inv_cam * (-player->plane_y * obj_x + player->plane_x * obj_y);
@@ -99,6 +93,8 @@ void	draw_objects(t_rc_main *m)
 		draw_end_y = obj_h / 2 + m->sdl->win_h / 2;
 		draw_start_x = -obj_w / 2 + obj_screen_x;
 		draw_end_x = obj_w / 2 + obj_screen_x;
+		if (draw_start_x < 0)
+			draw_start_x = 0;
 		if (draw_start_y < 0)
 			draw_start_y = 0;
 		if (draw_end_x >= m->sdl->win_w)
@@ -111,12 +107,12 @@ void	draw_objects(t_rc_main *m)
 			//TODO 64 - texture w and texture h
 			texture_x = (int)((256 * (stripe - (-obj_w / 2 + obj_screen_x)) * 64 / obj_w) / 256);
 			y = draw_start_y - 1;
-			if (transf_y > 0 && stripe > 0 && stripe < m->sdl->win_w) //TODO z-buffer
+			if (transf_y > 0 && transf_y < m->z_buffer[stripe] && stripe > 0 && stripe < m->sdl->win_w) //TODO z-buffer
 				while (++y < draw_end_y)
 				{
 					int tmp = y * 256 - m->sdl->win_h * 128 + obj_h * 128;
 					texture_y = ((tmp * 64) / obj_h) / 256;
-					int color = obj[i].texture[texture_y][texture_x];
+					int color = obj[index_arr[i]].texture[texture_y][texture_x];
 					sdl_put_pixel(m->sdl, stripe, y, color);
 				}
 		}

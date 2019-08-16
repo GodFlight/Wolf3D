@@ -134,6 +134,7 @@ typedef struct	s_ray_cast_main
 	int				map_h;
 	t_sdl			*sdl;
 	int				params;
+	float			*z_buffer;
 }				t_rc_main;
 
 int		rc_jtoc_is_num(enum e_type type);

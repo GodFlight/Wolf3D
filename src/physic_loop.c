@@ -107,7 +107,7 @@ static void	rotation_player(t_rc_main *m, t_sdl *sdl, float speed)
 	rdir_y = m->player.rdir_y;
 	plane_x = m->player.plane_x;
 	plane_y = m->player.plane_y;
-	if (sdl->state[SDL_SCANCODE_LEFT])
+	if (sdl->state[SDL_SCANCODE_LEFT] || sdl->state[SDL_SCANCODE_Q])
 	{
 		cos_speed = cosf(speed);
 		sin_speed = sinf(speed);
@@ -120,7 +120,7 @@ static void	rotation_player(t_rc_main *m, t_sdl *sdl, float speed)
 		m->player.plane_y = plane_x * sin_speed + plane_y * cos_speed;
 		SDL_UnlockMutex(sdl->mutex);
 	}
-	if (sdl->state[SDL_SCANCODE_RIGHT])
+	if (sdl->state[SDL_SCANCODE_RIGHT] || sdl->state[SDL_SCANCODE_E])
 	{
 		cos_speed = cosf(-speed);
 		sin_speed = sinf(-speed);

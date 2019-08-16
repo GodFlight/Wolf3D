@@ -27,12 +27,17 @@
 	],
 	"player":
 	{
-		"guns":
-		[
-			"machine_gun",
-			"pistols"
-		],
-		"hp": 100
+		"direction_forward":
+		{
+			"x": -1.0,
+			"y": 0.0
+		},
+		"direction_right":
+		{
+			"x": 0.0,
+			"y": 1.0
+		},
+		"fov": 0.9
 	},
 	"objects":
 	[
@@ -146,11 +151,8 @@
 				},
 				{
 					"id": 4,
-					"params":
+					"textures":
 					[
-						"OBJ_IS_DESTRUCTIBLE"
-					],
-					"textures": [
 						{
 							"pos": "north",
 							"index": 9

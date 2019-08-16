@@ -61,6 +61,56 @@ int	rc_jtoc_get_objects(t_rc_main *m, t_conf_json *conf, t_jnode *n)
 	return (FUNCTION_SUCCESS);
 }
 
+static void	normalize_vector(float *a, float *b)
+{
+	float	x;
+	float	y;
+	float	len;
+
+	x = *a;
+	y = *b;
+	len = sqrtf(x * x + y * y);
+	if (len == 0)
+		return ;
+	*a = x / len;
+	*b = y / len;
+}
+
+int	rc_jtoc_get_player(t_rc_main *m, t_jnode *n)
+{
+	t_jnode	*tmp;
+	float	tmp_x;
+	float	tmp_y;
+
+	if (!(tmp = jtoc_node_get_by_path(n, "fov")) || tmp->type != fractional)
+		return (rc_jtoc_sdl_log_error("PLAYER FOV ERROR", -1));
+	m->player.plane_x = 0;
+	m->player.plane_y = jtoc_get_float(tmp);
+	if (!(tmp = jtoc_node_get_by_path(n, "direction_forward")) || tmp->type != object)
+		return (rc_jtoc_sdl_log_error("PLAYER DIRECTION FORWARD ERROR", -1));
+	if (!(tmp = jtoc_node_get_by_path(n, "direction_forward.x")) || tmp->type != fractional)
+		return (rc_jtoc_sdl_log_error("PLAYER DIRECTION FORWARD X ERROR", -1));
+	tmp_x = jtoc_get_float(tmp);
+	if (!(tmp = jtoc_node_get_by_path(n, "direction_forward.y")) || tmp->type != fractional)
+		return (rc_jtoc_sdl_log_error("PLAYER DIRECTION FORWARD Y ERROR", -1));
+	tmp_y = jtoc_get_float(tmp);
+	normalize_vector(&tmp_x, &tmp_y);
+	m->player.fdir_x = tmp_x;
+	m->player.fdir_y = tmp_y;
+	if (!(tmp = jtoc_node_get_by_path(n, "direction_right")) || tmp->type != object)
+		return (rc_jtoc_sdl_log_error("PLAYER DIRECTION RIGHT ERROR", -1));
+	if (!(tmp = jtoc_node_get_by_path(n, "direction_right.x")) || tmp->type != fractional)
+		return (rc_jtoc_sdl_log_error("PLAYER DIRECTION RIGHT X ERROR", -1));
+	tmp_x = jtoc_get_float(tmp);
+	if (!(tmp = jtoc_node_get_by_path(n, "direction_right.y")) || tmp->type != fractional)
+		return (rc_jtoc_sdl_log_error("PLAYER DIRECTION RIGHT Y ERROR", -1));
+	tmp_y = jtoc_get_float(tmp);
+	normalize_vector(&tmp_x, &tmp_y);
+	m->player.rdir_x = tmp_x;
+	m->player.rdir_y = tmp_y;
+	return (FUNCTION_SUCCESS);
+}
+
 int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 {
 	t_conf_json	conf;
@@ -86,6 +136,12 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 		return (rc_jtoc_sdl_log_error("MISSING MAP", -1));
 	if (rc_jtoc_get_map(m, jtoc_get_string(tmp)))
 		return (rc_jtoc_sdl_log_error("READING MAP FAILURE", -1));
+
+	//player
+	if (!(tmp = jtoc_node_get_by_path(root, "player")) || tmp->type != object)
+		return (rc_jtoc_sdl_log_error("MISSING PLAYER", -1));
+	if (rc_jtoc_get_player(m, tmp))
+		return (rc_jtoc_sdl_log_error("PLAYER FAILURE", -1));
 
 	//TODO reading from few packs
 	if (!(tmp = jtoc_node_get_by_path(root, "textures")) || tmp->type != array)

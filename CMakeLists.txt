@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.14)
 cmake_policy(SET CMP0076 NEW)
 project(WOLF3D LANGUAGES C)
 
-add_executable(Wolf3D src/raycast_helper.c)
+add_executable(Wolf3D)
 
 #add sdl2
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/sdl2-cmake-modules)
@@ -25,6 +25,7 @@ if (APPLE)
     if (NOT SDL2_TTF_FOUND)
         set(SDL2_TTF_PATH /Users/$ENV{USER}/.brew/Cellar/sdl2_ttf/2.0.15)
     endif()
+
 endif()
 
 if (NOT APPLE)

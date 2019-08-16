@@ -6,7 +6,8 @@
 #define WOLF3D_DEFINE_H
 
 # define QUIT_PROGRAM (1 << 0)
-
+//# define MUS_PATH "./sound/s1.wav"
+# define MUS_PATH "/Users/rkeli/Desktop/tst/sound/s1.wav"
 /*
 ** MAP
 */
@@ -27,7 +28,7 @@
 
 # define COLUM 64
 # define FOG_DIST 1.5f
-# define FOG_DIST_OBJ 1.5f
+# define FOG_DIST_OBJ 1.8f
 //# define FOG_DIST 5.f
 //# define FOG_DIST_OBJ 5.f
 # define FOV M_PI / 2

@@ -89,6 +89,14 @@ typedef struct	s_sdl
 	char			*win_title;
 }				t_sdl;
 
+typedef	struct	s_sdl_sound
+{
+	Uint32				wav_len;
+	Uint8 				*wav_buff;
+	SDL_AudioSpec		spec;
+	SDL_AudioDeviceID	deviceId;
+}				t_sound;
+
 typedef struct	s_interface
 {
 	float	x;
@@ -128,12 +136,13 @@ typedef struct	s_ray_cast_main
 	t_flr			flr;
 	t_wall			*walls;
 	t_object		*objects;
+	t_sdl			*sdl;
+	t_sound			*snd;
 	int				objects_num;
 	int				**map;
 	int				**phys_map;
 	int				map_w;
 	int				map_h;
-	t_sdl			*sdl;
 	int				params;
 	float			*z_buffer;
 }				t_rc_main;

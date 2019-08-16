@@ -178,5 +178,7 @@ int		rgb_to_hex(char r, char g, char b);
 void	draw_interface(t_rc_main *m);
 int rgb_mod(float mod, int r, int g, int b);
 float		clmp(float a, float min, float max);
+void	sounds(t_sdl *sdl, SDL_Event event);
+int		init_music(t_rc_main *m);
 
 #endif

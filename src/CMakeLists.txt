@@ -11,6 +11,8 @@ target_sources(Wolf3D PUBLIC
         main_loop.c
         raycast_and_draw.c
         draw_objects.c
+        sound.c
+        raycast_helper.c
         )
 
 add_subdirectory(rc_jtoc)

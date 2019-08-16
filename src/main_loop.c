@@ -10,6 +10,7 @@ void	main_loop(t_rc_main *m)
 	{
 		if (SDL_PollEvent(&m->sdl->event))
 		{
+			sounds(m->sdl, m->sdl->event);
 			if ((m->sdl->event.type == SDL_QUIT) ||
 				(m->sdl->event.type == SDL_KEYDOWN &&
 				 m->sdl->event.key.keysym.scancode == SDL_SCANCODE_ESCAPE))

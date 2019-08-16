@@ -153,8 +153,11 @@ int	physic_loop(void *m_v)
 		old_time = time;
 		time = SDL_GetTicks();
 		frame_time = time - old_time;
-		move_speed = frame_time * 0.003;
-		rot_speed = frame_time * 0.002;
+		if (sdl->state[SDL_SCANCODE_LSHIFT])
+		    move_speed = frame_time * 0.0025;
+		else
+            move_speed = frame_time * 0.0015;
+		rot_speed = frame_time * 0.003;
 		if (sdl->state[SDL_SCANCODE_W] || sdl->state[SDL_SCANCODE_S]
 			|| sdl->state[SDL_SCANCODE_A] || sdl->state[SDL_SCANCODE_D])
 			move_player(m, sdl, move_speed);

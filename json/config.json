@@ -12,26 +12,16 @@
 	"textures":
 	[
 		{
-			"type": "pack",
-			"num":
-			{
-				"x": 6,
-				"y": 19
-			},
 			"path": "./textures/1375.png"
 		},
 		{
-			"type": "single",
-			"path": "wall01.bmp"
+			"path": "./textures/barrel.png"
 		},
 		{
-			"type": "pack",
-			"num":
-			{
-				"x": 1,
-				"y": 1
-			},
-			"path": "./textures/ss1.bmp"
+			"path": "./textures/greenlight.png"
+		},
+		{
+			"path": "./textures/pillar.png"
 		}
 	],
 	"player":
@@ -64,7 +54,7 @@
 			"textures":
 			[
 				{
-					"index": 97
+					"index": 116
 				}
 			]
 		},
@@ -73,7 +63,7 @@
 			"textures":
 			[
 				{
-					"index": 21
+					"index": 117
 				}
 			]
 		},
@@ -301,6 +291,28 @@
 						{
 							"pos": "south",
 							"index": 34
+						},
+						{
+							"pos": "west",
+							"index": 35
+						},
+						{
+							"pos": "east",
+							"index": 36
+						}
+					]
+				},
+				{
+					"id": 99,
+					"textures":
+					[
+						{
+							"pos": "north",
+							"index": 1
+						},
+						{
+							"pos": "south",
+							"index": 2
 						},
 						{
 							"pos": "west",

@@ -119,17 +119,18 @@ void	draw_objects(t_rc_main *m)
 			//TODO 64 - texture w and texture h
 			texture_x = (int)((256 * (stripe - (-obj_w / 2 + obj_screen_x)) * 64 / obj_w) / 256);
 			y = draw_start_y - 1;
-			if (transf_y > 0 && transf_y < m->z_buffer[stripe] && stripe > 0 && stripe < m->sdl->win_w) //TODO z-buffer
+			if (transf_y > 0 && transf_y < m->z_buffer[stripe] && stripe > 0 && stripe < m->sdl->win_w)
 				while (++y < draw_end_y)
 				{
 					int tmp = y * 256 - m->sdl->win_h * 128 + obj_h * 128;
 					texture_y = ((tmp * 64) / obj_h) / 256;
 //					int color = (obj[index_arr[i]].texture[texture_y][texture_x]);
-					int color = rgb_mod(m->objects->intensity[i],
+					int color = rgb_mod(m->objects->intensity[index_arr[i]],
 										(obj[index_arr[i]].texture[texture_y][texture_x] >> 16) & 0xFF,
 										(obj[index_arr[i]].texture[texture_y][texture_x] >> 8) & 0xFF,
 										(obj[index_arr[i]].texture[texture_y][texture_x]) & 0xFF);
-					sdl_put_pixel(m->sdl, stripe, y, color);
+					if (color & 0x00FFFFFF)
+						sdl_put_pixel(m->sdl, stripe, y, color);
 				}
 		}
 	}

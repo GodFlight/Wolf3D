@@ -117,6 +117,7 @@ typedef struct	s_object
 {
 	float		x;
 	float		y;
+	float 		*intensity;
 	int			id;
 	int			**texture;
 }				t_object;

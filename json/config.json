@@ -23,6 +23,15 @@
 		{
 			"type": "single",
 			"path": "wall01.bmp"
+		},
+		{
+			"type": "pack",
+			"num":
+			{
+				"x": 1,
+				"y": 1
+			},
+			"path": "./textures/ss1.bmp"
 		}
 	],
 	"player":
@@ -41,7 +50,7 @@
 			"textures":
 			[
 				{
-					"index": 7
+					"index": 115
 				}
 			]
 		},

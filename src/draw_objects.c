@@ -4,6 +4,14 @@
 
 #include "raycast.h"
 
+float		fog_calculate_for_object(float distance)
+{
+	float intensity;
+
+	intensity = clmp((distance / FOG_DIST_OBJ), 0, 1);
+	return (intensity);
+}
+
 void	q_sort(float *arr, int *index_arr, int left, int right)
 {
 	int		l_hold;
@@ -70,11 +78,15 @@ void	draw_objects(t_rc_main *m)
 
 	float	*arr = (float *)malloc(sizeof(float) * m->objects_num);
 	int		*index_arr;
+
+	if (!(m->objects->intensity = (float *)malloc(sizeof(float) * m->objects_num)))
+		exit(2);
 	i = -1;
 	while (++i < m->objects_num)
 	{
-		arr[i] = (m->player.x - obj[i].x) * (m->player.x - obj[i].x) +
-				(m->player.y - obj[i].y) * (m->player.y - obj[i].y);
+		arr[i] = sqrtf((m->player.x - obj[i].x) * (m->player.x - obj[i].x) +
+				(m->player.y - obj[i].y) * (m->player.y - obj[i].y));
+		m->objects->intensity[i] = fog_calculate_for_object(arr[i]);
 	}
 	index_arr = quick_sort(arr, m->objects_num);
 	i = -1;
@@ -112,7 +124,11 @@ void	draw_objects(t_rc_main *m)
 				{
 					int tmp = y * 256 - m->sdl->win_h * 128 + obj_h * 128;
 					texture_y = ((tmp * 64) / obj_h) / 256;
-					int color = obj[index_arr[i]].texture[texture_y][texture_x];
+//					int color = (obj[index_arr[i]].texture[texture_y][texture_x]);
+					int color = rgb_mod(m->objects->intensity[i],
+										(obj[index_arr[i]].texture[texture_y][texture_x] >> 16) & 0xFF,
+										(obj[index_arr[i]].texture[texture_y][texture_x] >> 8) & 0xFF,
+										(obj[index_arr[i]].texture[texture_y][texture_x]) & 0xFF);
 					sdl_put_pixel(m->sdl, stripe, y, color);
 				}
 		}

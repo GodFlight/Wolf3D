@@ -54,9 +54,9 @@ static int get_textures_from_texture_pack(t_conf_json *conf, char *path)
 		while (++x < (textures->w / 64) + 1)
 		{
 			tmp = ft_lstnew(NULL, 0);
-			x = (x * 64 == textures->w * 64 ? 0 : x * 64);
+			x = (x == textures->w ? 0 : x * 64);
 			arr = texture_load(y * 64, x, img_data, textures);
-			tmp->content = (void **)arr;
+			tmp->content = (void *)arr;
 			tmp->content_size = ++(conf->index);
 			ft_lstadd(&conf->textures, tmp);
 			x = x / 64;

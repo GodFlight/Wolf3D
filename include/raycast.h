@@ -19,6 +19,7 @@
 # include <SDL.h>
 # include "stb_image.h"
 # include <SDL_image.h>
+# include <SDL_mixer.h>
 # include <math.h>
 # include <fcntl.h>
 # include "libjtoc.h"

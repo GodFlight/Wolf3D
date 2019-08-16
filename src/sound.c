@@ -4,11 +4,11 @@
 
 #include <raycast.h>
 
-# define MUS_PATH "./sound/s1.wav"
+//# define MUS_PATH "./sound/s1.wav"
 
 int		init_music(t_rc_main *m)
 {
-	Mix_Chunk **samples;
+//	Mix_Chunk **samples;
 	Mix_Music *mus;
 
 	if ((Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 4096) == -1))
@@ -24,6 +24,7 @@ void	sounds(t_sdl *sdl, SDL_Event event)
 {
 	SDL_Scancode key;
 
+	(void)sdl;
 	key = event.key.keysym.scancode;
 	if (key == 48)
 	{

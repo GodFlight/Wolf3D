@@ -26,6 +26,10 @@ if (APPLE)
         set(SDL2_TTF_PATH /Users/$ENV{USER}/.brew/Cellar/sdl2_ttf/2.0.15)
     endif()
 
+    if (NOT SDL2_MIXER_FOUND)
+        set(SDL2_MIXER_PATH /Users/$ENV{USER}/.brew/Cellar/sdl2_ttf/2.0.4)
+    endif()
+
 endif()
 
 if (NOT APPLE)
@@ -41,6 +45,7 @@ if (NOT APPLE)
 endif()
 
 find_package(SDL2 REQUIRED)
+find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 
@@ -74,6 +79,7 @@ target_link_libraries(Wolf3D
         SDL2::Core
         SDL2::Main
         SDL2::Image
+        SDL2::Mixer
         SDL2::TTF)
 
 add_subdirectory(src)

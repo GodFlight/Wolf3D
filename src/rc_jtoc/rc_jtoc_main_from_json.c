@@ -58,6 +58,8 @@ int	rc_jtoc_get_objects(t_rc_main *m, t_conf_json *conf, t_jnode *n)
 		fill_objects_by_id(m, &tmp_obj);
 		n = n->right;
 	}
+	if (!(m->objects->intensity = (float *)malloc(sizeof(float) * m->objects_num)))
+		exit(2);
 	return (FUNCTION_SUCCESS);
 }
 
@@ -152,10 +154,10 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 	//walls
 	if (!(tmp = jtoc_node_get_by_path(root, "walls")) || tmp->type != array)
 		return (rc_jtoc_sdl_log_error("MISSING WALLS", -1));
-    if (rc_jtoc_get_walls(m, &conf, tmp))
+	if (rc_jtoc_get_walls(m, &conf, tmp))
 		return (rc_jtoc_sdl_log_error("WALLS ERROR", -1));
 
-    //objects
+	//objects
 	if ((tmp = jtoc_node_get_by_path(root, "objects")) && tmp->type == array)
 	{
 		if (rc_jtoc_get_objects(m, &conf, tmp))

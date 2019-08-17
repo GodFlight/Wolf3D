@@ -62,6 +62,8 @@ static int get_textures_from_texture_pack(t_conf_json *conf, char *path)
 			x = x / 64;
 		}
 	}
+	free(img_data);
+	free(textures);
 	conf->textures = tmp;
 	return (FUNCTION_SUCCESS);
 }

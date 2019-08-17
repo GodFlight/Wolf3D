@@ -79,8 +79,6 @@ void	draw_objects(t_rc_main *m)
 	float	*arr = (float *)malloc(sizeof(float) * m->objects_num);
 	int		*index_arr;
 
-	if (!(m->objects->intensity = (float *)malloc(sizeof(float) * m->objects_num)))
-		exit(2);
 	i = -1;
 	while (++i < m->objects_num)
 	{
@@ -97,7 +95,7 @@ void	draw_objects(t_rc_main *m)
 		inv_cam = 1.0f / (player->plane_x * player->fdir_y - player->fdir_x * player->plane_y);
 		transf_x = inv_cam * (player->fdir_y * obj_x - player->fdir_x * obj_y);
 		transf_y = inv_cam * (-player->plane_y * obj_x + player->plane_x * obj_y);
-		obj_screen_x = (int)((m->sdl->win_w / 2) * (float)(1 + transf_x / transf_y));
+		obj_screen_x = (int)(((float)(m->sdl->win_w / 2.f) * (float)(1 + transf_x / transf_y)));
 
 		obj_h = ABS((int)(m->sdl->win_h / transf_y));
 		obj_w = obj_h;
@@ -116,8 +114,9 @@ void	draw_objects(t_rc_main *m)
 		stripe = draw_start_x - 1;
 		while (++stripe < draw_end_x)
 		{
-			//TODO 64 - texture w and texture h
-			texture_x = (int)((256 * (stripe - (-obj_w / 2 + obj_screen_x)) * 64 / obj_w) / 256);
+			texture_x = (int)((float)(stripe - (-obj_w / 2.f + obj_screen_x)) * 64 / (float)obj_w);
+			if (texture_x < 2)
+				texture_x = 2;
 			y = draw_start_y - 1;
 			if (transf_y > 0 && transf_y < m->z_buffer[stripe] && stripe > 0 && stripe < m->sdl->win_w)
 				while (++y < draw_end_y)
@@ -134,4 +133,6 @@ void	draw_objects(t_rc_main *m)
 				}
 		}
 	}
+	free(arr);
+	free(index_arr);
 }

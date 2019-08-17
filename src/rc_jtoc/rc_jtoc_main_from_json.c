@@ -113,15 +113,14 @@ int	rc_jtoc_get_player(t_rc_main *m, t_jnode *n)
 	return (FUNCTION_SUCCESS);
 }
 
-int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
+int rc_jtoc_main_from_json(t_rc_main *m, const char *path, t_conf_json *conf)
 {
-	t_conf_json	conf;
 	t_jnode		*root;
 	t_jnode		*tmp;
 
 	//conf init
-	conf.index = 0;
-	conf.textures = NULL;
+	conf->index = 0;
+	conf->textures = NULL;
 
 	//root
 	if (!(root = jtoc_read(path)))
@@ -148,21 +147,22 @@ int	rc_jtoc_main_from_json(t_rc_main *m, const char *path)
 	//TODO reading from few packs
 	if (!(tmp = jtoc_node_get_by_path(root, "textures")) || tmp->type != array)
 		return (rc_jtoc_sdl_log_error("MISSING TEXTURES", -1));
-	if (rc_jtoc_get_textures(&conf, tmp->down))
+	if (rc_jtoc_get_textures(conf, tmp->down))
 		return (rc_jtoc_sdl_log_error("GETTING TEXTURES FAILURE", -1));
 
 	//walls
 	if (!(tmp = jtoc_node_get_by_path(root, "walls")) || tmp->type != array)
 		return (rc_jtoc_sdl_log_error("MISSING WALLS", -1));
-	if (rc_jtoc_get_walls(m, &conf, tmp))
+	if (rc_jtoc_get_walls(m, conf, tmp))
 		return (rc_jtoc_sdl_log_error("WALLS ERROR", -1));
 
 	//objects
 	if ((tmp = jtoc_node_get_by_path(root, "objects")) && tmp->type == array)
 	{
-		if (rc_jtoc_get_objects(m, &conf, tmp))
+		if (rc_jtoc_get_objects(m, conf, tmp))
 			return (rc_jtoc_sdl_log_error("OBJECTS ERROR", -1));
 	}
 
+	jtoc_node_clear(root);
 	return (FUNCTION_SUCCESS);
 }

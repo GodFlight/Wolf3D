@@ -21,4 +21,3 @@ int	rc_jtoc_get_texture_state(int *state, t_jnode *n, int obj_id)
 		*state = 3;
 	return (FUNCTION_SUCCESS);
 }
-

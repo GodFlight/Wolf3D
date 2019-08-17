@@ -21,4 +21,7 @@ void	main_loop(t_rc_main *m)
 		}
 	}
 	SDL_Quit();
+	IMG_Quit();
+	Mix_Quit();
+	exit(0);
 }

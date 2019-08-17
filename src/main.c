@@ -4,11 +4,12 @@
 #ifdef APPLE___
 int		main()
 {
+	t_conf_json	conf;
     t_rc_main	*m;
     SDL_Thread	*thread;
 
     m = rc_main_init();
-    if (rc_jtoc_main_from_json(m, "./json/config.json"))
+    if (rc_jtoc_main_from_json(m, "./json/config.json", &conf))
     	exit(0);
     m->sdl->mutex = SDL_CreateMutex();
     thread = SDL_CreateThread(draw_loop, "draw_loop", (void *)m);

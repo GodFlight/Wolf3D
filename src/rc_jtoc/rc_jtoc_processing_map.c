@@ -10,11 +10,12 @@ static int	check_bounds(int **map, int h_map, int w_map)
 
 	i = -1;
 	while (++i < w_map)
-		if (map[0][i] == 0 || map[h_map - 1][i] == 0)
+		if (map[0][i] < 0 || map[0][i] > 99 || map[h_map - 1][i] < 0 || map[h_map - 1][i] > 99)
 			return (FUNCTION_FAILURE);
 	i = -1;
 	while (++i < h_map)
-		if (map[i][0] == 0 || map[i][w_map - 1] == 0)
+		if (map[i][0] < 0 || map[i][0] > 99 || map[i][w_map - 1] < 0 || map[i][w_map - 1] > 99)
+//		if (map[i][0] == 0 || map[i][w_map - 1] == 0)
 			return (FUNCTION_FAILURE);
 	return (FUNCTION_SUCCESS);
 }

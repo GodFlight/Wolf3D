@@ -8,7 +8,7 @@
 			"y": 1080
 		}
 	},
-	"map": "./maps/map_02",
+	"map": "./maps/map_03",
 	"textures":
 	[
 		{
@@ -22,6 +22,12 @@
 		},
 		{
 			"path": "./textures/pillar.png"
+		},
+		{
+			"path": "./textures/populator.gif"
+		},
+		{
+			"path": "./textures/plankton.gif"
 		}
 	],
 	"player":
@@ -63,7 +69,7 @@
 			"textures":
 			[
 				{
-					"index": 117
+					"index": 118
 				}
 			]
 		},
@@ -72,7 +78,7 @@
 			"textures":
 			[
 				{
-					"index": 115
+					"index": 120
 				}
 			]
 		}
@@ -88,19 +94,19 @@
 					[
 						{
 							"pos": "north",
-							"index": 1
+							"index": 48
 						},
 						{
 							"pos": "south",
-							"index": 1
+							"index": 48
 						},
 						{
 							"pos": "west",
-							"index": 1
+							"index": 48
 						},
 						{
 							"pos": "east",
-							"index": 1
+							"index": 48
 						}
 					]
 				},
@@ -308,111 +314,19 @@
 					[
 						{
 							"pos": "north",
-							"index": 34
+							"index": 1
 						},
 						{
 							"pos": "south",
-							"index": 34
+							"index": 2
 						},
 						{
 							"pos": "west",
-							"index": 35
+							"index": 1
 						},
 						{
 							"pos": "east",
-							"index": 36
-						}
-					]
-				}
-			]
-		},
-		{
-			"walls_with_states":
-			[
-				{
-					"type": "levers",
-					"begin_id": 100,
-					"end_id": 199,
-					"textures":
-					[
-						{
-							"pos": "north",
-							"index": 33
-						},
-						{
-							"state": "default",
-							"pos": "south",
-							"index": 34
-						},
-						{
-							"state": "default",
-							"pos": "west",
-							"index": 35
-						},
-						{
-							"state": "default",
-							"pos": "east",
-							"index": 36
-						},
-						{
-							"state": "modified",
-							"pos": "north",
-							"index": 37
-						},
-						{
-							"state": "modified",
-							"pos": "south",
-							"index": 37
-						},
-						{
-							"state": "modified",
-							"pos": "west",
-							"index": 37
-						},
-						{
-							"state": "modified",
-							"pos": "east",
-							"index": 37
-						}
-					]
-				},
-				{
-					"type": "doors",
-					"begin_id": 200,
-					"end_id": 299,
-					"textures":
-					[
-						{
-							"state": "state1",
-							"index": 200
-						},
-						{
-							"state": "state2",
-							"index": 201
-						},
-						{
-							"state": "state3",
-							"index": 202
-						},
-						{
-							"state": "state4",
-							"index": 203
-						},
-						{
-							"state": "state5",
-							"index": 204
-						},
-						{
-							"state": "state6",
-							"index": 205
-						},
-						{
-							"state": "state7",
-							"index": 206
-						},
-						{
-							"state": "state8",
-							"index": 207
+							"index": 2
 						}
 					]
 				}

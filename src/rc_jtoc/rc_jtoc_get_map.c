@@ -73,6 +73,14 @@ static int	map_read(t_rc_main *m, int fd)
 		while (++j < m->map_w)
 			map[i][j] = ft_atoi(tmp_arr[++k]);
 	}
+	i = -1;
+	while (++i < m->map_w)
+	{
+		j = -1;
+		printf("\n");
+		while (++j < m->map_h)
+			printf("%d ", map[j][i]);
+	}
 	m->map = map;
 	ft_clear_double_pointer((void **)tmp_arr, m->map_w * m->map_h);
 	return (FUNCTION_SUCCESS);

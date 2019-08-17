@@ -154,9 +154,9 @@ int	physic_loop(void *m_v)
 		time = SDL_GetTicks();
 		frame_time = time - old_time;
 		if (sdl->state[SDL_SCANCODE_LSHIFT])
-		    move_speed = frame_time * 0.0025;
+		    move_speed = frame_time * 0.0015;
 		else
-            move_speed = frame_time * 0.0015;
+            move_speed = frame_time * 0.001;
 		rot_speed = frame_time * 0.003;
 		if (sdl->state[SDL_SCANCODE_W] || sdl->state[SDL_SCANCODE_S]
 			|| sdl->state[SDL_SCANCODE_A] || sdl->state[SDL_SCANCODE_D])

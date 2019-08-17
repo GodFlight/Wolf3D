@@ -76,6 +76,8 @@ int draw_walls(t_rc_main *m, float ray_dir_x, float ray_dir_y, int i)
 		wall_tex_x = COLUM - wall_tex_x - 1;
 	else if (m->flr.side == 1 && ray_dir_y < 0)
 		wall_tex_x = COLUM - wall_tex_x - 1;
+	if (wall_tex_x < 0)
+		wall_tex_x = 0;
 	tmp_arr = choose_side(m, ray_dir_x, ray_dir_y, tmp_arr);
 	int color;
 	m->player.intensity = fog_calculate_for_walls(m);
@@ -83,6 +85,8 @@ int draw_walls(t_rc_main *m, float ray_dir_x, float ray_dir_y, int i)
 	{
 		int d = j * 256 - m->sdl->win_h * 128 + line_h * 128;
 		wall_tex_y = ((d * COLUM) / line_h) / 256;
+		if (wall_tex_y < 0)
+			wall_tex_y = 0;
 		color = rgb_mod(m->player.intensity,
 						(tmp_arr[wall_tex_y][wall_tex_x] >> 16) & 0xFF,
 						(tmp_arr[wall_tex_y][wall_tex_x] >> 8) & 0xFF,

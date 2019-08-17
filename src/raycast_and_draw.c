@@ -128,7 +128,7 @@ void		draw_floor_or_celling(t_rc_main *m, int j, int i)
 						(tmp_arr[floor_tex_y][floor_tex_x] >> 16) & 0xFF,
 						(tmp_arr[floor_tex_y][floor_tex_x] >> 8) & 0xFF,
 						(tmp_arr[floor_tex_y][floor_tex_x] & 0xFF));
-		sdl_put_pixel(m->sdl, i, m->sdl->win_h - j, color);
+		sdl_put_pixel(m->sdl, i, m->sdl->win_h - j - 1, color);
 		j++;
 	}
 }

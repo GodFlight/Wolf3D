@@ -14,12 +14,12 @@
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
+# include <SDL.h>
+# include <SDL_mixer.h>
+# include <SDL_image.h>
 # include "libft.h"
 # include "define.h"
-# include <SDL.h>
 # include "stb_image.h"
-# include <SDL_image.h>
-# include <SDL_mixer.h>
 # include <math.h>
 # include <fcntl.h>
 # include "libjtoc.h"
@@ -90,12 +90,6 @@ typedef struct	s_sdl
 	char			*win_title;
 }				t_sdl;
 
-typedef	struct	s_sdl_sound
-{
-	Mix_Chunk		**samples;
-	Mix_Music		*music;
-}				t_sound;
-
 typedef struct	s_interface
 {
 	float	x;
@@ -136,7 +130,6 @@ typedef struct	s_ray_cast_main
 	t_wall			*walls;
 	t_object		*objects;
 	t_sdl			*sdl;
-	t_sound			*snd;
 	int				objects_num;
 	int				**map;
 	int				**phys_map;

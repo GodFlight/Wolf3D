@@ -6,8 +6,7 @@
 #define WOLF3D_DEFINE_H
 
 # define QUIT_PROGRAM (1 << 0)
-//# define MUS_PATH "./sound/s1.wav"
-# define MUS_PATH "/Users/rkeli/Desktop/tst/sound/s1.wav"
+# define MUS_PATH "./sound/s1.wav"
 /*
 ** MAP
 */

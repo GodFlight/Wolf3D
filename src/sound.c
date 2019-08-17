@@ -8,15 +8,21 @@
 
 int		init_music(t_rc_main *m)
 {
-//	Mix_Chunk **samples;
 	Mix_Music *mus;
+	int result = 0;
+	int flags = MIX_INIT_OGG;
 
-	if ((Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 4096) == -1))
-		return (-1);
+	if (!m)
+		mus = NULL;
+	if (flags != (result = Mix_Init(flags)))
+	{
+		printf("Could not initialize mixer (result: %d).\n", result);
+		printf("Mix_Init: %s\n", Mix_GetError());
+		exit(1);
+	}
+	Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 640);
 	mus = Mix_LoadMUS(MUS_PATH);
-	m->snd->music = mus;
 	Mix_PlayMusic(mus, -1);
-	Mix_AllocateChannels(4);
 	return (1);
 }
 
@@ -24,9 +30,8 @@ void	sounds(t_sdl *sdl, SDL_Event event)
 {
 	SDL_Scancode key;
 
-	(void)sdl;
 	key = event.key.keysym.scancode;
-	if (key == 48)
+	if (key == SDL_SCANCODE_SPACE && sdl->event.type == SDL_KEYDOWN)
 	{
 		if (Mix_PausedMusic() == 1)
 			Mix_ResumeMusic();

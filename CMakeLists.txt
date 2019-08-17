@@ -27,7 +27,7 @@ if (APPLE)
     endif()
 
     if (NOT SDL2_MIXER_FOUND)
-        set(SDL2_MIXER_PATH /Users/$ENV{USER}/.brew/Cellar/sdl2_ttf/2.0.4)
+        set(SDL2_MIXER_PATH /Users/$ENV{USER}/.brew/Cellar/sdl2_mixer/2.0.4)
     endif()
 
 endif()

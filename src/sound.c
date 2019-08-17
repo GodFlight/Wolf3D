@@ -4,8 +4,6 @@
 
 #include <raycast.h>
 
-//# define MUS_PATH "./sound/s1.wav"
-
 int		init_music(t_rc_main *m)
 {
 	Mix_Music *mus;

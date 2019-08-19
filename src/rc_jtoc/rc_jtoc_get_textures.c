@@ -15,11 +15,11 @@ texture_load(int y, int x, unsigned char *img_data, t_textures *textures)
 
 	y_d = 0;
 	y_tx = (y >= 64 ? y - 64 : y);
-	if (!(arr = (int **)ft_memalloc(sizeof(int *) * textures->h)))
+	if (!(arr = (int **)ft_memalloc(sizeof(int *) * textures->w)))
 		exit(39);
 	while (y_tx <= y)
 	{
-		if (!(arr[y_d] = (int *)ft_memalloc(sizeof(int) * textures->w)))
+		if (!(arr[y_d] = (int *)ft_memalloc(sizeof(int) * textures->h)))
 			exit(36);
 		x_d = 0;
 		x_tx = x - 64;

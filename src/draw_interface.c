@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 00:57:35 by rkeli             #+#    #+#             */
-/*   Updated: 2019/08/14 11:08:06 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/18 02:15:16 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 //		i++;
 //	}
 //}
-//
+
 //static void	draw_map(t_rc_main *m)
 //{
 //	int y;
@@ -67,6 +67,16 @@
 //
 //void	draw_interface(t_rc_main *m)
 //{
+//	draw_map(m);
+////	draw_ray(m);
+//}
+
+//void	draw_interface(void *m_v)
+//{
+//	t_rc_main	*m;
+//
+//	m = (t_rc_main *)m_v;
+//
 //	draw_map(m);
 //	draw_ray(m);
 //}

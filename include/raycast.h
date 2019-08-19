@@ -123,6 +123,21 @@ typedef struct	s_object
 	int			**texture;
 }				t_object;
 
+typedef struct	s_scream
+{
+	int 			*spawn;
+	t_object		*obj;
+	char 			flg;
+	Uint32			init_time;
+	float 			x;
+	float 			y;
+}				t_scream;
+
+typedef struct	s_sound
+{
+	Mix_Chunk	**samples;
+}				t_sound;
+
 typedef struct	s_ray_cast_main
 {
 	t_rc_player		player;
@@ -130,6 +145,8 @@ typedef struct	s_ray_cast_main
 	t_wall			*walls;
 	t_object		*objects;
 	t_sdl			*sdl;
+	t_sound			sound;
+	t_scream		scream;
 	int				objects_num;
 	int				**map;
 	int				**phys_map;
@@ -137,12 +154,14 @@ typedef struct	s_ray_cast_main
 	int				map_h;
 	int				params;
 	float			*z_buffer;
+//	char 			flg;
+//	Uint32			init_time;
 }				t_rc_main;
 
 int		rc_jtoc_is_num(enum e_type type);
 int		rc_jtoc_fill_texture_by_index(int ***texture, t_conf_json *conf, t_jnode *n, int id);
 int		rc_jtoc_sdl_log_error(const char *p, const int id);
-int rc_jtoc_main_from_json(t_rc_main *m, const char *path, t_conf_json *conf);
+int		rc_jtoc_main_from_json(t_rc_main *m, const char *path, t_conf_json *conf);
 int		rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w);
 int		rc_jtoc_get_map(t_rc_main *m, char *path);
 int		rc_jtoc_get_textures(t_conf_json *conf, t_jnode *node);
@@ -154,6 +173,8 @@ int		rc_jtoc_processing_map(t_rc_main *m);
 void	main_loop(t_rc_main *m);
 int		physic_loop(void *m_v);
 int		draw_loop(void *m_v);
+//void	draw_interface(void *m_v);
+void	draw_interface(t_rc_main *m);
 
 void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
 void 	raycast_and_draw(t_rc_main *m);
@@ -166,11 +187,13 @@ void	find_dist_y(t_rc_main *m, float ray_dir_x, float ray_dir_y);
 void	flr_or_clng_offset_calculate(t_rc_main *m, float ray_dir_x,
 										 float ray_dir_y);
 t_rc_main	*rc_main_init();
-int		rgb_to_hex(char r, char g, char b);
-void	draw_interface(t_rc_main *m);
-int rgb_mod(float mod, int r, int g, int b);
+int			rgb_mod(float mod, int r, int g, int b);
 float		clmp(float a, float min, float max);
-void	sounds(t_sdl *sdl, SDL_Event event);
 int		init_music(t_rc_main *m);
+void	sounds(t_sdl *sdl, SDL_Event event);
+void 	sounds_control(t_rc_main *m, char flg);
+
+void screaming_control(t_rc_main *m, int obj_id, char flg);
+void move_scrm_control(t_rc_main *m, t_object *obj, int obj_id);
 
 #endif

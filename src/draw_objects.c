@@ -128,8 +128,11 @@ void	draw_objects(t_rc_main *m)
 										(obj[index_arr[i]].texture[texture_y][texture_x] >> 16) & 0xFF,
 										(obj[index_arr[i]].texture[texture_y][texture_x] >> 8) & 0xFF,
 										(obj[index_arr[i]].texture[texture_y][texture_x]) & 0xFF);
-					if (color & 0x00FFFFFF)
+					if (color & 0x000000FF)
+					{
+//						printf("%x", color);
 						sdl_put_pixel(m->sdl, stripe, y, color);
+					}
 				}
 		}
 	}

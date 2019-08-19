@@ -7,6 +7,10 @@
 
 # define QUIT_PROGRAM (1 << 0)
 # define MUS_PATH "./sound/scary.wav"
+# define WHITE_NOISE "./sound/white_noise.wav"
+# define ELECTRIC_SAW "./sound/electric_saw.wav"
+# define SCREAM "./sound/scream.wav"
+# define VOID_SPACE(Value) (((Value == 0) || (Value == 11)) ? 1 : 0)
 /*
 ** MAP
 */
@@ -27,7 +31,7 @@
 
 # define COLUM 64
 # define FOG_DIST 1.8f
-# define FOG_DIST_OBJ 1.8f
+# define FOG_DIST_OBJ 1.95f
 //# define FOG_DIST 5.f
 //# define FOG_DIST_OBJ 5.f
 # define FOV M_PI / 2

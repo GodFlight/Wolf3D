@@ -24,10 +24,34 @@
 			"path": "./textures/pillar.png"
 		},
 		{
-			"path": "./textures/populator.gif"
+			"path": "./textures/populator.png"
 		},
 		{
-			"path": "./textures/plankton.gif"
+			"path": "./textures/balrog.gif"
+		},
+		{
+			"path": "./textures/alienhulk.png"
+		},
+		{
+			"path": "./textures/zombiebear.png"
+		},
+		{
+			"path": "./textures/pinhead.png"
+		},
+		{
+			"path": "./textures/wall02.bmp"
+		},
+		{
+			"path": "./textures/snowman.png"
+		},
+		{
+			"path": "./textures/voodooman.png"
+		},
+		{
+			"path": "./textures/skullcrusher.png"
+		},
+		{
+			"path": "./textures/pila.png"
 		}
 	],
 	"player":
@@ -78,7 +102,79 @@
 			"textures":
 			[
 				{
+					"index": 117
+				}
+			]
+		},
+		{
+			"id": 904,
+			"textures":
+			[
+				{
+					"index": 118
+				}
+			]
+		},
+		{
+			"id": 905,
+			"textures":
+			[
+				{
+					"index": 119
+				}
+			]
+		},
+		{
+			"id": 906,
+			"textures":
+			[
+				{
 					"index": 120
+				}
+			]
+		},
+		{
+			"id": 907,
+			"textures":
+			[
+				{
+					"index": 121
+				}
+			]
+		},
+		{
+			"id": 908,
+			"textures":
+			[
+				{
+					"index": 123
+				}
+			]
+		},
+		{
+			"id": 909,
+			"textures":
+			[
+				{
+					"index": 124
+				}
+			]
+		},
+		{
+			"id": 910,
+			"textures":
+			[
+				{
+					"index": 125
+				}
+			]
+		},
+		{
+			"id": 911,
+			"textures":
+			[
+				{
+					"index": 126
 				}
 			]
 		}
@@ -305,6 +401,28 @@
 						{
 							"pos": "east",
 							"index": 36
+						}
+					]
+				},
+				{
+					"id": 11,
+					"textures":
+					[
+						{
+							"pos": "north",
+							"index": 48
+						},
+						{
+							"pos": "south",
+							"index": 48
+						},
+						{
+							"pos": "west",
+							"index": 48
+						},
+						{
+							"pos": "east",
+							"index": 48
 						}
 					]
 				},

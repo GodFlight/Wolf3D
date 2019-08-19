@@ -6,8 +6,45 @@
 
 void	main_loop(t_rc_main *m)
 {
+	m->scream.init_time = 0;
 	while (1337)
 	{
+		if (m->map_h == 27 && m->map_w == 31)
+		{
+			if ((int)m->player.x == 17 && (int)m->player.y == 1)
+			{
+				m->scream.y = 1.5f;
+				m->scream.x = 16.7f;
+				screaming_control(m, 907, 1);
+			}
+			if ((int)m->player.x == 6 && (int)m->player.y == 2)
+			{
+				m->scream.y = 3.5f;
+				m->scream.x = 6.5f;
+				screaming_control(m, 906, 2);
+			}
+			else if ((int)m->player.x == 16 && (int)m->player.y == 2)
+			{
+				m->scream.y = 16.5f;
+				m->scream.x = 3.5f;
+				screaming_control(m, 904, 3);
+			}
+			else if ((int)m->player.x == 15 && (int)m->player.y == 25)
+			{
+				m->scream.y = 24.5f;
+				m->scream.x = 15.2f;
+				screaming_control(m, 905, 4);
+			}
+			if ((int)m->player.x == 25 && (int)m->player.y == 21)
+			{
+				m->scream.y = 11.5f;
+				m->scream.x = 25.5f;
+				if (m->scream.spawn[18] != 1)
+					sounds_control(m, 18);
+				screaming_control(m, 911, 18);
+				move_scrm_control(m, m->scream.obj, 911);
+			}
+		}
 		if (SDL_PollEvent(&m->sdl->event))
 		{
 			sounds(m->sdl, m->sdl->event);

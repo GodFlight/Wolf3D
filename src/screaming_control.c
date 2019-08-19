@@ -29,9 +29,10 @@ t_object 	*get_scrm_obj(t_rc_main *m, int id)
 	return (NULL);
 }
 
-void move_scrm_control(t_rc_main *m, t_object *obj, int obj_id)
+void move_scrm_control(t_rc_main *m, int obj_id)
 {
-	(void)obj;
+	if (m->scream.obj->y == m->player.y || m->scream.obj->x == m->player.x)
+		tp_obj(m, m->scream.obj, obj_id, m->scream.flg);
 	if ((((int)m->scream.obj->x + 1 != (int)m->player.x)
 	&& (m->scream.obj->y + 0.2f != (int)m->player.y)))
 		m->scream.obj->y += 0.00005f;
@@ -43,9 +44,11 @@ void move_scrm_control(t_rc_main *m, t_object *obj, int obj_id)
 
 void	screaming_control(t_rc_main *m, int obj_id, char flg)
 {
-	if (m->scream.flg != 0 && m->scream.spawn[18] != 1)
-		tp_obj(m, m->scream.obj, 911, 500);
 	m->scream.obj = get_scrm_obj(m, obj_id);
+	if (m->scream.flg != 0)
+		tp_obj(m, m->scream.obj, obj_id, 400);
+	if (m->scream.obj->y == m->player.y || m->scream.obj->x == m->player.x)
+		tp_obj(m, m->scream.obj, obj_id, flg);
 	if (m->scream.flg != flg && flg != 18 && m->scream.spawn[(int)flg] == 0)
 	{
 		if (m->scream.obj != NULL)

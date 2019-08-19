@@ -52,6 +52,9 @@
 		},
 		{
 			"path": "./textures/pila.png"
+		},
+		{
+			"path": "./textures/reiver.png"
 		}
 	],
 	"player":
@@ -175,6 +178,15 @@
 			[
 				{
 					"index": 126
+				}
+			]
+		},
+		{
+			"id": 912,
+			"textures":
+			[
+				{
+					"index": 127
 				}
 			]
 		}

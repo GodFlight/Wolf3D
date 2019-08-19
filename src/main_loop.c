@@ -23,7 +23,7 @@ void	main_loop(t_rc_main *m)
 				m->scream.x = 6.5f;
 				screaming_control(m, 906, 2);
 			}
-			else if ((int)m->player.x == 16 && (int)m->player.y == 2)
+			else if ((int)m->player.x == 2 && (int)m->player.y == 16)
 			{
 				m->scream.y = 16.5f;
 				m->scream.x = 3.5f;
@@ -32,17 +32,19 @@ void	main_loop(t_rc_main *m)
 			else if ((int)m->player.x == 15 && (int)m->player.y == 25)
 			{
 				m->scream.y = 24.5f;
-				m->scream.x = 15.2f;
-				screaming_control(m, 905, 4);
+				m->scream.x = 15.5f;
+				screaming_control(m, 909, 4);
 			}
 			if ((int)m->player.x == 25 && (int)m->player.y == 21)
 			{
 				m->scream.y = 11.5f;
 				m->scream.x = 25.5f;
 				if (m->scream.spawn[18] != 1)
+				{
+					screaming_control(m, 911, 18);
 					sounds_control(m, 18);
-				screaming_control(m, 911, 18);
-				move_scrm_control(m, m->scream.obj, 911);
+				}
+				move_scrm_control(m, 911);
 			}
 		}
 		if (SDL_PollEvent(&m->sdl->event))

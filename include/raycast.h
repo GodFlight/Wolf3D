@@ -35,10 +35,6 @@
 # define KCYN				"\x1B[36m"
 # define KWHT				"\x1B[37m"
 
-//obj params
-# define OBJ_IS_DESTRUCTIBLE	(1 << 0)
-
-
 typedef struct	s_flr
 {
 	int		map_x;
@@ -89,14 +85,6 @@ typedef struct	s_sdl
 	int				win_w;
 	char			*win_title;
 }				t_sdl;
-
-typedef struct	s_interface
-{
-	float	x;
-	float 	y;
-	float 	angle;
-	float 	distance;
-}				t_interface;
 
 typedef struct	s_wall
 {
@@ -154,8 +142,6 @@ typedef struct	s_ray_cast_main
 	int				map_h;
 	int				params;
 	float			*z_buffer;
-//	char 			flg;
-//	Uint32			init_time;
 }				t_rc_main;
 
 int		rc_jtoc_is_num(enum e_type type);
@@ -173,8 +159,6 @@ int		rc_jtoc_processing_map(t_rc_main *m);
 void	main_loop(t_rc_main *m);
 int		physic_loop(void *m_v);
 int		draw_loop(void *m_v);
-//void	draw_interface(void *m_v);
-void	draw_interface(t_rc_main *m);
 
 void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
 void 	raycast_and_draw(t_rc_main *m);
@@ -194,6 +178,7 @@ void	sounds(t_sdl *sdl, SDL_Event event);
 void 	sounds_control(t_rc_main *m, char flg);
 
 void screaming_control(t_rc_main *m, int obj_id, char flg);
-void move_scrm_control(t_rc_main *m, t_object *obj, int obj_id);
+void move_scrm_control(t_rc_main *m, int obj_id);
+void tp_obj(t_rc_main *m, t_object *obj, int obj_id, int tick);
 
 #endif

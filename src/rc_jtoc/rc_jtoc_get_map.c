@@ -90,6 +90,8 @@ int rc_jtoc_get_map(t_rc_main *m, char *path)
 {
 	int	fd;
 
+	if (ft_strcmp("./maps/map_03", path) == 0)
+		m->choose_map = 1;
 	if ((fd = open(path, O_RDONLY)) == -1)
 		return (rc_jtoc_sdl_log_error("OPEN MAP FAILURE", -1));
 	if (map_read(m, fd))

@@ -15,11 +15,11 @@ texture_load(int y, int x, unsigned char *img_data, t_textures *textures)
 
 	y_d = 0;
 	y_tx = (y >= 64 ? y - 64 : y);
-	if (!(arr = (int **)ft_memalloc(sizeof(int *) * textures->w)))
+	if (!(arr = (int **)ft_memalloc(sizeof(int *) * textures->h + 1)))
 		exit(39);
 	while (y_tx <= y)
 	{
-		if (!(arr[y_d] = (int *)ft_memalloc(sizeof(int) * textures->h)))
+		if (!(arr[y_d] = (int *)ft_memalloc(sizeof(int) * textures->w + 1)))
 			exit(36);
 		x_d = 0;
 		x_tx = x - 64;
@@ -45,8 +45,9 @@ static int get_textures_from_texture_pack(t_conf_json *conf, char *path)
 	t_textures		*textures;
 
 	textures = (t_textures *)ft_memalloc(sizeof(t_textures));
-	img_data = stbi_load(path, &textures->w,
-                         &textures->h, &textures->bpp, 4);
+	if (!(img_data = stbi_load(path, &textures->w,
+                         &textures->h, &textures->bpp, 4)))
+		return (FUNCTION_FAILURE);
 	y = 0;
 	while (++y < (textures->h / 64 + 1))
 	{

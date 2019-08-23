@@ -24,8 +24,5 @@ int	draw_loop(void *m_v)
 		SDL_RenderCopy(m->sdl->renderer, m->sdl->texture, NULL, NULL);
 		SDL_RenderPresent(m->sdl->renderer);
 	}
-//	SDL_RenderClear(m->sdl->renderer);
-//	SDL_DestroyTexture(m->sdl->texture);
-//	SDL_DestroyWindow(m->sdl->win);
 	return (0);
 }

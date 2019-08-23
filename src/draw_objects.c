@@ -95,7 +95,7 @@ void	draw_objects(t_rc_main *m)
 		inv_cam = 1.0f / (player->plane_x * player->fdir_y - player->fdir_x * player->plane_y);
 		transf_x = inv_cam * (player->fdir_y * obj_x - player->fdir_x * obj_y);
 		transf_y = inv_cam * (-player->plane_y * obj_x + player->plane_x * obj_y);
-		obj_screen_x = (int)(((float)(m->sdl->win_w / 2.f) * (float)(1 + transf_x / transf_y)));
+		obj_screen_x = (int)((((float)m->sdl->win_w / 2.f) * (float)(1 + transf_x / transf_y)));
 
 		obj_h = ABS((int)(m->sdl->win_h / transf_y));
 		obj_w = obj_h;
@@ -114,7 +114,7 @@ void	draw_objects(t_rc_main *m)
 		stripe = draw_start_x - 1;
 		while (++stripe < draw_end_x)
 		{
-			texture_x = (int)((float)(stripe - (-obj_w / 2.f + obj_screen_x)) * 64 / (float)obj_w);
+			texture_x = (int)(((float)stripe - ((float)(-obj_w) / 2.f + (float)obj_screen_x)) * 64 / (float)obj_w);
 			if (texture_x < 2)
 				texture_x = 2;
 			y = draw_start_y - 1;
@@ -123,16 +123,9 @@ void	draw_objects(t_rc_main *m)
 				{
 					int tmp = y * 256 - m->sdl->win_h * 128 + obj_h * 128;
 					texture_y = ((tmp * 64) / obj_h) / 256;
-//					int color = (obj[index_arr[i]].texture[texture_y][texture_x]);
-					int color = rgb_mod(m->objects->intensity[index_arr[i]],
-										(obj[index_arr[i]].texture[texture_y][texture_x] >> 16) & 0xFF,
-										(obj[index_arr[i]].texture[texture_y][texture_x] >> 8) & 0xFF,
-										(obj[index_arr[i]].texture[texture_y][texture_x]) & 0xFF);
+					int color = rgb_mod(m->objects->intensity[index_arr[i]], obj[index_arr[i]].texture[texture_y][texture_x]);
 					if (color & 0x000000FF)
-					{
-//						printf("%x", color);
 						sdl_put_pixel(m->sdl, stripe, y, color);
-					}
 				}
 		}
 	}

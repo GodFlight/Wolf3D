@@ -25,52 +25,45 @@
 # include "libjtoc.h"
 # include "rc_jtoc.h"
 
-
-# define KNRM				"\x1B[0m"
-# define KRED				"\x1B[31m"
-# define KGRN				"\x1B[32m"
-# define KYEL				"\x1B[33m"
-# define KBLU				"\x1B[34m"
-# define KMAG				"\x1B[35m"
-# define KCYN				"\x1B[36m"
-# define KWHT				"\x1B[37m"
-
-typedef struct	s_flr
+typedef struct		s_flr
 {
-	int		map_x;
-	int		map_y;
-	int 	step_x;
-	int 	step_y;
-	int 	side;
-	int		draw_start;
-	float	side_dist_x;
-	float	side_dist_y;
-	float	wall_dist;
-	float 	hit_x;
-	float	floor_wall_x;
-	float	floor_wall_y;
-	float	floor_x;
-	float	floor_y;
-}				t_flr;
+	int				step_x;
+	int				step_y;
+	float			side_dist_x;
+	float			side_dist_y;
+	float			wall_dist;
+	float			hit_x;
+	float			floor_wall_x;
+	float			floor_wall_y;
+	float			floor_x;
+	float			floor_y;
+}					t_flr;
 
-typedef struct	s_rc_player
+typedef struct		s_wls
 {
-	float		x;
-	float		y;
-	float		fdir_x;
-	float		fdir_y;
-	float		rdir_x;
-	float		rdir_y;
-	float		plane_x;
-	float		plane_y;
-	float		camera_x;
-	float 		delta_dist_x;
-	float		delta_dist_y;
-	float		intensity;
-	float 		current_dist;
-}				t_rc_player;
+	int				side;
+	int				map_x;
+	int				map_y;
+}					t_wls;
 
-typedef struct	s_sdl
+typedef struct		s_rc_player
+{
+	float			x;
+	float			y;
+	float			fdir_x;
+	float			fdir_y;
+	float			rdir_x;
+	float			rdir_y;
+	float			plane_x;
+	float			plane_y;
+	float			camera_x;
+	float 			delta_dist_x;
+	float			delta_dist_y;
+	float			intensity;
+	float 			current_dist;
+}					t_rc_player;
+
+typedef struct		s_sdl
 {
 	SDL_Window		*win;
 	SDL_Renderer	*renderer;
@@ -83,35 +76,30 @@ typedef struct	s_sdl
 	SDL_mutex		*mutex;
 	int				win_h;
 	int				win_w;
-	char			*win_title;
-}				t_sdl;
+	char 			*win_title;
+}					t_sdl;
 
-typedef struct	s_wall
+typedef struct		s_wall
 {
-	int			id;
-	int			type;
-	int         state;
-	int			**texture1;
-	int			**texture2;
-	int			**texture3;
-	int			**texture4;
-	int			**texture5;
-	int			**texture6;
-	int			**texture7;
-	int			**texture8;
-}				t_wall;
+	int				id;
+	int				type;
+	int				**texture1;
+	int				**texture2;
+	int				**texture3;
+	int				**texture4;
+}					t_wall;
 
 
-typedef struct	s_object
+typedef struct		s_object
 {
-	float		x;
-	float		y;
-	float 		*intensity;
-	int			id;
-	int			**texture;
-}				t_object;
+	float			x;
+	float			y;
+	float 			*intensity;
+	int				id;
+	int				**texture;
+}					t_object;
 
-typedef struct	s_scream
+typedef struct		s_scream
 {
 	int 			*spawn;
 	t_object		*obj;
@@ -119,17 +107,18 @@ typedef struct	s_scream
 	Uint32			init_time;
 	float 			x;
 	float 			y;
-}				t_scream;
+}					t_scream;
 
-typedef struct	s_sound
+typedef struct		s_sound
 {
-	Mix_Chunk	**samples;
-}				t_sound;
+	Mix_Chunk		**samples;
+}					t_sound;
 
-typedef struct	s_ray_cast_main
+typedef struct		s_ray_cast_main
 {
 	t_rc_player		player;
 	t_flr			flr;
+	t_wls			wls;
 	t_wall			*walls;
 	t_object		*objects;
 	t_sdl			*sdl;
@@ -142,43 +131,44 @@ typedef struct	s_ray_cast_main
 	int				map_h;
 	int				params;
 	float			*z_buffer;
-}				t_rc_main;
+	char 			choose_map;
+}					t_rc_main;
 
-int		rc_jtoc_is_num(enum e_type type);
-int		rc_jtoc_fill_texture_by_index(int ***texture, t_conf_json *conf, t_jnode *n, int id);
-int		rc_jtoc_sdl_log_error(const char *p, const int id);
-int		rc_jtoc_main_from_json(t_rc_main *m, const char *path, t_conf_json *conf);
-int		rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w);
-int		rc_jtoc_get_map(t_rc_main *m, char *path);
-int		rc_jtoc_get_textures(t_conf_json *conf, t_jnode *node);
-int		rc_jtoc_get_texture_state(int *state, t_jnode *n, int obj_id);
-int		rc_jtoc_get_walls(t_rc_main *m, t_conf_json *conf, t_jnode *n);
-int		rc_jtoc_get_default_walls(t_wall *walls, t_conf_json *conf, t_jnode *n);
-int		rc_jtoc_processing_map(t_rc_main *m);
+int					rc_jtoc_is_num(enum e_type type);
+int					rc_jtoc_fill_texture_by_index(int ***texture, t_conf_json *conf, t_jnode *n, int id);
+int					rc_jtoc_sdl_log_error(const char *p, const int id);
+int					rc_jtoc_main_from_json(t_rc_main *m, const char *path, t_conf_json *conf);
+int					rc_jtoc_win_from_json(t_rc_main *m, t_jnode *n_w);
+int					rc_jtoc_get_map(t_rc_main *m, char *path);
+int					rc_jtoc_get_textures(t_conf_json *conf, t_jnode *node);
+int					rc_jtoc_get_walls(t_rc_main *m, t_conf_json *conf, t_jnode *n);
+int					rc_jtoc_get_default_walls(t_wall *walls, t_conf_json *conf, t_jnode *n);
+int					rc_jtoc_processing_map(t_rc_main *m);
+void				main_loop(t_rc_main *m);
+int					physic_loop(void *m_v);
+int					draw_loop(void *m_v);
 
-void	main_loop(t_rc_main *m);
-int		physic_loop(void *m_v);
-int		draw_loop(void *m_v);
-
-void	sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
-void 	raycast_and_draw(t_rc_main *m);
-void	draw_objects(t_rc_main *m);
-int		step_y_calculate(t_rc_main *m, float ray_dir_y);
-int		step_x_calculate(t_rc_main *m, float ray_dir_x);
-void	wall_dist_and_hit_x_calculate(t_rc_main *m, float ray_dir_x,
+void				sdl_put_pixel(t_sdl *sdl, int x, int y, int color);
+void 				raycast_and_draw(t_rc_main *m);
+void				draw_objects(t_rc_main *m);
+int					step_y_calculate(t_rc_main *m, float ray_dir_y);
+int					step_x_calculate(t_rc_main *m, float ray_dir_x);
+void				wall_dist_and_hit_x_calculate(t_rc_main *m, float ray_dir_x,
 										  float ray_dir_y);
-void	find_dist_y(t_rc_main *m, float ray_dir_x, float ray_dir_y);
-void	flr_or_clng_offset_calculate(t_rc_main *m, float ray_dir_x,
+void				find_dist_y(t_rc_main *m, float ray_dir_x, float ray_dir_y);
+void				flr_or_clng_offset_calculate(t_rc_main *m, float ray_dir_x,
 										 float ray_dir_y);
-t_rc_main	*rc_main_init();
-int			rgb_mod(float mod, int r, int g, int b);
-float		clmp(float a, float min, float max);
-int		init_music(t_rc_main *m);
-void	sounds(t_sdl *sdl, SDL_Event event);
-void 	sounds_control(t_rc_main *m, char flg);
+t_rc_main			*rc_main_init();
+int					rgb_mod(float mod, int rgb);
+float				clmp(float a, float min, float max);
+int					init_music(t_rc_main *m);
+void				sounds(t_sdl *sdl, SDL_Event event);
+void 				sounds_control(t_rc_main *m, char flg);
 
-void screaming_control(t_rc_main *m, int obj_id, char flg);
-void move_scrm_control(t_rc_main *m, int obj_id);
-void tp_obj(t_rc_main *m, t_object *obj, int obj_id, int tick);
+void 				screaming_control(t_rc_main *m, int obj_id, char flg);
+void 				move_scrm_control(t_rc_main *m, int obj_id);
+void 				tp_obj(t_rc_main *m, t_object *obj, int obj_id, int tick);
+void				choose_obj_pos(t_rc_main *m, float pos_x, float pos_y, int obj_id, char flg);
+void				check_pos(t_rc_main *m);
 
 #endif

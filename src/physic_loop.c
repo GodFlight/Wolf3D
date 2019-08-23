@@ -1,6 +1,5 @@
 
 #include "raycast.h"
-#include "debug_log.h"
 
 static void	move_player(t_rc_main *m, t_sdl *sdl, float speed)
 {

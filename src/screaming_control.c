@@ -70,3 +70,34 @@ void	screaming_control(t_rc_main *m, int obj_id, char flg)
 		m->scream.spawn[18] = 1;
 	}
 }
+
+void		choose_obj_pos(t_rc_main *m, float pos_x, float pos_y, int obj_id, char flg)
+{
+	m->scream.y = pos_y;
+	m->scream.x = pos_x;
+	screaming_control(m, obj_id, flg);
+}
+
+void	check_pos(t_rc_main *m)
+{
+	if (m->choose_map)
+	{
+		if ((int)m->player.x == 17 && (int)m->player.y == 1)
+			choose_obj_pos(m, 16.7f, 1.5f, 907, 1);
+		else if ((int)m->player.x == 6 && (int)m->player.y == 2)
+			choose_obj_pos(m, 6.5f, 3.5f, 906, 2);
+		else if ((int)m->player.x == 2 && (int)m->player.y == 16)
+			choose_obj_pos(m, 3.5f, 16.5f, 904, 3);
+		else if ((int)m->player.x == 15 && (int)m->player.y == 25)
+			choose_obj_pos(m, 15.5f, 24.5f, 909,4);
+		if ((int)m->player.x == 25 && (int)m->player.y == 21)
+		{
+			if (m->scream.spawn[18] != 1)
+			{
+				choose_obj_pos(m, 25.5f, 11.5f, 911, 18);
+				sounds_control(m, 18);
+			}
+			move_scrm_control(m, 911);
+		}
+	}
+}

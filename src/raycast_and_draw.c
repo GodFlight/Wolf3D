@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "raycast.h"
-#include "debug_log.h"
 
 float		fog_calculate_for_walls(t_rc_main *m)
 {

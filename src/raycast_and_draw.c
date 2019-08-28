@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 00:57:48 by rkeli             #+#    #+#             */
-/*   Updated: 2019/08/23 02:23:45 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/28 04:00:14 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void		draw_floor_or_celling(t_rc_main *m, int j, int i)
 	int		floor_tex_x;
 	int		floor_tex_y;
 	int 	**tmp_arr;
+	int color;
 
 	while (j < m->sdl->win_h)
 	{
@@ -112,10 +113,9 @@ void		draw_floor_or_celling(t_rc_main *m, int j, int i)
 			floor_tex_y = 0;
 		tmp_arr = (m->walls[2]).texture2;
 		m->player.intensity = fog_calculate_for_floor(m);
-		int color;
 		color = rgb_mod(m->player.intensity, tmp_arr[floor_tex_y][floor_tex_x]);
 		sdl_put_pixel(m->sdl, i, j, color);
-		tmp_arr = (m->walls[1]).texture2;
+		tmp_arr = (m->walls[2]).texture4;
 		color = rgb_mod(m->player.intensity, tmp_arr[floor_tex_y][floor_tex_x]);
 		sdl_put_pixel(m->sdl, i, m->sdl->win_h - j, color);
 		j++;

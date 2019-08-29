@@ -45,7 +45,7 @@ void	sounds(t_sdl *sdl, SDL_Event event)
 	key = event.key.keysym.scancode;
 	if (key == SDL_SCANCODE_SPACE && sdl->event.type == SDL_KEYDOWN)
 	{
-		if (Mix_PausedMusic() == -1)
+		if (Mix_PausedMusic() == 1)
 			Mix_ResumeMusic();
 		else
 			Mix_PauseMusic();

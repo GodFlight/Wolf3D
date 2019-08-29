@@ -6,7 +6,7 @@
 #    By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/07 16:14:32 by sbednar           #+#    #+#              #
-#    Updated: 2019/06/05 23:11:02 by sbednar          ###   ########.fr        #
+#    Updated: 2019/08/29 06:51:52 by rkeli            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,14 +22,18 @@ FT_DIR		=	../libft
 FT_INC_DIR	=	../libft/include
 
 SRC			=	jtoc_read_file.c \
-				jtoc_validate.c \
-				jtoc_validate_value.c \
-				jtoc_parse.c \
-				jtoc_parse_value.c \
-				jtoc_utils.c \
-				jtoc_node.c \
-				jtoc_read.c \
-				jtoc_get.c
+                 jtoc_validate.c \
+                 jtoc_validate_value.c \
+                 jtoc_parse.c \
+                 jtoc_parse_value.c \
+                 jtoc_parse_number.c \
+                 jtoc_utils.c \
+                 jtoc_utils2.c \
+                 jtoc_node.c \
+                 jtoc_read.c \
+                 jtoc_get.c \
+                 jtoc_get_raw_data.c \
+                 jtoc_write.c \
 
 OBJ			=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 

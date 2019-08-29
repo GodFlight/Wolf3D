@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "../../libft/include/libft.h"
+# include "libft.h"
 
 # define FUNCTION_SUCCESS	0
 # define FUNCTION_FAILURE	-1

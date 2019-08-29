@@ -12,7 +12,8 @@ target_sources(Wolf3D PUBLIC
         draw_objects.c
         sound.c
         raycast_helper.c
+        screaming_control.c
+        utilits.c
         )
 
 add_subdirectory(rc_jtoc)
-add_subdirectory(rc_utilits)

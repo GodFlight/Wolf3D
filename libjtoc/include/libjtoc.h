@@ -6,7 +6,7 @@
 /*   By: sbednar <sbednar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 19:28:19 by sbednar           #+#    #+#             */
-/*   Updated: 2019/06/05 23:37:25 by sbednar          ###   ########.fr       */
+/*   Updated: 2019/08/29 06:51:52 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "libft.h"
+# include "../../libft/include/libft.h"
 
 # define FUNCTION_SUCCESS	0
 # define FUNCTION_FAILURE	-1

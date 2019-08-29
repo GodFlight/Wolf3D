@@ -12,5 +12,7 @@ target_sources(Wolf3D PUBLIC
         rc_jtoc_get_default_walls.c
         rc_jtoc_get_walls.c
         rc_jtoc_processing_map.c
+        rc_jtoc_get_objects.c
+        rc_jtoc_get_player.c
         )
 

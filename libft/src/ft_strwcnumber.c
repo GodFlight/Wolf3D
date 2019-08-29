@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strwcnumber.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbecker <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 20:08:27 by sbecker           #+#    #+#             */
-/*   Updated: 2018/12/02 20:46:37 by sbecker          ###   ########.fr       */
+/*   Created: 2019/08/22 20:49:47 by rkeli             #+#    #+#             */
+/*   Updated: 2019/08/28 23:48:08 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <string.h>
 
 size_t		ft_strwcnumber(const char *s, int c)

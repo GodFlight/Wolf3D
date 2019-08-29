@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/17 16:02:11 by rkeli             #+#    #+#             */
-/*   Updated: 2019/07/17 18:17:32 by rkeli            ###   ########.fr       */
+/*   Created: 2019/08/21 23:14:19 by rkeli             #+#    #+#             */
+/*   Updated: 2019/08/28 23:48:08 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_itoa_base(int n, int base)
 {

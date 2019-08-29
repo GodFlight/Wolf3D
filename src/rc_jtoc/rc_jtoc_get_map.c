@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rc_jtoc_get_map.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbecker <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/18 23:55:44 by sbecker           #+#    #+#             */
+/*   Updated: 2019/08/28 21:17:38 by rkeli            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "raycast.h"
 
 static char	*ft_str_space_plus_join_free(char *s, char const *s1)
 {
-	char    *check;
-	char    *a;
-	int     i;
+	char	*check;
+	char	*a;
+	int		i;
 
 	i = 0;
 	check = s;
@@ -30,9 +42,9 @@ static char	*ft_str_space_plus_join_free(char *s, char const *s1)
 
 static char	**create_tmp_arr_and_find_sizes(int fd, t_rc_main *wlf)
 {
-	char    *line;
-	char    *all_lines;
-	char    **tmp_arr;
+	char	*line;
+	char	*all_lines;
+	char	**tmp_arr;
 
 	get_next_line(fd, &line);
 	wlf->map_h = 1;
@@ -41,8 +53,8 @@ static char	**create_tmp_arr_and_find_sizes(int fd, t_rc_main *wlf)
 	free(line);
 	while (get_next_line(fd, &line) == 1)
 	{
-	    if (ft_strwcnumber(line, ' ') != (size_t)wlf->map_w)
-            return (NULL);
+		if (ft_strwcnumber(line, ' ') != (size_t)wlf->map_w)
+			return (NULL);
 		all_lines = ft_str_space_plus_join_free(all_lines, line);
 		free(line);
 		wlf->map_h++;
@@ -64,7 +76,7 @@ static int	map_read(t_rc_main *m, int fd)
 	k = -1;
 	tmp_arr = create_tmp_arr_and_find_sizes(fd, m);
 	if (!tmp_arr || m->map_w == 1 || m->map_h == 1)
-	    return (rc_jtoc_sdl_log_error("MAP NOT VALID (BAD READING OR STRINGS SIZE)", -1));
+		return (rc_jtoc_sdl_log_error("BAD READING OR STRINGS SIZE", -1));
 	map = (int **)ft_memalloc(sizeof(int *) * m->map_h);
 	while (++i < m->map_h)
 	{
@@ -73,20 +85,12 @@ static int	map_read(t_rc_main *m, int fd)
 		while (++j < m->map_w)
 			map[i][j] = ft_atoi(tmp_arr[++k]);
 	}
-	i = -1;
-	while (++i < m->map_w)
-	{
-		j = -1;
-		printf("\n");
-		while (++j < m->map_h)
-			printf("%d ", map[j][i]);
-	}
 	m->map = map;
 	ft_clear_double_pointer((void **)tmp_arr, m->map_w * m->map_h);
 	return (FUNCTION_SUCCESS);
 }
 
-int rc_jtoc_get_map(t_rc_main *m, char *path)
+int			rc_jtoc_get_map(t_rc_main *m, char *path)
 {
 	int	fd;
 
@@ -96,7 +100,7 @@ int rc_jtoc_get_map(t_rc_main *m, char *path)
 		return (rc_jtoc_sdl_log_error("OPEN MAP FAILURE", -1));
 	if (map_read(m, fd))
 		return (FUNCTION_FAILURE);
-    if (rc_jtoc_processing_map(m))
-        return (rc_jtoc_sdl_log_error("MAP NOT VALID", -1));
+	if (rc_jtoc_processing_map(m))
+		return (rc_jtoc_sdl_log_error("MAP NOT VALID", -1));
 	return (FUNCTION_SUCCESS);
 }

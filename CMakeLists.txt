@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.14)
 cmake_policy(SET CMP0076 NEW)
 project(WOLF3D LANGUAGES C)
 
-add_executable(Wolf3D src/screaming_control.c)
+add_executable(Wolf3D)
 
 #add sdl2
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/sdl2-cmake-modules)

@@ -144,6 +144,8 @@ int					rc_jtoc_get_textures(t_conf_json *conf, t_jnode *node);
 int					rc_jtoc_get_walls(t_rc_main *m, t_conf_json *conf, t_jnode *n);
 int					rc_jtoc_get_default_walls(t_wall *walls, t_conf_json *conf, t_jnode *n);
 int					rc_jtoc_processing_map(t_rc_main *m);
+int					rc_jtoc_get_objects(t_rc_main *m, t_conf_json *conf, t_jnode *n);
+int					rc_jtoc_get_player(t_rc_main *m, t_jnode *n);
 void				main_loop(t_rc_main *m);
 int					physic_loop(void *m_v);
 int					draw_loop(void *m_v);

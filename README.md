@@ -1,4 +1,4 @@
-# Wolf3D
+# Raycast engine demo
 
 ![Image alt](https://github.com/GodFlight/Wolf3D/raw/master/image/1.png)
 ![Image alt](https://github.com/GodFlight/Wolf3D/raw/master/image/2.png)

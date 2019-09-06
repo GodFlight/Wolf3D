@@ -14,9 +14,14 @@
 
 static int	win_from_json_helper(t_rc_main *m, t_sdl *sdl)
 {
+#ifdef APPLE___
 	if (!(sdl->win = SDL_CreateWindow("Wolf3D", SDL_WINDOWPOS_CENTERED,
 			SDL_WINDOWPOS_CENTERED, sdl->win_w, sdl->win_h,
 			SDL_WINDOW_RESIZABLE)))
+#else
+        if (!(sdl->win = SDL_CreateWindow("Wolf3D", 0, 0, sdl->win_w, sdl->win_h,
+                SDL_WINDOW_FULLSCREEN)))
+#endif
 		return (rc_jtoc_sdl_log_error("CREATE WINDOW ERROR", -1));
 	if (!(sdl->renderer = SDL_CreateRenderer(sdl->win, -1, 0)))
 		return (rc_jtoc_sdl_log_error("CREATE WINDOW RENDERER ERROR", -1));

@@ -1,5 +1,8 @@
 # Wolf3D
 
+[Download demo on windows 7](https://github.com/GodFlight/Wolf3D/raw/master/raycast_demo.zip)
+###
+
 ![Image alt](https://github.com/GodFlight/Wolf3D/raw/master/image/1.png)
 ![Image alt](https://github.com/GodFlight/Wolf3D/raw/master/image/2.png)
 ![Image alt](https://github.com/GodFlight/Wolf3D/raw/master/image/3.png)

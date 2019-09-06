@@ -1,6 +1,6 @@
 # Raycast engine
 
-[Download demo](https://github.com/dolovnyak/raycast-engine/raw/master/raycast_demo.zip)
+[Download demo for windows](https://github.com/dolovnyak/raycast-engine/raw/master/raycast_demo.zip)
 ###
 
 ![Image alt](https://github.com/GodFlight/Wolf3D/raw/master/image/1.png)

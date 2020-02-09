@@ -76,7 +76,7 @@ LIBS			=	-L$(FT_DIR) -lft \
 					-L$(JTOC_DIR) -ljtoc
 
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror -O3
+CFLAGS			=	-O3 -Wall -Wextra -Werror -D APPLE___
 
 all: $(NAME)
 
